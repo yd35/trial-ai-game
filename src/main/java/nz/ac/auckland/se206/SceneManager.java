@@ -15,8 +15,6 @@ public class SceneManager {
     DEFENDANTCHAT
   }
 
-  private static AppUi currentScene;
-
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<AppUi, Parent>();
 
   public static void addUi(AppUi appUi, Parent uiRoot) {
