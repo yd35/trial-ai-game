@@ -9,10 +9,12 @@ public class SceneManager {
     OPENING,
     MAINMENU,
     JUDGE,
-    WINORLOSESCREEN,
+    WIN,
+    LOSE,
     AIWITNESSCHAT,
     HUMANWITNESSCHAT,
-    DEFENDANTCHAT
+    DEFENDANTCHAT,
+    FLASHBACK
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<AppUi, Parent>();

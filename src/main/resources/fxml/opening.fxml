@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.OpeningController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="350.0" layoutY="200.0" prefHeight="546.0" prefWidth="800.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI ADJUDICATOR">
+            <Text fx:id="titleText" strokeType="OUTSIDE" strokeWidth="0.0" text="AI ADJUDICATOR">
                <font>
                   <Font size="48.0" />
                </font>
@@ -22,7 +22,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <ImageView fitHeight="275.0" fitWidth="700.0" pickOnBounds="true">
+            <ImageView fx:id="image" fitHeight="275.0" fitWidth="700.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/red.jpg" />
                </image>
@@ -30,7 +30,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien ipsum, sodales vel mauris eu, malesuada cursus purus. Integer commodo, velit sit amet cursus venenatis, ex dui semper leo, in posuere mauris lacus nec justo. Nulla vel viverra ipsum, sit amet sagittis nunc. Nullam convallis nunc sed lacus imperdiet commodo. Curabitur justo nisi, mollis sit amet lacus a, dictum varius lacus. Quisque porttitor eget arcu sit amet iaculis. Vivamus volutpat, tellus ac blandit aliquam, urna dui placerat nisl, vitae rhoncus elit purus non nulla. Nunc ullamcorper odio purus, nec vehicula libero finibus ut. Integer pretium ipsum lectus, at gravida nunc varius vitae. Morbi ac sapien sagittis, egestas mauris et, pretium lorem. Phasellus massa tortor, consequat vitae mollis vitae, auctor eu eros. Proin dui nibh, imperdiet id elit ac, porta imperdiet nisi. Mauris posuere velit ut dictum rutrum. Vivamus sed dui vel quam elementum interdum. " textAlignment="CENTER" wrappingWidth="700.0">
+            <Text fx:id="contextText" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien ipsum, sodales vel mauris eu, malesuada cursus purus. Integer commodo, velit sit amet cursus venenatis, ex dui semper leo, in posuere mauris lacus nec justo. Nulla vel viverra ipsum, sit amet sagittis nunc. Nullam convallis nunc sed lacus imperdiet commodo. Curabitur justo nisi, mollis sit amet lacus a, dictum varius lacus. Quisque porttitor eget arcu sit amet iaculis. Vivamus volutpat, tellus ac blandit aliquam, urna dui placerat nisl, vitae rhoncus elit purus non nulla. Nunc ullamcorper odio purus, nec vehicula libero finibus ut. Integer pretium ipsum lectus, at gravida nunc varius vitae. Morbi ac sapien sagittis, egestas mauris et, pretium lorem. Phasellus massa tortor, consequat vitae mollis vitae, auctor eu eros. Proin dui nibh, imperdiet id elit ac, porta imperdiet nisi. Mauris posuere velit ut dictum rutrum. Vivamus sed dui vel quam elementum interdum. " textAlignment="CENTER" wrappingWidth="700.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,8 +41,8 @@
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
       </VBox>
-      <Button layoutX="362.0" layoutY="545.0" mnemonicParsing="false" text="Start Game" AnchorPane.topAnchor="545.0" />
-      <Text fill="RED" layoutX="466.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*You have 5 minutes to make a decision. " textAlignment="CENTER" wrappingWidth="260.0" AnchorPane.topAnchor="545.0">
+      <Button fx:id="startGameButton" layoutX="362.0" layoutY="545.0" mnemonicParsing="false" onAction="#onStartGame" text="Start Game" AnchorPane.topAnchor="545.0" />
+      <Text fx:id="timeLimitText" fill="RED" layoutX="472.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*You have 5 minutes to make a decision. " textAlignment="CENTER" wrappingWidth="260.0" AnchorPane.topAnchor="534.892578125">
          <font>
             <Font size="14.0" />
          </font>
