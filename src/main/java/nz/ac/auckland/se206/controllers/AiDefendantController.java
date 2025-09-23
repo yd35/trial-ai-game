@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -19,6 +20,7 @@ public class AiDefendantController {
   @FXML private ImageView image;
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
+  @FXML private Rectangle timerOutline;
 
   @FXML
   private void onGoBack(ActionEvent event) {
