@@ -32,11 +32,24 @@ public class App extends Application {
     SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
     SceneManager.addUi(AppUi.WIN, loadFxml("win"));
     SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-    SceneManager.addUi(AppUi.FLASHBACK, loadFxml("flashback"));
   
-    scene = new Scene(SceneManager.getUiRoot(AppUi.JUDGE), 800, 600);
+    scene = new Scene(SceneManager.getUiRoot(AppUi.OPENING), 800, 600);
+
     stage.setScene(scene);
     stage.show();
 
   }
+
+  public static void setRootFresh(String fxml) {
+    try {
+      scene.setRoot(loadFxml(fxml));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void setRoot(SceneManager.AppUi ui) {
+    scene.setRoot(SceneManager.getUiRoot(ui));
+  }
+
 }
