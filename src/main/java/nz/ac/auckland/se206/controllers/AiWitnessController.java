@@ -29,6 +29,7 @@ public class AiWitnessController {
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
   private GptClient client;
+  ChatMessage systemPrompt;
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -44,12 +45,11 @@ public class AiWitnessController {
     String aiFlashback =
         "add whatever starting message the ai witness should say here";
     chatTextArea.appendText(aiFlashback + "\n\n");
-    ChatMessage systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
-    ChatLog.addToLog(systemPrompt);
+    systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
   }
 
   private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText("<AiWitnessName>" + ": " + msg.getContent() + "\n\n");
+    chatTextArea.appendText(msg.getContent() + "\n\n");
   }
 
   @FXML
@@ -61,7 +61,7 @@ public class AiWitnessController {
     }
     // remove the text from the text field and store it in a variable
     textField.clear();
-    ChatMessage msg = new ChatMessage("user", message);
+    ChatMessage msg = new ChatMessage("user", "user: " +message);
     // add the message to the chat
     appendChatMessage(msg);
     ChatLog.addToLog(msg);
@@ -72,10 +72,11 @@ public class AiWitnessController {
           protected Void call() {
             try {
               // interact with the llm with the text from the text field
-              ChatCompletionResult result = client.runOnce(ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("assistant", aiResponse);
-              ChatLog.addToLog(msg);
+              ChatMessage responseMsg = new ChatMessage("assistant", "AiWitnessName: " + aiResponse);
+              ChatMessage logMsg = new ChatMessage("user", "AiWitnessName: " +aiResponse);
+              ChatLog.addToLog(logMsg);
               javafx.application.Platform.runLater(
                   () -> {
                     appendChatMessage(responseMsg);

@@ -15,10 +15,11 @@ public class GptClient {
     this.config = ApiProxyConfig.readConfig();
   }
 
-  public ChatCompletionResult runOnce(
+  public ChatCompletionResult runOnce(ChatMessage system,
       List<ChatMessage> messages, int n, double temperature, double topP, int maxTokens)
       throws ApiProxyException {
     ChatCompletionRequest req = new ChatCompletionRequest(config);
+    req.addMessage(system.getRole(), system.getContent());
     for (ChatMessage m : messages) {
       req.addMessage(m.getRole(), m.getContent());
     }

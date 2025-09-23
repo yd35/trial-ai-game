@@ -1,5 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +32,8 @@ public class AiDefendantController {
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
   private GptClient client;
+  List<ChatMessage> history = new ArrayList<>();
+  ChatMessage systemPrompt;
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -42,14 +47,13 @@ public class AiDefendantController {
     client = new GptClient();
     // Set up the chat area
     String aiFlashback =
-        "add whatever starting message the ai witness should say here";
+        "add whatever starting message the ai defendant should say here";
     chatTextArea.appendText(aiFlashback + "\n\n");
-    ChatMessage systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
-    ChatLog.addToLog(systemPrompt);
+    systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
   }
 
   private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText("<AiDefendantName>" + ": " + msg.getContent() + "\n\n");
+    chatTextArea.appendText(msg.getContent() + "\n\n");
   }
 
   @FXML
@@ -61,7 +65,7 @@ public class AiDefendantController {
     }
     // remove the text from the text field and store it in a variable
     textField.clear();
-    ChatMessage msg = new ChatMessage("user", message);
+    ChatMessage msg = new ChatMessage("user", "user: " + message);
     // add the message to the chat
     appendChatMessage(msg);
     ChatLog.addToLog(msg);
@@ -72,9 +76,11 @@ public class AiDefendantController {
           protected Void call() {
             try {
               // interact with the llm with the text from the text field
-              ChatCompletionResult result = client.runOnce(ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("assistant", aiResponse);
+              ChatMessage responseMsg = new ChatMessage("assistant", "AiDefendantName: " +aiResponse);
+              ChatMessage logMsg = new ChatMessage("user", "AiDefendantName: " +aiResponse);
+              ChatLog.addToLog(logMsg);
               javafx.application.Platform.runLater(
                   () -> {
                     appendChatMessage(responseMsg);
