@@ -41,6 +41,7 @@ public class AiWitnessController {
 
   @FXML
   private void initialize() {
+    chatTextArea.setWrapText(true);
   }
 
   /** Call this when the LLM returns a reply for the Human Witness. */
