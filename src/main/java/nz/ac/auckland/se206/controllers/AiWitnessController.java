@@ -49,7 +49,7 @@ public class AiWitnessController {
   }
 
   private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    chatTextArea.appendText("<AiWitnessName>" + ": " + msg.getContent() + "\n\n");
   }
 
   @FXML
@@ -74,7 +74,8 @@ public class AiWitnessController {
               // interact with the llm with the text from the text field
               ChatCompletionResult result = client.runOnce(ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("NameOfAiWitness", aiResponse);
+              ChatMessage responseMsg = new ChatMessage("assistant", aiResponse);
+              ChatLog.addToLog(msg);
               javafx.application.Platform.runLater(
                   () -> {
                     appendChatMessage(responseMsg);
