@@ -6,7 +6,6 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.controllers.GameState.Participant;
 
 public class MainMenuController {
-
   @FXML private void onAiWitness()   { go(Participant.AI_WITNESS); }
   @FXML private void onAiDefendant() { go(Participant.AI_DEFENDANT); }
   @FXML private void onHumanWitness(){ go(Participant.HUMAN_WITNESS); }

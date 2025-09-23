@@ -29,9 +29,39 @@ public class AiDefendantController {
   
   @FXML
   private void sendMessage(ActionEvent event) {
+    String msg = textField.getText().trim();
+    if (msg.isEmpty()) return;
+
+    appendToChat("You: " + msg);
+    textField.clear();
+
+    // TODO: replace with async LLM call; this is just a PLACEHOLDER!!!!!!!!
+    onModelReply("I remember the shipment was delayed due to a manual override.");
   }
 
   @FXML
   private void initialize() {
+  }
+
+  /** Call this when the LLM returns a reply for the Human Witness. */
+  private void onModelReply(String replyText) {
+    String text = (replyText == null || replyText.trim().isEmpty())
+        ? "(no response)"
+        : replyText.trim();
+
+    appendToChat("Ai Defendant: " + text); // TODO: ai defendant lore name
+
+    // Mark that the player has chatted with this participant at least once
+    GameState.markChatted(GameState.Participant.AI_DEFENDANT);
+  }
+
+  /** Small helper to add a line and keep the view scrolled to the bottom. */
+  private void appendToChat(String line) {
+    if (chatTextArea.getText().isEmpty()) {
+      chatTextArea.setText(line);
+    } else {
+      chatTextArea.appendText("\n" + line);
+    }
+    chatTextArea.positionCaret(chatTextArea.getText().length());
   }
 }
