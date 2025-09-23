@@ -1,8 +1,11 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.GameState.Participant;
 
 public class MainMenuController {
@@ -12,7 +15,23 @@ public class MainMenuController {
 
   @FXML
   private void onJudge() {
-    App.setRoot(SceneManager.AppUi.JUDGE);
+    GameState gs = GameState.get();
+
+    if (gs.roundExpired && !GameState.allChatted()) {
+      App.setRoot(AppUi.LOSE); // rule: no verdict possible after time if not all chatted
+      return;
+    }
+
+    if (!GameState.allChatted()) {
+      // Before time is up, just block and explain
+      Alert a = new Alert(AlertType.INFORMATION);
+      a.setHeaderText(null);
+      a.setContentText("You must ask at least one question to all three participants before judging.");
+      a.showAndWait();
+      return;
+    }
+
+    App.setRoot(AppUi.JUDGE);
   }
 
   private void go(Participant p) {

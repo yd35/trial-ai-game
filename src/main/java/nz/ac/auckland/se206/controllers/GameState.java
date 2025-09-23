@@ -3,6 +3,9 @@ package nz.ac.auckland.se206.controllers;
 import java.util.EnumMap;
 import java.util.Map;
 
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SceneManager.AppUi;
+
 public final class GameState {
   public enum Participant { AI_WITNESS, AI_DEFENDANT, HUMAN_WITNESS }
 
@@ -36,6 +39,20 @@ public final class GameState {
       if (!Boolean.TRUE.equals(b)) return false;
     }
     return true;
+  }
+  
+  // called when the 5-minute timer hits zero
+  private void onRoundExpired() {
+    GameState gs = GameState.get();
+    gs.roundExpired = true;
+
+    if (!GameState.allChatted()) {
+      // Player did not chat all three → immediate game over
+      App.setRoot(AppUi.LOSE);
+    } else {
+      // They chatted all three → go to Judge (start your 60s verdict timer there)
+      App.setRoot(AppUi.JUDGE);
+    }
   }
 
   /** Clear all run-time flags so a new playthrough starts clean. */
