@@ -16,15 +16,21 @@
             <Image url="@../images/red.jpg" />
          </image>
       </ImageView>
-      <Text fx:id="counterLabel" fill="WHITE" layoutX="735.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1/3" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="30.0">
+      <Text fx:id="counterLabel" fill="WHITE" layoutX="735.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1/3" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="30.0">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Button layoutX="582.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAdvance" text="Advance" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="90.0">
+      <Button layoutX="582.0" layoutY="504.0" mnemonicParsing="false" onAction="#onAdvance" text="Advance" textAlignment="CENTER" AnchorPane.bottomAnchor="90.0" AnchorPane.rightAnchor="90.0">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
+      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="717.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.rightAnchor="0.0" />
+      <Text fx:id="timerText" layoutX="731.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

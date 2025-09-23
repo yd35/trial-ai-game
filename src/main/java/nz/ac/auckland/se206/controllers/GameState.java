@@ -21,5 +21,15 @@ public final class GameState {
       flashbackShown.put(p, false);
     }
   }
+
+  /** Clear all run-time flags so a new playthrough starts clean. */
+  public static void reset() {
+    GameState gs = get();
+    for (Participant p : Participant.values()) {
+      gs.flashbackShown.put(p, false);
+    }
+    gs.currentFlashback = null;
+  }
+
 }
 
