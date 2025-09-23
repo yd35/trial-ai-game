@@ -24,7 +24,7 @@
       </ImageView>
       <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
       <TextField fx:id="textField" layoutX="543.0" layoutY="498.0" prefHeight="25.0" prefWidth="176.0" />
-      <TextArea fx:id="chatTextArea" layoutX="543.0" layoutY="24.0" prefHeight="454.0" prefWidth="241.0" />
+      <TextArea fx:id="chatTextArea" editable="false" layoutX="543.0" layoutY="24.0" prefHeight="454.0" prefWidth="241.0" wrapText="true" />
       <Button fx:id="sendButton" layoutX="734.0" layoutY="498.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="52.0" text="Send" />
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
