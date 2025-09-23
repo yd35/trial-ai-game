@@ -33,7 +33,7 @@ public class App extends Application {
     SceneManager.addUi(AppUi.WIN, loadFxml("win"));
     SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
   
-    scene = new Scene(SceneManager.getUiRoot(AppUi.MAINMENU), 800, 600);
+    scene = new Scene(SceneManager.getUiRoot(AppUi.OPENING), 800, 600);
 
     stage.setScene(scene);
     stage.show();
