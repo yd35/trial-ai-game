@@ -42,7 +42,7 @@
          </children>
       </VBox>
       <Button fx:id="startGameButton" layoutX="362.0" layoutY="545.0" mnemonicParsing="false" onAction="#onStartGame" text="Start Game" AnchorPane.topAnchor="545.0" />
-      <Text fx:id="timeLimitText" fill="RED" layoutX="472.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*You have 5 minutes to make a decision. " textAlignment="CENTER" wrappingWidth="260.0" AnchorPane.topAnchor="534.892578125">
+      <Text fx:id="timeLimitText" fill="RED" layoutX="472.0" layoutY="551.307421875" strokeType="OUTSIDE" strokeWidth="0.0" text="*You have 5 minutes to make a decision. " textAlignment="CENTER" wrappingWidth="260.0" AnchorPane.topAnchor="548.0">
          <font>
             <Font size="14.0" />
          </font>
