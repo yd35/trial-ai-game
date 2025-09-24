@@ -17,7 +17,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="200.0" layoutY="142.0" prefHeight="563.0" prefWidth="800.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI ADJUDICATOR">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECIDE AI'S VERDICT">
                <font>
                   <Font size="48.0" />
                </font>
@@ -27,63 +27,90 @@
             </Text>
             <HBox prefHeight="455.0" prefWidth="800.0">
                <children>
-                  <StackPane>
+                  <StackPane prefHeight="400.0">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
                      <children>
-                        <ImageView fitHeight="455.0" fitWidth="252.0" pickOnBounds="true">
+                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
                            <image>
                               <Image url="@../images/red.jpg" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitness" opacity="0.01">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitness" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN WITNESS" StackPane.alignment="BOTTOM_CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" />
+                           </StackPane.margin>
+                        </Text>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="401.0" prefWidth="252.0">
+                     <HBox.margin>
+                        <Insets left="11.0" />
+                     </HBox.margin>
+                     <children>
+                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+                           <image>
+                              <Image url="@../images/red.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" />
+                           </StackPane.margin>
+                        </Text>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01" prefHeight="370.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
                      </children>
                   </StackPane>
-                  <StackPane>
+                  <StackPane prefHeight="400.0">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
                      <children>
-                        <ImageView fitHeight="455.0" fitWidth="252.0" pickOnBounds="true">
+                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
                            <image>
                               <Image url="@../images/red.jpg" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01" prefHeight="370.0" prefWidth="252.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <HBox.margin>
-                        <Insets left="11.0" />
-                     </HBox.margin>
-                     <children>
-                        <ImageView fitHeight="455.0" fitWidth="252.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/red.jpg" />
-                           </image>
-                        </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI WITNESS" StackPane.alignment="BOTTOM_CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" />
+                           </StackPane.margin>
+                        </Text>
                      </children>
                   </StackPane>
                </children>
             </HBox>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#onJudge" text="JUDGE!">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onJudge" prefHeight="51.0" prefWidth="120.0" text="JUDGE!" VBox.vgrow="NEVER">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
             </Button>
          </children>
       </VBox>
