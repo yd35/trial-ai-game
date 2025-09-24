@@ -60,6 +60,16 @@ public class AiWitnessController {
     chatTextArea.appendText(msg.getContent() + "\n\n");
   }
 
+  // on enter key press in text field, if message is not empty, send message
+  // get scene and set on key pressed event
+  @FXML
+  private void checkEnter(KeyEvent event) {
+    if (event.getCode() == KeyCode.ENTER && !textField.getText().trim().isEmpty()) {
+      sendMessage(new ActionEvent());
+      event.consume(); // prevent adding a new line to the text field
+    }
+  }
+
   @FXML
   private void sendMessage(ActionEvent event) {
     // check for text in the text field

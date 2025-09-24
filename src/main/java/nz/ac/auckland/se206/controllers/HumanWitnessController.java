@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -53,7 +55,15 @@ public class HumanWitnessController {
     chatTextArea.appendText(msg.getContent() + "\n\n");
   }
 
-  
+  // on enter key press in text field, if message is not empty, send message
+  // get scene and set on key pressed event
+  @FXML
+  private void checkEnter(KeyEvent event) {
+    if (event.getCode() == KeyCode.ENTER && !textField.getText().trim().isEmpty()) {
+      sendMessage(new ActionEvent());
+      event.consume(); // prevent adding a new line to the text field
+    }
+  }
 
   @FXML
   private void sendMessage(ActionEvent event) {
