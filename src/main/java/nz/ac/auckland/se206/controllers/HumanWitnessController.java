@@ -53,6 +53,8 @@ public class HumanWitnessController {
     chatTextArea.appendText(msg.getContent() + "\n\n");
   }
 
+  
+
   @FXML
   private void sendMessage(ActionEvent event) {
     // check for text in the text field

@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -18,6 +20,7 @@ import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+
 
 public class AiWitnessController {
   @FXML private Text timerText;
@@ -30,6 +33,7 @@ public class AiWitnessController {
   @FXML private Rectangle timerOutline;
   private GptClient client;
   ChatMessage systemPrompt;
+
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -46,7 +50,11 @@ public class AiWitnessController {
         "add whatever starting message the ai witness should say here";
     chatTextArea.appendText(aiFlashback + "\n\n");
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
+
+    
   }
+
+  
 
   private void appendChatMessage(ChatMessage msg) {
     chatTextArea.appendText(msg.getContent() + "\n\n");
