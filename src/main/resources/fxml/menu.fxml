@@ -62,15 +62,8 @@
                               <Image url="@../images/red.jpg" />
                            </image>
                         </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="20.0" />
-                           </StackPane.margin>
-                        </Text>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01" prefHeight="370.0">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01">
+
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -87,7 +80,7 @@
                               <Image url="@../images/red.jpg" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01" prefHeight="370.0" prefWidth="252.0">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
