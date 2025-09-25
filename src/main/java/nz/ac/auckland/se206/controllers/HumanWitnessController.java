@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -7,9 +8,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.ChatLog;
+import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class HumanWitnessController {
   @FXML private Text timerText;
@@ -19,6 +29,9 @@ public class HumanWitnessController {
   @FXML private ImageView image;
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
+  @FXML private Rectangle timerOutline;
+  private GptClient client;
+  ChatMessage systemPrompt;
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -27,23 +40,21 @@ public class HumanWitnessController {
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
   }
   
-  @FXML
-  private void sendMessage(ActionEvent event) {
-    String msg = textField.getText().trim();
-    if (msg.isEmpty()) return;
+  public void initialize() throws ApiProxyException {
+    // Initialize the AI chat interface
+    client = new GptClient();
+    // Set up the chat area
+    String aiFlashback =
+        "add whatever starting message the human witness should say here";
+    chatTextArea.appendText(aiFlashback + "\n\n");
+    systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
 
-    appendToChat("You: " + msg);
-    textField.clear();
-
-    // TODO: replace with async LLM call; this is just a PLACEHOLDER!!!!!!!!
-    onModelReply("I remember the shipment was delayed due to a manual override.");
   }
 
-  @FXML
-  private void initialize() {
-    chatTextArea.setWrapText(true);
+  private void appendChatMessage(ChatMessage msg) {
+    chatTextArea.appendText(msg.getContent() + "\n\n");
   }
-  
+
   /** Call this when the LLM returns a reply for the Human Witness. */
   private void onModelReply(String replyText) {
     String text = (replyText == null || replyText.trim().isEmpty())
@@ -56,13 +67,56 @@ public class HumanWitnessController {
     GameState.markChatted(GameState.Participant.HUMAN_WITNESS);
   }
 
-  /** Small helper to add a line and keep the view scrolled to the bottom. */
-  private void appendToChat(String line) {
-    if (chatTextArea.getText().isEmpty()) {
-      chatTextArea.setText(line);
-    } else {
-      chatTextArea.appendText("\n" + line);
+  // on enter key press in text field, if message is not empty, send message
+  // get scene and set on key pressed event
+  @FXML
+  private void checkEnter(KeyEvent event) {
+    if (event.getCode() == KeyCode.ENTER && !textField.getText().trim().isEmpty()) {
+      sendMessage(new ActionEvent());
+      event.consume(); // prevent adding a new line to the text field
     }
-    chatTextArea.positionCaret(chatTextArea.getText().length());
+  }
+
+  @FXML
+  private void sendMessage(ActionEvent event) {
+    // check for text in the text field
+    String message = textField.getText().trim();
+    if (message.isEmpty()) {
+      return;
+    }
+    
+    // mark participant as already interacted with
+    onModelReply(message);
+    
+    // remove the text from the text field and store it in a variable
+    textField.clear();
+    ChatMessage msg = new ChatMessage("user", "user: " + message);
+    // add the message to the chat
+    appendChatMessage(msg);
+    ChatLog.addToLog(msg);
+    // Threading so that GUI doesnt freeze when ai is generating response
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() {
+            try {
+              // interact with the llm with the text from the text field
+              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              String aiResponse = result.getFirstChoice().getChatMessage().getContent();
+              ChatMessage responseMsg = new ChatMessage("assistant", "HumanWitnessName: " +aiResponse);
+              ChatMessage logMsg = new ChatMessage("user", "HumanWitnessName: " +aiResponse);
+              ChatLog.addToLog(logMsg);
+              javafx.application.Platform.runLater(
+                  () -> {
+                    appendChatMessage(responseMsg);
+                  });
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+            return null;
+          }
+        };
+
+    new Thread(backgroundTask).start();
   }
 }
