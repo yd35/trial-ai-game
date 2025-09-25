@@ -55,6 +55,18 @@ public class HumanWitnessController {
     chatTextArea.appendText(msg.getContent() + "\n\n");
   }
 
+  /** Call this when the LLM returns a reply for the Human Witness. */
+  private void onModelReply(String replyText) {
+    String text = (replyText == null || replyText.trim().isEmpty())
+        ? "(no response)"
+        : replyText.trim();
+
+    appendToChat("Human Witness: " + text); // TODO: human witness lore name
+
+    // Mark that the player has chatted with this participant at least once
+    GameState.markChatted(GameState.Participant.HUMAN_WITNESS);
+  }
+
   // on enter key press in text field, if message is not empty, send message
   // get scene and set on key pressed event
   @FXML
@@ -72,6 +84,10 @@ public class HumanWitnessController {
     if (message.isEmpty()) {
       return;
     }
+    
+    // mark participant as already interacted with
+    onModelReply(message);
+    
     // remove the text from the text field and store it in a variable
     textField.clear();
     ChatMessage msg = new ChatMessage("user", "user: " + message);
