@@ -54,7 +54,7 @@
                               <Image url="@../images/red.jpg" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -71,7 +71,7 @@
                               <Image url="@../images/red.jpg" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
