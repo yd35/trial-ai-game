@@ -25,6 +25,8 @@ public class App extends Application {
   @Override
   public void start(Stage stage) throws IOException {
 
+    SharedTimer.initializeTimer(300);
+
     SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
     SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
     SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));
@@ -61,6 +63,7 @@ public class App extends Application {
       // If you track other state, clear it here (chat logs, timers, etc.)
 
       // 2) Recreate all FXML roots so controllers start from scratch
+      SharedTimer.reset(300);
       SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
       SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
       SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));

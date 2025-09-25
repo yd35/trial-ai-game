@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.SharedTimer;
 
 public class OpeningController {
   @FXML private Text titleText;
@@ -20,6 +21,7 @@ public class OpeningController {
   private void onStartGame(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
+    SharedTimer.getInstance().start();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
   }
   
