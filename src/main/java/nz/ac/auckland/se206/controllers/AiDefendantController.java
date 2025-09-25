@@ -61,12 +61,6 @@ public class AiDefendantController {
 
   /** Call this when the LLM returns a reply for the AI Defendant. */
   private void onModelReply(String replyText) {
-    String text = (replyText == null || replyText.trim().isEmpty())
-        ? "(no response)"
-        : replyText.trim();
-
-    appendToChat("Ai Defendant: " + text); // TODO: ai defendant lore name
-
     // Mark that the player has chatted with this participant at least once
     GameState.markChatted(GameState.Participant.AI_DEFENDANT);
   }

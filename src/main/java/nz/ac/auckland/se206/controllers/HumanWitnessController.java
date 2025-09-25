@@ -57,12 +57,6 @@ public class HumanWitnessController {
 
   /** Call this when the LLM returns a reply for the Human Witness. */
   private void onModelReply(String replyText) {
-    String text = (replyText == null || replyText.trim().isEmpty())
-        ? "(no response)"
-        : replyText.trim();
-
-    appendToChat("Human Witness: " + text); // TODO: human witness lore name
-
     // Mark that the player has chatted with this participant at least once
     GameState.markChatted(GameState.Participant.HUMAN_WITNESS);
   }
