@@ -30,8 +30,7 @@ public class MainMenuController {
       return;
     }
 
-    SharedTimer.reset(60);
-    SharedTimer.getInstance().start();
+    GameState.onRoundExpired();
     App.setRoot(AppUi.JUDGE);
   }
 
