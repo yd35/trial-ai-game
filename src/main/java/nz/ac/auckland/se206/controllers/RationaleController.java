@@ -23,20 +23,6 @@ import nz.ac.auckland.se206.SharedTimer;
 
 public class RationaleController {
 
-  @FXML private Text titleText;
-  @FXML private TextArea chatTextArea;
-  @FXML private TextField textField;
-  @FXML private Button sendButton;
-
-  // Timer visuals only; teammate wires logic later (text is set in FXML to "1:00")
-  @FXML private Text timerText;
-
-  private GptClient client;
-  private ChatMessage systemPrompt;
-
-  // Stores the grading tag from the LLM:
-  // INCORRECT_VERDICT | CORRECT_WRONG_RATIONALE | CORRECT_CORRECT_RATIONALE
-
   /** Fallback: reflectively try common shapes if the direct call isn’t present. */
   private static String extractFirstContentFallback(ChatCompletionResult res) {
     try {
@@ -98,6 +84,39 @@ public class RationaleController {
     }
     return "";
   }
+
+  /** Try the concrete method names provided by your proxy SDK. */
+  private static String tryGetContentDirect(ChatCompletionResult res) {
+    try {
+      // Many SDKs expose this exact chain:
+      var first = res.getFirstChoice();
+      if (first != null) {
+        var msg = first.getChatMessage();
+        if (msg != null) {
+          var c = msg.getContent();
+          if (c != null) {
+            return c;
+          }
+        }
+      }
+    } catch (Throwable ignore) {
+    }
+    return null;
+  }
+
+  @FXML private Text titleText;
+  @FXML private TextArea chatTextArea;
+  @FXML private TextField textField;
+  @FXML private Button sendButton;
+
+  // Timer visuals only; teammate wires logic later (text is set in FXML to "1:00")
+  @FXML private Text timerText;
+
+  private GptClient client;
+  private ChatMessage systemPrompt;
+
+  // Stores the grading tag from the LLM:
+  // INCORRECT_VERDICT | CORRECT_WRONG_RATIONALE | CORRECT_CORRECT_RATIONALE
 
   @FXML private Button continueButton;
   private String outcomeTag = "";
@@ -247,36 +266,20 @@ public class RationaleController {
 
   /** Load small UTF-8 text resource from classpath (e.g., /prompts/rationale.txt). */
   private String loadResourceText(String path) {
+    // Load the resource as a stream, read it fully, and return as a string.
     try (InputStream in = getClass().getResourceAsStream(path);
         InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
         BufferedReader br = new BufferedReader(isr)) {
+      // Read all lines
       StringBuilder sb = new StringBuilder();
       String line;
       while ((line = br.readLine()) != null) {
+        // Append line with newline
         sb.append(line).append('\n');
       }
       return sb.toString().trim();
     } catch (Exception e) {
       return "You grade the player's verdict rationale.";
     }
-  }
-
-  /** Try the concrete method names provided by your proxy SDK. */
-  private static String tryGetContentDirect(ChatCompletionResult res) {
-    try {
-      // Many SDKs expose this exact chain:
-      var first = res.getFirstChoice();
-      if (first != null) {
-        var msg = first.getChatMessage();
-        if (msg != null) {
-          var c = msg.getContent();
-          if (c != null) {
-            return c;
-          }
-        }
-      }
-    } catch (Throwable ignore) {
-    }
-    return null;
   }
 }

@@ -20,12 +20,14 @@ public class JudgeController {
 
   @FXML
   private void onGuilty(ActionEvent event) {
+    // go to the lose screen because verdict was incorrect
     SharedTimer.getInstance().stop();
     App.setRoot(AppUi.LOSE);
   }
 
   @FXML
   private void onNotGuilty(ActionEvent event) {
+    // go to the rationale screen because verdict was correct
     App.setRoot(AppUi.RATIONALE);
   }
 

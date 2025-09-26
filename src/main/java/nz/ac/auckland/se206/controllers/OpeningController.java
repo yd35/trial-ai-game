@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class OpeningController {
   @FXML private Text titleText;
@@ -29,6 +30,8 @@ public class OpeningController {
 
   @FXML
   private void initialize() {
+    TextToSpeech.speak(
+        "The Democracy of Levin has unearthed the ruins of the Concordia civilisation.");
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
         // display the timer in minutes and seconds format

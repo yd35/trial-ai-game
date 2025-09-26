@@ -19,24 +19,6 @@ public final class GameState {
     return I;
   }
 
-  // Has the first-time flashback already been shown for each participant?
-  public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
-  // Has the user chatted with each participant?
-  public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
-
-  // Who’s flashback should the single FlashbackController display right now?
-  public Participant currentFlashback = null;
-
-  /** Set true when the 5-minute round expires. */
-  public boolean roundExpired = false;
-
-  private GameState() {
-    for (Participant p : Participant.values()) {
-      flashbackShown.put(p, false);
-      chatted.put(p, false);
-    }
-  }
-
   public static void markChatted(Participant p) {
     get().chatted.put(p, true);
   }
@@ -81,5 +63,23 @@ public final class GameState {
     }
     gs.currentFlashback = null;
     gs.roundExpired = false;
+  }
+
+  // Has the first-time flashback already been shown for each participant?
+  public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
+  // Has the user chatted with each participant?
+  public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
+
+  // Who’s flashback should the single FlashbackController display right now?
+  public Participant currentFlashback = null;
+
+  /** Set true when the 5-minute round expires. */
+  public boolean roundExpired = false;
+
+  private GameState() {
+    for (Participant p : Participant.values()) {
+      flashbackShown.put(p, false);
+      chatted.put(p, false);
+    }
   }
 }
