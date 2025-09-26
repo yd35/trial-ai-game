@@ -34,7 +34,7 @@
                      <children>
                         <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
                            <image>
-                              <Image url="@../images/seymour_portrait.png" />
+                              <Image url="@../images/portraits/large/seymour_portrait.png" />
                            </image>
                         </ImageView>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitness" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
@@ -59,7 +59,7 @@
                      <children>
                         <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
                            <image>
-                              <Image url="@../images/viridis_portrait.png" />
+                              <Image url="@../images/portraits/large/viridis_portrait.png" />
                            </image>
                         </ImageView>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01">
@@ -88,7 +88,7 @@
                      <children>
                         <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
                            <image>
-                              <Image url="@../images/oracle_portrait.png" />
+                              <Image url="@../images/portraits/large/oracle_portrait.png" />
                            </image>
                         </ImageView>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01">

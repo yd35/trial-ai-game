@@ -7,9 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -22,7 +24,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-
 public class AiWitnessController {
   @FXML private Text timerText;
   @FXML private Button goBackButton;
@@ -32,9 +33,150 @@ public class AiWitnessController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
+
+  // puzzle elements
+  @FXML private Rectangle subtractOneButton;
+  @FXML private Rectangle addThreeButton;
+  @FXML private Rectangle resetPuzzleButton;
+  @FXML private ImageView blockOne;
+  @FXML private ImageView blockTwo;
+  @FXML private ImageView blockThree;
+  @FXML private ImageView blockFour;
+  @FXML private ImageView errorGraph;
+  @FXML private ImageView movesLeftImage;
+
+  private static Image numZero = new Image("/images/memories/numbers/num_0.png");
+  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
+  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
+  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
+  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
+
+  private static int count = 0;
+  private static int movesLeft = 4;
+
   private GptClient client;
   ChatMessage systemPrompt;
 
+  /* AI witness memory puzzle
+    --------------
+    goal: use the (-1) and (+3) rectangles to add to 4 in 4 moves
+          the number 1 and 2 are broken, due to the robot's malfunction
+          once this is done, the whole graph will be revealed to the player
+  */
+
+  // when -1 is pressed
+  @FXML
+  private void subtractOne(MouseEvent event) {
+    if (movesLeft > 0) {
+      count--;
+      movesLeft--;
+      updateGraph();
+      updateMovesLeft();
+    }
+  }
+
+  // when 3 is pressed
+  @FXML
+  private void addThree(MouseEvent event) {
+    if (movesLeft > 0) {
+      count += 3;
+      movesLeft--;
+      updateGraph();
+      updateMovesLeft();
+    }
+  }
+
+  // when reset is pressed
+  @FXML
+  private void resetPuzzle(MouseEvent event) {
+    count = 0;
+    movesLeft = 4;
+    updateGraph();
+    updateMovesLeft();
+  }
+
+  // update graph with new count
+  private void updateGraph() {
+    // make error graph invisible
+    errorGraph.setVisible(false);
+
+    switch (count) {
+      case 1:
+        // make blockers 1 disappear
+        blockOne.setVisible(false);
+
+        // make blockers 2-4 appear
+        blockTwo.setVisible(true);
+        blockThree.setVisible(true);
+        blockFour.setVisible(true);
+        break;
+      case 2:
+        // make blockers 1-2 disappear
+        blockOne.setVisible(false);
+        blockTwo.setVisible(false);
+
+        // make blockers 3-4 appear
+        blockThree.setVisible(true);
+        blockFour.setVisible(true);
+        break;
+      case 3:
+        // make blockers 1-2 disappear
+        blockOne.setVisible(false);
+        blockTwo.setVisible(false);
+        blockThree.setVisible(false);
+
+        // make blockers 3-4 appear
+        blockFour.setVisible(true);
+        break;
+      case 4:
+        // make blockers 1-2 disappear
+        blockOne.setVisible(false);
+        blockTwo.setVisible(false);
+        blockThree.setVisible(false);
+        blockFour.setVisible(false);
+
+        // puzzle complete, disable rectangles
+        subtractOneButton.setDisable(true);
+        addThreeButton.setDisable(true);
+        resetPuzzleButton.setDisable(true);
+        break;
+
+      // feedback on puzzle complete
+      case 0:
+        // make all graph blockers appear
+        blockOne.setVisible(true);
+        blockTwo.setVisible(true);
+        blockThree.setVisible(true);
+        blockFour.setVisible(true);
+        break;
+
+      default:
+        // make error graph visible
+        errorGraph.setVisible(true);
+        break;
+    }
+  }
+
+  // change image of movesLeftImage based on movesLeft variable
+  private void updateMovesLeft() {
+    switch (movesLeft) {
+      case 0:
+        movesLeftImage.setImage(numZero);
+        break;
+      case 1:
+        movesLeftImage.setImage(numOne);
+        break;
+      case 2:
+        movesLeftImage.setImage(numTwo);
+        break;
+      case 3:
+        movesLeftImage.setImage(numThree);
+        break;
+      case 4:
+        movesLeftImage.setImage(numFour);
+        break;
+    }
+  }
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -61,8 +203,6 @@ public class AiWitnessController {
                 GameState.onRoundExpired();
               }}
         );
-
-    
   }
 
   private void appendChatMessage(ChatMessage msg) {
@@ -75,7 +215,7 @@ public class AiWitnessController {
     GameState.markChatted(GameState.Participant.AI_WITNESS);
   }
 
- // on enter key press in text field, if message is not empty, send message
+  // on enter key press in text field, if message is not empty, send message
   // get scene and set on key pressed event
   @FXML
   private void checkEnter(KeyEvent event) {
@@ -92,13 +232,14 @@ public class AiWitnessController {
     if (message.isEmpty()) {
       return;
     }
-    
+
     // mark participant as already interacted with
     onModelReply(message);
-    
+
     // remove the text from the text field and store it in a variable
     textField.clear();
     ChatMessage msg = new ChatMessage("user", "Judge: " +message);
+
     // add the message to the chat
     appendChatMessage(msg);
     ChatLog.addToLog(msg);

@@ -14,12 +14,7 @@
    <children>
       <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="535.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/red.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../../ALPHAS/trial-ai-alpha-LouisCao1029/src/main/resources/images/free.jpg" />
+            <Image url="@../images/memories/viridis_memory/revealed.png" />
          </image>
       </ImageView>
       <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
@@ -32,5 +27,25 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="9.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <image>
+            <Image url="@../images/portraits/small/viridis.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="passLock" fitHeight="230.0" fitWidth="490.0" layoutX="22.0" layoutY="336.0" pickOnBounds="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="335.0">
+         <image>
+            <Image url="@../images/memories/viridis_memory/puzzle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="passFive" fitHeight="45.0" fitWidth="45.0" layoutX="109.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="368.0" AnchorPane.topAnchor="465.0" />
+      <ImageView fx:id="passTwo" fitHeight="45.0" fitWidth="45.0" layoutX="172.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="173.0" AnchorPane.topAnchor="465.0" />
+      <ImageView fx:id="passThree" fitHeight="45.0" fitWidth="45.0" layoutX="235.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="465.0" />
+      <ImageView fx:id="passFour" fitHeight="45.0" fitWidth="45.0" layoutX="303.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="303.0" AnchorPane.topAnchor="465.0" />
+      <ImageView fx:id="passOne" fitHeight="45.0" fitWidth="45.0" layoutX="108.0" layoutY="464.8" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="108.0" AnchorPane.topAnchor="465.0" />
+      <Rectangle fx:id="padOne" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="53.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
+      <Rectangle fx:id="padTwo" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="160.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
+      <Rectangle fx:id="padThree" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="268.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
+      <Rectangle fx:id="padFour" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="380.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
    </children>
 </AnchorPane>
