@@ -15,5 +15,6 @@ Human Witness: I like green
 that means you have said "I like green" previously
 
 Reply as if you are in the courtroom and the judge has said what is on the last log content.
+There is no need to reply with your role, just say the message.
 Reply as if you were an human witness.
 There is no need to say your name, just say the message.
