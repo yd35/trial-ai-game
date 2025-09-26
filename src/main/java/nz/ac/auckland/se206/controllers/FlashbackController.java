@@ -86,9 +86,9 @@ public class FlashbackController {
         participantCaptions = Arrays.asList(aiWitnessCaptions);
         break;
       case HUMAN_WITNESS:
-        slides.add(load("/images/red.jpg"));
-        slides.add(load("/images/free.jpg"));
-        slides.add(load("/images/hapy.jpg"));
+        slides.add(load("/images/seymour_flashback/seymour_flashback_1.png"));
+        slides.add(load("/images/seymour_flashback/seymour_flashback_2.png"));
+        slides.add(load("/images/seymour_flashback/seymour_flashback_3.png"));
 
         // get participant title
         title.setText("HUMAN WITNESS: Seymour");
