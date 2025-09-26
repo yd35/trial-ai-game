@@ -23,6 +23,7 @@ import nz.ac.auckland.se206.ChatLog;
 import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class AiDefendantController {
@@ -53,7 +54,24 @@ public class AiDefendantController {
         "add whatever starting message the ai defendant should say here";
     chatTextArea.appendText(aiFlashback + "\n\n");
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
+
+    SharedTimer timer = SharedTimer.getInstance();
+    timerText.setText(
+        // display the timer in minutes and seconds format
+        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
+    timer
+        .secondsProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              timerText.setText(
+                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
+              if (newVal.intValue() <= 0) {
+                GameState.onRoundExpired();
+              }}
+        );
+        
   }
+  
 
   private void appendChatMessage(ChatMessage msg) {
     chatTextArea.appendText(msg.getContent() + "\n\n");

@@ -4,6 +4,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public final class GameState {
@@ -42,8 +43,14 @@ public final class GameState {
   }
   
   // called when the 5-minute timer hits zero
-  private void onRoundExpired() {
+  public static void onRoundExpired() {
+    SharedTimer.getInstance().stop();
     GameState gs = GameState.get();
+
+    if(gs.roundExpired==true){
+      App.setRoot(AppUi.LOSE);
+      return;
+    }
     gs.roundExpired = true;
 
     if (!GameState.allChatted()) {
@@ -51,6 +58,8 @@ public final class GameState {
       App.setRoot(AppUi.LOSE);
     } else {
       // They chatted all three → go to Judge (start your 60s verdict timer there)
+      SharedTimer.reset(60);
+      SharedTimer.getInstance().start();
       App.setRoot(AppUi.JUDGE);
     }
   }
