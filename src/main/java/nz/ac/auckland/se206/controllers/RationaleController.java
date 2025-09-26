@@ -1,5 +1,11 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -14,13 +20,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RationaleController {
 
@@ -55,8 +54,8 @@ public class RationaleController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
     chatTextArea.setWrapText(true);
 
     client = new GptClient();
@@ -83,66 +82,72 @@ public class RationaleController {
 
     sendButton.setDisable(true);
 
-    Task<Void> task = new Task<Void>() {
-      @Override
-      protected Void call() {
-        try {
-          // Send a CLEAN request: no noisy chat log. Be explicit about selection and rationale.
-          List<ChatMessage> msgs = new ArrayList<>();
-          msgs.add(new ChatMessage("user",
-              "Player selected: NOT_GUILTY\n" +
-              "Rationale: " + user + "\n" +
-              "Please output the label on the first line and a 1–2 sentence explanation on the second line."
-          ));
+    Task<Void> task =
+        new Task<Void>() {
+          @Override
+          protected Void call() {
+            try {
+              // Send a CLEAN request: no noisy chat log. Be explicit about selection and rationale.
+              List<ChatMessage> msgs = new ArrayList<>();
+              msgs.add(
+                  new ChatMessage(
+                      "user",
+                      "Player selected: NOT_GUILTY\n"
+                          + "Rationale: "
+                          + user
+                          + "\n"
+                          + "Please output the label on the first line and a 1–2 sentence"
+                          + " explanation on the second line."));
 
-          ChatCompletionResult result =
-              client.runOnce(systemPrompt, msgs, 1, 0.4, 1.0, 200);
+              ChatCompletionResult result = client.runOnce(systemPrompt, msgs, 1, 0.4, 1.0, 200);
 
-          // Prefer the concrete path if available, then fall back.
-          String content = tryGetContentDirect(result);
-          if (content == null || content.trim().isEmpty()) {
-            content = extractFirstContentFallback(result);
-          }
-          if (content == null || content.trim().isEmpty()) {
-            content = "(no explanation provided)";
-          }
+              // Prefer the concrete path if available, then fall back.
+              String content = tryGetContentDirect(result);
+              if (content == null || content.trim().isEmpty()) {
+                content = extractFirstContentFallback(result);
+              }
+              if (content == null || content.trim().isEmpty()) {
+                content = "(no explanation provided)";
+              }
 
-          // Split label + explanation
-          String label = "";
-          String explanation = content;
-          String[] lines = content.split("\\R", 2);
-          if (lines.length >= 1) {
-            label = lines[0].trim();
-          }
-          if (lines.length == 2) {
-            explanation = lines[1].trim();
-            if (explanation.isEmpty()) {
-              explanation = "(no explanation provided)";
+              // Split label + explanation
+              String label = "";
+              String explanation = content;
+              String[] lines = content.split("\\R", 2);
+              if (lines.length >= 1) {
+                label = lines[0].trim();
+              }
+              if (lines.length == 2) {
+                explanation = lines[1].trim();
+                if (explanation.isEmpty()) {
+                  explanation = "(no explanation provided)";
+                }
+              }
+
+              final String tagFinal = label;
+              final String explanationFinal = explanation;
+
+              Platform.runLater(
+                  () -> {
+                    outcomeTag = tagFinal;
+                    appendChat("Judge AI: " + explanationFinal);
+                    if (continueButton != null) {
+                      continueButton.setDisable(false);
+                    }
+                    // keep Send disabled so they can't re-grade repeatedly
+                  });
+
+            } catch (Exception e) {
+              e.printStackTrace();
+              Platform.runLater(
+                  () -> {
+                    appendChat("Judge AI: (error while grading—try again)");
+                    sendButton.setDisable(false);
+                  });
             }
+            return null;
           }
-
-          final String tagFinal = label;
-          final String explanationFinal = explanation;
-
-          Platform.runLater(() -> {
-            outcomeTag = tagFinal;
-            appendChat("Judge AI: " + explanationFinal);
-            if (continueButton != null) {
-              continueButton.setDisable(false);
-            }
-            // keep Send disabled so they can't re-grade repeatedly
-          });
-
-        } catch (Exception e) {
-          e.printStackTrace();
-          Platform.runLater(() -> {
-            appendChat("Judge AI: (error while grading—try again)");
-            sendButton.setDisable(false);
-          });
-        }
-        return null;
-      }
-    };
+        };
 
     Thread t = new Thread(task, "rationale-llm");
     t.setDaemon(true);
@@ -176,8 +181,8 @@ public class RationaleController {
   /** Load small UTF-8 text resource from classpath (e.g., /prompts/rationale.txt). */
   private String loadResourceText(String path) {
     try (InputStream in = getClass().getResourceAsStream(path);
-         InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
-         BufferedReader br = new BufferedReader(isr)) {
+        InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
+        BufferedReader br = new BufferedReader(isr)) {
       StringBuilder sb = new StringBuilder();
       String line;
       while ((line = br.readLine()) != null) {
@@ -201,13 +206,12 @@ public class RationaleController {
           if (c != null) return c;
         }
       }
-    } catch (Throwable ignore) {}
+    } catch (Throwable ignore) {
+    }
     return null;
   }
 
-  /**
-   * Fallback: reflectively try common shapes if the direct call isn’t present.
-   */
+  /** Fallback: reflectively try common shapes if the direct call isn’t present. */
   private static String extractFirstContentFallback(ChatCompletionResult res) {
     try {
       java.util.Iterator<?> it = res.getChoices().iterator();
@@ -223,7 +227,8 @@ public class RationaleController {
           Object content = getContent.invoke(message);
           if (content != null) return content.toString();
         }
-      } catch (NoSuchMethodException ignore) {}
+      } catch (NoSuchMethodException ignore) {
+      }
 
       // choice.getDelta().getContent()
       try {
@@ -234,23 +239,27 @@ public class RationaleController {
           Object content = getContent.invoke(delta);
           if (content != null) return content.toString();
         }
-      } catch (NoSuchMethodException ignore) {}
+      } catch (NoSuchMethodException ignore) {
+      }
 
       // choice.getContent()
       try {
         var getContent = choice.getClass().getMethod("getContent");
         Object content = getContent.invoke(choice);
         if (content != null) return content.toString();
-      } catch (NoSuchMethodException ignore) {}
+      } catch (NoSuchMethodException ignore) {
+      }
 
       // choice.getText()
       try {
         var getText = choice.getClass().getMethod("getText");
         Object content = getText.invoke(choice);
         if (content != null) return content.toString();
-      } catch (NoSuchMethodException ignore) {}
+      } catch (NoSuchMethodException ignore) {
+      }
 
-    } catch (Exception ignore) {}
+    } catch (Exception ignore) {
+    }
     return "";
   }
 }

@@ -2,22 +2,28 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.EnumMap;
 import java.util.Map;
-
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.SharedTimer;
 
 public final class GameState {
-  public enum Participant { AI_WITNESS, AI_DEFENDANT, HUMAN_WITNESS }
+  public enum Participant {
+    AI_WITNESS,
+    AI_DEFENDANT,
+    HUMAN_WITNESS
+  }
 
   private static final GameState I = new GameState();
-  public static GameState get() { return I; }
+
+  public static GameState get() {
+    return I;
+  }
 
   // Has the first-time flashback already been shown for each participant?
   public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
   // Has the user chatted with each participant?
   public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
-  
+
   // Who’s flashback should the single FlashbackController display right now?
   public Participant currentFlashback = null;
 
@@ -41,13 +47,13 @@ public final class GameState {
     }
     return true;
   }
-  
+
   // called when the 5-minute timer hits zero
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
     GameState gs = GameState.get();
 
-    if(gs.roundExpired==true){
+    if (gs.roundExpired == true) {
       App.setRoot(AppUi.LOSE);
       return;
     }

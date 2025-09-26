@@ -150,9 +150,8 @@ public class AiDefendantController {
   public void initialize() throws ApiProxyException {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
-    
-    String startingText =
-        "VIRIDIS: initial message";
+
+    String startingText = "VIRIDIS: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
@@ -167,11 +166,9 @@ public class AiDefendantController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
-        
+              }
+            });
   }
-  
 
   private void appendChatMessage(ChatMessage msg) {
     chatTextArea.appendText(msg.getContent() + "\n\n");
@@ -218,12 +215,13 @@ public class AiDefendantController {
             try {
               // interact with the llm with the text from the text field
               client = new GptClient();
-              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result =
+                  client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
-                if (!formattedResponse.startsWith("VIRIDIS:")) {
-                  formattedResponse = "VIRIDIS: " + formattedResponse;
-                }
+              if (!formattedResponse.startsWith("VIRIDIS:")) {
+                formattedResponse = "VIRIDIS: " + formattedResponse;
+              }
 
               ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
               ChatLog.addToLog(responseMsg);

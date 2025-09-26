@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -12,7 +11,6 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 
-
 public class OpeningController {
   @FXML private Text titleText;
   @FXML private Text contextText;
@@ -22,14 +20,13 @@ public class OpeningController {
   @FXML private Text timerText;
   @FXML private Rectangle timerOutline;
 
-
   @FXML
   private void onStartGame(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
   }
- 
+
   @FXML
   private void initialize() {
     SharedTimer timer = SharedTimer.getInstance();
@@ -44,7 +41,7 @@ public class OpeningController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
   }
 }

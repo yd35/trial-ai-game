@@ -14,9 +14,21 @@ import nz.ac.auckland.se206.controllers.GameState.Participant;
 public class MainMenuController {
   @FXML private Text timerText;
   @FXML private Rectangle timerOutline;
-  @FXML private void onAiWitness()   { go(Participant.AI_WITNESS); }
-  @FXML private void onAiDefendant() { go(Participant.AI_DEFENDANT); }
-  @FXML private void onHumanWitness(){ go(Participant.HUMAN_WITNESS); }
+
+  @FXML
+  private void onAiWitness() {
+    go(Participant.AI_WITNESS);
+  }
+
+  @FXML
+  private void onAiDefendant() {
+    go(Participant.AI_DEFENDANT);
+  }
+
+  @FXML
+  private void onHumanWitness() {
+    go(Participant.HUMAN_WITNESS);
+  }
 
   @FXML
   private void onJudge() {
@@ -25,7 +37,8 @@ public class MainMenuController {
       // Before time is up, just block and explain
       Alert a = new Alert(AlertType.INFORMATION);
       a.setHeaderText(null);
-      a.setContentText("You must ask at least one question to all three participants before judging.");
+      a.setContentText(
+          "You must ask at least one question to all three participants before judging.");
       a.showAndWait();
       return;
     }
@@ -71,7 +84,7 @@ public class MainMenuController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
   }
 }
