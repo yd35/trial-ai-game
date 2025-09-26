@@ -42,8 +42,6 @@ public class HumanWitnessController {
   }
   
   public void initialize() throws ApiProxyException {
-    // Initialize the AI chat interface
-    client = new GptClient();
     // Set up the chat area
     String aiFlashback =
         "add whatever starting message the human witness should say here";
@@ -111,6 +109,7 @@ public class HumanWitnessController {
           protected Void call() {
             try {
               // interact with the llm with the text from the text field
+              client = new GptClient();
               ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               ChatMessage responseMsg = new ChatMessage("assistant", "HumanWitnessName: " +aiResponse);

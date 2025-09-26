@@ -75,7 +75,7 @@ public class App extends Application {
       // 1) Clear runtime state
       GameState.reset();
       // If you track other state, clear it here (chat logs, timers, etc.)
-
+      ChatLog.clearLog();
 
       // 2) Recreate all FXML roots so controllers start from scratch
       SharedTimer.reset(300);
