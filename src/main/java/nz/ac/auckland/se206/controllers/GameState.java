@@ -44,7 +44,13 @@ public final class GameState {
   
   // called when the 5-minute timer hits zero
   public static void onRoundExpired() {
+    SharedTimer.getInstance().stop();
     GameState gs = GameState.get();
+
+    if(gs.roundExpired==true){
+      App.setRoot(AppUi.LOSE);
+      return;
+    }
     gs.roundExpired = true;
 
     if (!GameState.allChatted()) {

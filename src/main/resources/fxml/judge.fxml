@@ -15,11 +15,6 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <ImageView fx:id="image" fitHeight="275.0" fitWidth="275.0" layoutX="460.0" layoutY="160.0" pickOnBounds="true" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="160.0">
-         <image>
-            <Image url="@../images/red.jpg" />
-         </image>
-      </ImageView>
       <Button fx:id="guiltyButton" layoutX="150.0" layoutY="200.0" mnemonicParsing="false" onAction="#onGuilty" text="GUILTY" AnchorPane.topAnchor="200.0">
          <font>
             <Font size="36.0" />
@@ -36,5 +31,10 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <ImageView fx:id="image" fitHeight="370.0" fitWidth="252.0" layoutX="467.0" layoutY="115.0" pickOnBounds="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="115.0">
+         <image>
+            <Image url="@../images/viridis_portrait.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
