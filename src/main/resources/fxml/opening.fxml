@@ -30,12 +30,12 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Text fx:id="contextText" strokeType="OUTSIDE" strokeWidth="0.0" text="The Democracy of Levin has unearthed a highly advanced AI from the ancient Concordia civilization. This AI, VIRIDIS, was managing the city's water system until a contamination event caused a public health crisis and led to its prosecution. As the adjudicator, you must decide whether Viridis is guilty or not, using the testimony of two witnesses and a direct interrogation of the AI itself.  Your verdict, Guilty or Not Guilty, will not only decide VIRIDIS' fate but will also establish the precedent for machine accountability in the Democracy of Levin." textAlignment="CENTER" wrappingWidth="700.0">
+            <Text fx:id="contextText" strokeType="OUTSIDE" strokeWidth="0.0" text="The Democracy of Levin has unearthed the ruins of the Concordia civilisation. A technologically advanced society who lived long ago. Their technology includes highly intelligent AI, able to perform any tasks given to them without fail, or so it would seem. One of these AIs, Viridis, is put in charge of Levin’s water system, until a contamination causes an illness. Viridis is swiftly prosecuted. Your role as the adjudicator is to decide whether Viridis is guilty or not, with knowledge gained from two witnesses and Viridis itself. " textAlignment="CENTER" wrappingWidth="700.0">
                <font>
                   <Font size="17.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </Text>
             <HBox prefHeight="100.0" prefWidth="200.0" />
