@@ -24,6 +24,7 @@ import nz.ac.auckland.se206.ChatLog;
 import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class AiDefendantController {
@@ -147,13 +148,25 @@ public class AiDefendantController {
   }
 
   public void initialize() throws ApiProxyException {
-    // Initialize the AI chat interface
-    client = new GptClient();
-    // Set up the chat area
-    String aiFlashback = "add whatever starting message the ai defendant should say here";
-    chatTextArea.appendText(aiFlashback + "\n\n");
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
+
+    SharedTimer timer = SharedTimer.getInstance();
+    timerText.setText(
+        // display the timer in minutes and seconds format
+        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
+    timer
+        .secondsProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              timerText.setText(
+                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
+              if (newVal.intValue() <= 0) {
+                GameState.onRoundExpired();
+              }}
+        );
+        
   }
+  
 
   private void appendChatMessage(ChatMessage msg) {
     chatTextArea.appendText(msg.getContent() + "\n\n");
@@ -188,7 +201,7 @@ public class AiDefendantController {
 
     // remove the text from the text field and store it in a variable
     textField.clear();
-    ChatMessage msg = new ChatMessage("user", "user: " + message);
+    ChatMessage msg = new ChatMessage("user", "Judge: " + message);
     // add the message to the chat
     appendChatMessage(msg);
     ChatLog.addToLog(msg);
@@ -199,13 +212,16 @@ public class AiDefendantController {
           protected Void call() {
             try {
               // interact with the llm with the text from the text field
-              ChatCompletionResult result =
-                  client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              client = new GptClient();
+              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg =
-                  new ChatMessage("assistant", "AiDefendantName: " + aiResponse);
-              ChatMessage logMsg = new ChatMessage("user", "AiDefendantName: " + aiResponse);
-              ChatLog.addToLog(logMsg);
+              String formattedResponse = aiResponse.trim();
+                if (!formattedResponse.startsWith("VIRIDIS:")) {
+                  formattedResponse = "VIRIDIS: " + formattedResponse;
+                }
+
+              ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
+              ChatLog.addToLog(responseMsg);
               javafx.application.Platform.runLater(
                   () -> {
                     appendChatMessage(responseMsg);
