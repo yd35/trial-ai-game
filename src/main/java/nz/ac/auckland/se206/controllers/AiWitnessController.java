@@ -189,6 +189,10 @@ public class AiWitnessController {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
 
+    String startingText =
+        "ORACLE: initial message";
+    chatTextArea.appendText(startingText + "\n\n");
+
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
         // display the timer in minutes and seconds format

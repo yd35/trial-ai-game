@@ -148,7 +148,12 @@ public class AiDefendantController {
   }
 
   public void initialize() throws ApiProxyException {
+
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
+    
+    String startingText =
+        "VIRIDIS: initial message";
+    chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(

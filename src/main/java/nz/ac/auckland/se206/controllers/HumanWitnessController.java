@@ -87,7 +87,12 @@ public class HumanWitnessController {
   }
 
   public void initialize() throws ApiProxyException {
+
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
+
+    String startingText =
+        "Seymour: initial message";
+    chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
