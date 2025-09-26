@@ -74,6 +74,7 @@ public class RationaleController {
   // Send on button click or Enter (TextField has onAction="#sendMessage" in FXML)
   @FXML
   private void sendMessage() {
+    SharedTimer.getInstance().stop();
     String user = textField.getText() == null ? "" : textField.getText().trim();
     if (user.isEmpty()) return;
 

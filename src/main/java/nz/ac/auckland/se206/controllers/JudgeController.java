@@ -28,7 +28,6 @@ public class JudgeController {
   }
   @FXML
   private void onNotGuilty(ActionEvent event) {
-    SharedTimer.getInstance().stop();
     App.setRoot(AppUi.RATIONALE);
   }
 
