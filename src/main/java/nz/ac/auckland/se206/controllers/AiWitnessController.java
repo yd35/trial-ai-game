@@ -189,8 +189,7 @@ public class AiWitnessController {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
 
-    String startingText =
-        "ORACLE: initial message";
+    String startingText = "ORACLE: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
@@ -205,8 +204,8 @@ public class AiWitnessController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
   }
 
   private void appendChatMessage(ChatMessage msg) {
@@ -242,7 +241,7 @@ public class AiWitnessController {
 
     // remove the text from the text field and store it in a variable
     textField.clear();
-    ChatMessage msg = new ChatMessage("user", "Judge: " +message);
+    ChatMessage msg = new ChatMessage("user", "Judge: " + message);
 
     // add the message to the chat
     appendChatMessage(msg);
@@ -255,12 +254,13 @@ public class AiWitnessController {
             try {
               // interact with the llm with the text from the text field
               client = new GptClient();
-              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result =
+                  client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
-                if (!formattedResponse.startsWith("ORACLE:")) {
-                  formattedResponse = "ORACLE: " + formattedResponse;
-                }
+              if (!formattedResponse.startsWith("ORACLE:")) {
+                formattedResponse = "ORACLE: " + formattedResponse;
+              }
 
               ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
               ChatLog.addToLog(responseMsg);

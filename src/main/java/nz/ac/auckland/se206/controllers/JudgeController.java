@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +10,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 
-
 public class JudgeController {
   @FXML private Text timerText;
   @FXML private Rectangle timerOutline;
@@ -20,12 +18,12 @@ public class JudgeController {
   @FXML private Button guiltyButton;
   @FXML private Button notGuiltyButton;
 
-
   @FXML
   private void onGuilty(ActionEvent event) {
     SharedTimer.getInstance().stop();
     App.setRoot(AppUi.LOSE);
   }
+
   @FXML
   private void onNotGuilty(ActionEvent event) {
     App.setRoot(AppUi.RATIONALE);
@@ -33,7 +31,6 @@ public class JudgeController {
 
   @FXML
   private void initialize() {
-
 
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
@@ -48,7 +45,7 @@ public class JudgeController {
               if (newVal.intValue() <= 0) {
                 SharedTimer.getInstance().stop();
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
   }
 }

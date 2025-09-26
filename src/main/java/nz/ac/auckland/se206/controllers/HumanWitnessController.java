@@ -90,8 +90,7 @@ public class HumanWitnessController {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
 
-    String startingText =
-        "Seymour: initial message";
+    String startingText = "Seymour: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
@@ -106,8 +105,8 @@ public class HumanWitnessController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
   }
 
   private void appendChatMessage(ChatMessage msg) {
@@ -155,12 +154,13 @@ public class HumanWitnessController {
             try {
               // interact with the llm with the text from the text field
               client = new GptClient();
-              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result =
+                  client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
-                if (!formattedResponse.startsWith("Seymour:")) {
-                  formattedResponse = "Seymour: " + formattedResponse;
-                }
+              if (!formattedResponse.startsWith("Seymour:")) {
+                formattedResponse = "Seymour: " + formattedResponse;
+              }
 
               ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
               ChatLog.addToLog(responseMsg);

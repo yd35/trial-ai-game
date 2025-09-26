@@ -71,8 +71,8 @@ public class FlashbackController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
-              }}
-        );
+              }
+            });
 
     who = GameState.get().currentFlashback;
     if (who == null) {

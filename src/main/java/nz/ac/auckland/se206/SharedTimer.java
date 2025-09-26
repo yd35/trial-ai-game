@@ -25,18 +25,18 @@ public class SharedTimer {
                 Duration.seconds(1),
                 e -> {
                   if (instance.seconds.get() > 0) {
-                instance.seconds.set(instance.seconds.get() - 1);
-                } else {
-                instance.timeline.stop();
-              }
+                    instance.seconds.set(instance.seconds.get() - 1);
+                  } else {
+                    instance.timeline.stop();
+                  }
                 }));
     timeline.setCycleCount(Timeline.INDEFINITE);
   }
 
-
   public static SharedTimer getInstance() {
     return instance;
   }
+
   public void start() {
     timeline.play();
   }
@@ -58,16 +58,19 @@ public class SharedTimer {
     instance.seconds.set(time);
     instance.timeline.stop();
     instance.timeline.getKeyFrames().clear();
-    instance.timeline.getKeyFrames().add(
-        new KeyFrame(
-            Duration.seconds(1),
-            e -> {
-              if (instance.seconds.get() > 0) {
-                instance.seconds.set(instance.seconds.get() - 1);
-              } else {
-                instance.timeline.stop();
-              }
-            }));
+    instance
+        .timeline
+        .getKeyFrames()
+        .add(
+            new KeyFrame(
+                Duration.seconds(1),
+                e -> {
+                  if (instance.seconds.get() > 0) {
+                    instance.seconds.set(instance.seconds.get() - 1);
+                  } else {
+                    instance.timeline.stop();
+                  }
+                }));
     instance.timeline.setCycleCount(Timeline.INDEFINITE);
   }
 }
