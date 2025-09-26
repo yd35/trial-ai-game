@@ -135,10 +135,14 @@ public class AiWitnessController {
         blockThree.setVisible(false);
         blockFour.setVisible(false);
 
-        // puzzle complete, disable rectangles
+        // disable rectangles
         subtractOneButton.setDisable(true);
         addThreeButton.setDisable(true);
         resetPuzzleButton.setDisable(true);
+
+        // PUZZLE COMPLETE, add message to chat log
+        ChatMessage complete = new ChatMessage("user", "!<AI WITNESS ORACLE COMPLETED INTERACTION>!");
+        ChatLog.addToLog(complete);
         break;
 
       // feedback on puzzle complete
