@@ -14,12 +14,7 @@
    <children>
       <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="535.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/red.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../../ALPHAS/trial-ai-alpha-LouisCao1029/src/main/resources/images/hapy.jpg" />
+            <Image url="@../images/memories/oracle_memory/oracle_memory_base.png" />
          </image>
       </ImageView>
       <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
@@ -32,5 +27,44 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <ImageView fitHeight="270.0" fitWidth="430.0" layoutX="53.0" layoutY="179.0" pickOnBounds="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="180.0">
+         <image>
+            <Image url="@../images/memories/oracle_memory/oracle_graph_whole.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="9.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <image>
+            <Image url="@../images/portraits/small/oracle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="movesLeft" fitHeight="60.0" fitWidth="60.0" layoutX="207.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="55.0">
+         <image>
+            <Image url="@../images/memories/oracle_memory/num_3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blockOne" fitHeight="270.0" fitWidth="107.5" layoutX="53.0" layoutY="180.0" pickOnBounds="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="180.0">
+         <image>
+            <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blockTwo" fitHeight="270.0" fitWidth="107.5" layoutX="160.0" layoutY="188.0" pickOnBounds="true" AnchorPane.leftAnchor="160.5" AnchorPane.topAnchor="180.0">
+         <image>
+            <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blockThree" fitHeight="270.0" fitWidth="107.5" layoutX="255.0" layoutY="189.0" pickOnBounds="true" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="180.0">
+         <image>
+            <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blockFour" fitHeight="270.0" fitWidth="107.5" layoutX="376.0" layoutY="190.0" pickOnBounds="true" AnchorPane.leftAnchor="375.5" AnchorPane.topAnchor="180.0">
+         <image>
+            <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="resetPuzzle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="366.0" layoutY="544.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" AnchorPane.bottomAnchor="10.0" />
+      <Rectangle fx:id="subtractOne" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="287.0" layoutY="501.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="35.0" AnchorPane.bottomAnchor="65.0" />
+      <Rectangle fx:id="addThree" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="467.0" layoutY="501.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="35.0" AnchorPane.bottomAnchor="65.0" />
    </children>
 </AnchorPane>
