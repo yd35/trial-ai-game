@@ -1,8 +1,8 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,12 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
@@ -42,8 +43,20 @@ public class AiDefendantController {
   @FXML private Rectangle padFour;
   @FXML private ImageView passLock;
 
-  private static ArrayList<Integer> password = new ArrayList();
-  private static ArrayList<Integer> answer = new ArrayList([1,4,3,2,3]); // the correct password 
+  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
+  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
+  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
+  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
+
+  @FXML private ImageView passOne;
+  @FXML private ImageView passTwo;
+  @FXML private ImageView passThree;
+  @FXML private ImageView passFour;
+  @FXML private ImageView passFive;
+
+  private static ArrayList<Integer> password = new ArrayList<>();
+  private static ArrayList<Integer> answer =
+      new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
 
   private GptClient client;
   List<ChatMessage> history = new ArrayList<>();
@@ -58,32 +71,73 @@ public class AiDefendantController {
 
   @FXML
   private void onPad(MouseEvent event) {
-    // get object 
+    ArrayList<ImageView> passView =
+        new ArrayList<>(Arrays.asList(passOne, passTwo, passThree, passFour, passFive));
+    // get object
     Rectangle rectangle = (Rectangle) event.getSource();
 
-    // if array already has size of 5, reset the array
-    if(password.size() >= 5) {
+    // if array already has size of 5, reset password
+    if (password.size() >= 5) {
       password.clear();
+      passOne.setImage(null);
+      passTwo.setImage(null);
+      passThree.setImage(null);
+      passFour.setImage(null);
+      passFive.setImage(null);
     }
 
     // compare rectangle
-    if(rectangle.equals(padOne)) {
+    if (rectangle.equals(padOne)) {
       password.add(1);
-    } else if(rectangle.equals(padTwo)) {
+      passToImage(passView);
+    } else if (rectangle.equals(padTwo)) {
       password.add(2);
-    } else if(rectangle.equals(padThree)) {
+      passToImage(passView);
+    } else if (rectangle.equals(padThree)) {
       password.add(3);
-    } else if(rectangle.equals(padFour)) {
+      passToImage(passView);
+    } else if (rectangle.equals(padFour)) {
       password.add(4);
+      passToImage(passView);
     }
 
     // if password has length 5, compare to answer
-    if(password.equals(answer)) {
-       
+    if (password.equals(answer)) {
+      // make puzzle invisible
+      passLock.setVisible(false);
+
+      // disable all pads
+      padOne.setDisable(true);
+      padTwo.setDisable(true);
+      padThree.setDisable(true);
+      padFour.setDisable(true);
+
+      // make password invisible
+      for (ImageView img : passView) {
+        img.setVisible(false);
+      }
     }
   }
 
+  private void passToImage(ArrayList<ImageView> passView) {
+    for (int i = 0; i < password.size(); i++) {
+      // set image at proper index
+      passView.get(i).setImage(getObj(password.get(i)));
+    }
+  }
 
+  private Image getObj(int i) {
+    switch (i) {
+      case 1:
+        return numOne;
+      case 2:
+        return numTwo;
+      case 3:
+        return numThree;
+      default:
+        return numFour;
+    }
+  }
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -91,13 +145,12 @@ public class AiDefendantController {
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
   }
-  
+
   public void initialize() throws ApiProxyException {
     // Initialize the AI chat interface
     client = new GptClient();
     // Set up the chat area
-    String aiFlashback =
-        "add whatever starting message the ai defendant should say here";
+    String aiFlashback = "add whatever starting message the ai defendant should say here";
     chatTextArea.appendText(aiFlashback + "\n\n");
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
   }
@@ -111,7 +164,7 @@ public class AiDefendantController {
     // Mark that the player has chatted with this participant at least once
     GameState.markChatted(GameState.Participant.AI_DEFENDANT);
   }
-  
+
   // on enter key press in text field, if message is not empty, send message
   // get scene and set on key pressed event
   @FXML
@@ -129,10 +182,10 @@ public class AiDefendantController {
     if (message.isEmpty()) {
       return;
     }
-    
+
     // mark participant as already interacted with
     onModelReply(message);
-    
+
     // remove the text from the text field and store it in a variable
     textField.clear();
     ChatMessage msg = new ChatMessage("user", "user: " + message);
@@ -146,10 +199,12 @@ public class AiDefendantController {
           protected Void call() {
             try {
               // interact with the llm with the text from the text field
-              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result =
+                  client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("assistant", "AiDefendantName: " +aiResponse);
-              ChatMessage logMsg = new ChatMessage("user", "AiDefendantName: " +aiResponse);
+              ChatMessage responseMsg =
+                  new ChatMessage("assistant", "AiDefendantName: " + aiResponse);
+              ChatMessage logMsg = new ChatMessage("user", "AiDefendantName: " + aiResponse);
               ChatLog.addToLog(logMsg);
               javafx.application.Platform.runLater(
                   () -> {
