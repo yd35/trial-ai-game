@@ -30,9 +30,9 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Text fx:id="contextText" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien ipsum, sodales vel mauris eu, malesuada cursus purus. Integer commodo, velit sit amet cursus venenatis, ex dui semper leo, in posuere mauris lacus nec justo. Nulla vel viverra ipsum, sit amet sagittis nunc. Nullam convallis nunc sed lacus imperdiet commodo. Curabitur justo nisi, mollis sit amet lacus a, dictum varius lacus. Quisque porttitor eget arcu sit amet iaculis. Vivamus volutpat, tellus ac blandit aliquam, urna dui placerat nisl, vitae rhoncus elit purus non nulla. Nunc ullamcorper odio purus, nec vehicula libero finibus ut. Integer pretium ipsum lectus, at gravida nunc varius vitae. Morbi ac sapien sagittis, egestas mauris et, pretium lorem. Phasellus massa tortor, consequat vitae mollis vitae, auctor eu eros. Proin dui nibh, imperdiet id elit ac, porta imperdiet nisi. Mauris posuere velit ut dictum rutrum. Vivamus sed dui vel quam elementum interdum. " textAlignment="CENTER" wrappingWidth="700.0">
+            <Text fx:id="contextText" strokeType="OUTSIDE" strokeWidth="0.0" text="The Democracy of Levin has unearthed a highly advanced AI from the ancient Concordia civilization. This AI, VIRIDIS, was managing the city's water system until a contamination event caused a public health crisis and led to its prosecution. As the adjudicator, you must decide whether Viridis is guilty or not, using the testimony of two witnesses and a direct interrogation of the AI itself.  Your verdict, Guilty or Not Guilty, will not only decide VIRIDIS' fate but will also establish the precedent for machine accountability in the Democracy of Levin." textAlignment="CENTER" wrappingWidth="700.0">
                <font>
-                  <Font size="14.0" />
+                  <Font size="17.0" />
                </font>
                <VBox.margin>
                   <Insets top="10.0" />
