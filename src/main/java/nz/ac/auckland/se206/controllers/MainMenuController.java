@@ -16,17 +16,23 @@ public class MainMenuController {
   @FXML private Rectangle timerOutline;
 
   @FXML
-  private void onAiWitness() {
+  private void onAiWitnessAction() {
+    // common function to go to the appropriate chat UI based on participant, in this case the AI
+    // witness
     go(Participant.AI_WITNESS);
   }
 
   @FXML
-  private void onAiDefendant() {
+  private void onAiDefendantAction() {
+    // common function to go to the appropriate chat UI based on participant, in this case the AI
+    // defendant
     go(Participant.AI_DEFENDANT);
   }
 
   @FXML
-  private void onHumanWitness() {
+  private void onHumanWitnessAction() {
+    // common function to go to the appropriate chat UI based on participant, in this case the human
+    // witness
     go(Participant.HUMAN_WITNESS);
   }
 
@@ -49,24 +55,31 @@ public class MainMenuController {
 
   // common function to go to the appropriate chat UI based on participant
   private void go(Participant p) {
+    // if this is the first time seeing this participant, show the flashback first
     GameState gs = GameState.get();
     boolean seen = Boolean.TRUE.equals(gs.flashbackShown.get(p));
     if (!seen) {
+      // mark as seen and go to flashback
       gs.flashbackShown.put(p, true);
       gs.currentFlashback = p;
       App.setRootFresh("flashback");
     } else {
+      // go directly to chat
       App.setRoot(memoryUi(p));
     }
   }
 
   // configures which chat UI to go to based on participant
   private SceneManager.AppUi memoryUi(Participant p) {
+    // return the appropriate chat UI based on participant
     switch (p) {
       case AI_WITNESS:
+        // go to AI witness chat
         return SceneManager.AppUi.AIWITNESSCHAT;
       case AI_DEFENDANT:
+        // go to AI defendant chat
         return SceneManager.AppUi.DEFENDANTCHAT;
+      // go to human witness chat
       case HUMAN_WITNESS:
       default:
         return SceneManager.AppUi.HUMANWITNESSCHAT;

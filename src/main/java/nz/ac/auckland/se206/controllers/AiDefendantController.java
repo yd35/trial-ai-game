@@ -27,6 +27,14 @@ import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class AiDefendantController {
+  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
+  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
+  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
+  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
+  private static ArrayList<Integer> password = new ArrayList<>();
+  private static ArrayList<Integer> answer =
+      new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
+
   @FXML private Text timerText;
   @FXML private Button goBackButton;
   @FXML private TextArea chatTextArea;
@@ -43,20 +51,11 @@ public class AiDefendantController {
   @FXML private Rectangle padFour;
   @FXML private ImageView passLock;
 
-  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
-  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
-  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
-  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
-
   @FXML private ImageView passOne;
   @FXML private ImageView passTwo;
   @FXML private ImageView passThree;
   @FXML private ImageView passFour;
   @FXML private ImageView passFive;
-
-  private static ArrayList<Integer> password = new ArrayList<>();
-  private static ArrayList<Integer> answer =
-      new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
 
   private GptClient client;
   private ChatMessage systemPrompt;
@@ -131,14 +130,19 @@ public class AiDefendantController {
 
   // get image based on which number was pressed
   private Image getObj(int i) {
+    // switch case for each number
     switch (i) {
       case 1:
+        // case 1:
         return numOne;
       case 2:
+        // case 2:
         return numTwo;
       case 3:
+        // case 3:
         return numThree;
       default:
+        // case 4:
         return numFour;
     }
   }

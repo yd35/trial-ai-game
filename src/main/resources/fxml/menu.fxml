@@ -37,7 +37,7 @@
                               <Image url="@../images/portraits/large/seymour_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitness" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitnessAction" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -62,7 +62,7 @@
                               <Image url="@../images/portraits/large/viridis_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendant" opacity="0.01">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendantAction" opacity="0.01">
 
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -91,7 +91,7 @@
                               <Image url="@../images/portraits/large/oracle_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitness" opacity="0.01">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitnessAction" opacity="0.01">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

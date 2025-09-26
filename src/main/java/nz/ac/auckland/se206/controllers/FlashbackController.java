@@ -16,18 +16,6 @@ import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.controllers.GameState.Participant;
 
 public class FlashbackController {
-  @FXML private ImageView imageView;
-  @FXML private Text counterLabel; // note: menu.fxml uses Text, not Label (not a problem)
-  @FXML private Label captions;
-  @FXML private Label title;
-  @FXML private Button advanceBtn;
-  @FXML private Text timerText;
-  @FXML private Rectangle timerOutline;
-
-  private int idx = 0;
-  private List<Image> slides = new ArrayList<>();
-  private List<String> participantCaptions = new ArrayList<>();
-  private Participant who;
 
   // captions for each participant
   private static final String[] defendantCaptions = {
@@ -55,6 +43,20 @@ public class FlashbackController {
         + " cannot lie after all.",
     "That day, I went straight to the lab where it resided… Expecting to find the truth."
   };
+  
+  @FXML private ImageView imageView;
+  @FXML private Text counterLabel; // note: menu.fxml uses Text, not Label (not a problem)
+  @FXML private Label captions;
+  @FXML private Label title;
+  @FXML private Button advanceBtn;
+  @FXML private Text timerText;
+  @FXML private Rectangle timerOutline;
+
+  private int idx = 0;
+  private List<Image> slides = new ArrayList<>();
+  private List<String> participantCaptions = new ArrayList<>();
+  private Participant who;
+
 
   @FXML
   private void initialize() {

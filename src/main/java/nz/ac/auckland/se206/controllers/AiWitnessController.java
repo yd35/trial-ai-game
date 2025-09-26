@@ -25,6 +25,14 @@ import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class AiWitnessController {
+
+  private static Image numZero = new Image("/images/memories/numbers/num_0.png");
+  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
+  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
+  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
+  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
+  private static int count = 0;
+  private static int movesLeft = 4;
   @FXML private Text timerText;
   @FXML private Button goBackButton;
   @FXML private TextArea chatTextArea;
@@ -44,15 +52,6 @@ public class AiWitnessController {
   @FXML private ImageView blockFour;
   @FXML private ImageView errorGraph;
   @FXML private ImageView movesLeftImage;
-
-  private static Image numZero = new Image("/images/memories/numbers/num_0.png");
-  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
-  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
-  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
-  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
-
-  private static int count = 0;
-  private static int movesLeft = 4;
 
   private GptClient client;
   private ChatMessage systemPrompt;
@@ -163,20 +162,26 @@ public class AiWitnessController {
 
   // change image of movesLeftImage based on movesLeft variable
   private void updateMovesLeft() {
+    // change image based on movesLeft variable
     switch (movesLeft) {
       case 0:
+        // set to 0 image
         movesLeftImage.setImage(numZero);
         break;
       case 1:
+        // set to 1 image
         movesLeftImage.setImage(numOne);
         break;
       case 2:
+        // set to 2 image
         movesLeftImage.setImage(numTwo);
         break;
       case 3:
+        // set to 3 image
         movesLeftImage.setImage(numThree);
         break;
       case 4:
+        // set to 4 image
         movesLeftImage.setImage(numFour);
         break;
     }
