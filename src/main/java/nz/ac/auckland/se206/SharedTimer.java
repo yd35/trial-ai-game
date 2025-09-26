@@ -53,6 +53,7 @@ public class SharedTimer {
     timeline.stop();
   }
 
+  // resets the timer to a specific time instead of creating a new instance of the timer
   public static void reset(int time) {
     instance.stop();
     instance.seconds.set(time);

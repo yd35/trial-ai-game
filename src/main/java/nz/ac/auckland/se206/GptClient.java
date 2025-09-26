@@ -15,6 +15,7 @@ public class GptClient {
     this.config = ApiProxyConfig.readConfig();
   }
 
+  // configures LLM, feeds messages to the LLM and returns the response fromn  the LLM
   public ChatCompletionResult runOnce(
       ChatMessage system,
       List<ChatMessage> messages,
@@ -28,6 +29,7 @@ public class GptClient {
     for (ChatMessage m : messages) {
       req.addMessage(m.getRole(), m.getContent());
     }
+    // LLM configuration
     req.setModel(ChatCompletionRequest.Model.GPT_4_1_NANO);
     req.setN(n);
     req.setTemperature(temperature);
