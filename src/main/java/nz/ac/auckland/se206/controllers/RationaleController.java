@@ -13,6 +13,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.SharedTimer;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -41,6 +42,21 @@ public class RationaleController {
 
   @FXML
   private void initialize() throws ApiProxyException {
+
+    SharedTimer timer = SharedTimer.getInstance();
+    timerText.setText(
+        // display the timer in minutes and seconds format
+        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
+    timer
+        .secondsProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              timerText.setText(
+                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
+              if (newVal.intValue() <= 0) {
+                GameState.onRoundExpired();
+              }}
+        );
     chatTextArea.setWrapText(true);
 
     client = new GptClient();

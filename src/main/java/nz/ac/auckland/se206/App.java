@@ -43,8 +43,6 @@ public class App extends Application {
     SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
     SceneManager.addUi(AppUi.WIN, loadFxml("win"));
     SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-    // ❌ BUG was here: you were loading rationale into the JUDGE slot.
-    // ✅ Correct: register rationale under AppUi.RATIONALE
     SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
     scene = new Scene(SceneManager.getUiRoot(AppUi.OPENING), 800, 600);
 
@@ -88,7 +86,6 @@ public class App extends Application {
       SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
       SceneManager.addUi(AppUi.WIN, loadFxml("win"));
       SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-      // ❌ BUG was here too: rationale was added to JUDGE
       SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
       // (Keep FLASHBACK fresh-loaded if needed)
 

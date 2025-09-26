@@ -29,11 +29,8 @@ public class JudgeController {
   @FXML
   private void onNotGuilty(ActionEvent event) {
     SharedTimer.getInstance().stop();
-    Button button = (Button) event.getSource();
-    Scene sceneButtonIsIn = button.getScene();
-    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.RATIONALE));
+    App.setRoot(AppUi.RATIONALE);
   }
-
 
   @FXML
   private void initialize() {
