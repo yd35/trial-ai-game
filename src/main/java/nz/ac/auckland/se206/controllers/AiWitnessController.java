@@ -140,7 +140,8 @@ public class AiWitnessController {
         resetPuzzleButton.setDisable(true);
 
         // PUZZLE COMPLETE, add message to chat log
-        ChatMessage complete = new ChatMessage("assistant", "!<AI WITNESS ORACLE COMPLETED INTERACTION>!");
+        ChatMessage complete =
+            new ChatMessage("assistant", "!<AI WITNESS ORACLE COMPLETED INTERACTION>!");
         ChatLog.addToLog(complete);
         break;
 
