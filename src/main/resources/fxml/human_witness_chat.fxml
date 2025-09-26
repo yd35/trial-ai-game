@@ -14,12 +14,7 @@
    <children>
       <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="535.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/red.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../../ALPHAS/trial-ai-alpha-LouisCao1029/src/main/resources/images/angry.jpg" />
+            <Image url="@../images/memories/seymour_memory/viridis_back.png" />
          </image>
       </ImageView>
       <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
@@ -32,5 +27,36 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="19.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <image>
+            <Image url="@../images/portraits/small/seymour.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backCover" fitHeight="175.0" fitWidth="230.0" layoutX="154.0" layoutY="335.0" onMouseClicked="#removeElement" pickOnBounds="true">
+         <image>
+            <Image url="@../images/memories/seymour_memory/back_cover.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boltOne" fitHeight="30.0" fitWidth="30.0" layoutX="165.0" layoutY="345.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="345.0">
+         <image>
+            <Image url="@../images/memories/seymour_memory/bolt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boltThree" fitHeight="30.0" fitWidth="30.0" layoutX="165.0" layoutY="468.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="470.0">
+         <image>
+            <Image url="@../images/memories/seymour_memory/bolt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boltTwo" fitHeight="30.0" fitWidth="30.0" layoutX="341.0" layoutY="468.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="344.8">
+         <image>
+            <Image url="@../images/memories/seymour_memory/bolt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boltFour" fitHeight="30.0" fitWidth="30.0" layoutX="341.0" layoutY="345.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="470.0">
+         <image>
+            <Image url="@../images/memories/seymour_memory/bolt.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

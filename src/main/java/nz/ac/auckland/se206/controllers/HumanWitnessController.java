@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -30,8 +31,52 @@ public class HumanWitnessController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
+
+  // memory elements
+  @FXML private ImageView boltOne;
+  @FXML private ImageView boltTwo;
+  @FXML private ImageView boltThree;
+  @FXML private ImageView boltFour;
+  @FXML private ImageView backCover;
+
   private GptClient client;
   ChatMessage systemPrompt;
+
+  /* Human witness memory puzzle
+    --------------
+    goal: open back cover, press on element to remove
+          remove the four bolts, then the back cover to finish interactable
+  */
+
+  @FXML
+  private void removeElement(MouseEvent event) {
+
+    // get source
+    Object source = event.getSource();
+    ImageView clickedImage = (ImageView) source;
+
+    // if its one of the 4 bolts
+    if (clickedImage.equals(boltOne)
+        || clickedImage.equals(boltTwo)
+        || clickedImage.equals(boltThree)
+        || clickedImage.equals(boltFour)) {
+      clickedImage.setDisable(true);
+      clickedImage.setVisible(false);
+    }
+
+    // if its the back cover
+    boolean allBoltsRemoved =
+        boltOne.isDisabled()
+            && boltTwo.isDisabled()
+            && boltThree.isDisabled()
+            && boltFour.isDisabled();
+    if (clickedImage.equals(backCover) && allBoltsRemoved) {
+      clickedImage.setDisable(true);
+      clickedImage.setVisible(false);
+
+      // puzzle is over
+    }
+  }
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -39,16 +84,14 @@ public class HumanWitnessController {
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
   }
-  
+
   public void initialize() throws ApiProxyException {
     // Initialize the AI chat interface
     client = new GptClient();
     // Set up the chat area
-    String aiFlashback =
-        "add whatever starting message the human witness should say here";
+    String aiFlashback = "add whatever starting message the human witness should say here";
     chatTextArea.appendText(aiFlashback + "\n\n");
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
-
   }
 
   private void appendChatMessage(ChatMessage msg) {
@@ -78,10 +121,10 @@ public class HumanWitnessController {
     if (message.isEmpty()) {
       return;
     }
-    
+
     // mark participant as already interacted with
     onModelReply(message);
-    
+
     // remove the text from the text field and store it in a variable
     textField.clear();
     ChatMessage msg = new ChatMessage("user", "user: " + message);
@@ -95,10 +138,12 @@ public class HumanWitnessController {
           protected Void call() {
             try {
               // interact with the llm with the text from the text field
-              ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
+              ChatCompletionResult result =
+                  client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("assistant", "HumanWitnessName: " +aiResponse);
-              ChatMessage logMsg = new ChatMessage("user", "HumanWitnessName: " +aiResponse);
+              ChatMessage responseMsg =
+                  new ChatMessage("assistant", "HumanWitnessName: " + aiResponse);
+              ChatMessage logMsg = new ChatMessage("user", "HumanWitnessName: " + aiResponse);
               ChatLog.addToLog(logMsg);
               javafx.application.Platform.runLater(
                   () -> {
