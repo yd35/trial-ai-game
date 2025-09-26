@@ -115,6 +115,10 @@ public class AiDefendantController {
       for (ImageView img : passView) {
         img.setVisible(false);
       }
+
+      // PUZZLE COMPLETE, add message to chat log
+      ChatMessage complete = new ChatMessage("assistant", "!<DEFENDANT VIRIDIS COMPLETED INTERACTION>!");
+      ChatLog.addToLog(complete);
     }
   }
 

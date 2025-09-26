@@ -75,7 +75,9 @@ public class HumanWitnessController {
       clickedImage.setDisable(true);
       clickedImage.setVisible(false);
 
-      // puzzle is over
+      // PUZZLE COMPLETE, add message to chat log
+      ChatMessage complete = new ChatMessage("assistant", "!<HUMAN WITNESS SEYMOUR COMPLETED INTERACTION>!");
+      ChatLog.addToLog(complete);
     }
   }
 
