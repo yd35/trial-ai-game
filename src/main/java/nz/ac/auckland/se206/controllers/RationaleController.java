@@ -27,7 +27,6 @@ public class RationaleController {
   @FXML private TextArea chatTextArea;
   @FXML private TextField textField;
   @FXML private Button sendButton;
-  @FXML private Button continueButton;
 
   // Timer visuals only; teammate wires logic later (text is set in FXML to "1:00")
   @FXML private Text timerText;
@@ -37,11 +36,76 @@ public class RationaleController {
 
   // Stores the grading tag from the LLM:
   // INCORRECT_VERDICT | CORRECT_WRONG_RATIONALE | CORRECT_CORRECT_RATIONALE
+
+  /** Fallback: reflectively try common shapes if the direct call isn’t present. */
+  private static String extractFirstContentFallback(ChatCompletionResult res) {
+    try {
+      java.util.Iterator<?> it = res.getChoices().iterator();
+      if (!it.hasNext()) {
+        return "";
+      }
+      Object choice = it.next();
+
+      // choice.getMessage().getContent()
+      try {
+        var getMessage = choice.getClass().getMethod("getMessage");
+        Object message = getMessage.invoke(choice);
+        if (message != null) {
+          var getContent = message.getClass().getMethod("getContent");
+          Object content = getContent.invoke(message);
+          if (content != null) {
+            return content.toString();
+          }
+        }
+      } catch (NoSuchMethodException ignore) {
+      }
+
+      // choice.getDelta().getContent()
+      try {
+        var getDelta = choice.getClass().getMethod("getDelta");
+        Object delta = getDelta.invoke(choice);
+        if (delta != null) {
+          var getContent = delta.getClass().getMethod("getContent");
+          Object content = getContent.invoke(delta);
+          if (content != null) {
+            return content.toString();
+          }
+        }
+      } catch (NoSuchMethodException ignore) {
+      }
+
+      // choice.getContent()
+      try {
+        var getContent = choice.getClass().getMethod("getContent");
+        Object content = getContent.invoke(choice);
+        if (content != null) {
+          return content.toString();
+        }
+      } catch (NoSuchMethodException ignore) {
+      }
+
+      // choice.getText()
+      try {
+        var getText = choice.getClass().getMethod("getText");
+        Object content = getText.invoke(choice);
+        if (content != null) {
+          return content.toString();
+        }
+      } catch (NoSuchMethodException ignore) {
+      }
+
+    } catch (Exception ignore) {
+    }
+    return "";
+  }
+
+  @FXML private Button continueButton;
   private String outcomeTag = "";
 
   @FXML
   private void initialize() throws ApiProxyException {
 
+    // Setup timer (visual only; logic is elsewhere)
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
         // display the timer in minutes and seconds format
@@ -58,6 +122,7 @@ public class RationaleController {
             });
     chatTextArea.setWrapText(true);
 
+    // Setup GPT client and system prompt to access the reasoning behing the rationale
     client = new GptClient();
 
     String prompt = loadResourceText("/prompts/rationale.txt");
@@ -75,7 +140,9 @@ public class RationaleController {
   private void sendMessage() {
     SharedTimer.getInstance().stop();
     String user = textField.getText() == null ? "" : textField.getText().trim();
-    if (user.isEmpty()) return;
+    if (user.isEmpty()) {
+      return;
+    }
 
     appendChat("You: " + user);
     textField.clear();
@@ -203,63 +270,13 @@ public class RationaleController {
         var msg = first.getChatMessage();
         if (msg != null) {
           var c = msg.getContent();
-          if (c != null) return c;
+          if (c != null) {
+            return c;
+          }
         }
       }
     } catch (Throwable ignore) {
     }
     return null;
-  }
-
-  /** Fallback: reflectively try common shapes if the direct call isn’t present. */
-  private static String extractFirstContentFallback(ChatCompletionResult res) {
-    try {
-      java.util.Iterator<?> it = res.getChoices().iterator();
-      if (!it.hasNext()) return "";
-      Object choice = it.next();
-
-      // choice.getMessage().getContent()
-      try {
-        var getMessage = choice.getClass().getMethod("getMessage");
-        Object message = getMessage.invoke(choice);
-        if (message != null) {
-          var getContent = message.getClass().getMethod("getContent");
-          Object content = getContent.invoke(message);
-          if (content != null) return content.toString();
-        }
-      } catch (NoSuchMethodException ignore) {
-      }
-
-      // choice.getDelta().getContent()
-      try {
-        var getDelta = choice.getClass().getMethod("getDelta");
-        Object delta = getDelta.invoke(choice);
-        if (delta != null) {
-          var getContent = delta.getClass().getMethod("getContent");
-          Object content = getContent.invoke(delta);
-          if (content != null) return content.toString();
-        }
-      } catch (NoSuchMethodException ignore) {
-      }
-
-      // choice.getContent()
-      try {
-        var getContent = choice.getClass().getMethod("getContent");
-        Object content = getContent.invoke(choice);
-        if (content != null) return content.toString();
-      } catch (NoSuchMethodException ignore) {
-      }
-
-      // choice.getText()
-      try {
-        var getText = choice.getClass().getMethod("getText");
-        Object content = getText.invoke(choice);
-        if (content != null) return content.toString();
-      } catch (NoSuchMethodException ignore) {
-      }
-
-    } catch (Exception ignore) {
-    }
-    return "";
   }
 }

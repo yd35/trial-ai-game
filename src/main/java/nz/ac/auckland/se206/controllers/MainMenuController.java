@@ -47,6 +47,7 @@ public class MainMenuController {
     App.setRoot(AppUi.JUDGE);
   }
 
+  // common function to go to the appropriate chat UI based on participant
   private void go(Participant p) {
     GameState gs = GameState.get();
     boolean seen = Boolean.TRUE.equals(gs.flashbackShown.get(p));
@@ -59,6 +60,7 @@ public class MainMenuController {
     }
   }
 
+  // configures which chat UI to go to based on participant
   private SceneManager.AppUi memoryUi(Participant p) {
     switch (p) {
       case AI_WITNESS:

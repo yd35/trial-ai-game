@@ -55,7 +55,7 @@ public class AiWitnessController {
   private static int movesLeft = 4;
 
   private GptClient client;
-  ChatMessage systemPrompt;
+  private ChatMessage systemPrompt;
 
   /* AI witness memory puzzle
     --------------

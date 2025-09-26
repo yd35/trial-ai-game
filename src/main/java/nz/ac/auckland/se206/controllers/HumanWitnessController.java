@@ -41,7 +41,7 @@ public class HumanWitnessController {
   @FXML private ImageView backCover;
 
   private GptClient client;
-  ChatMessage systemPrompt;
+  private ChatMessage systemPrompt;
 
   /* Human witness memory puzzle
     --------------

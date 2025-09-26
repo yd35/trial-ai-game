@@ -43,7 +43,9 @@ public final class GameState {
 
   public static boolean allChatted() {
     for (Boolean b : get().chatted.values()) {
-      if (!Boolean.TRUE.equals(b)) return false;
+      if (!Boolean.TRUE.equals(b)) {
+        return false;
+      }
     }
     return true;
   }

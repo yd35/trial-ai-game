@@ -2,7 +2,6 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,8 +59,7 @@ public class AiDefendantController {
       new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
 
   private GptClient client;
-  List<ChatMessage> history = new ArrayList<>();
-  ChatMessage systemPrompt;
+  private ChatMessage systemPrompt;
 
   /* AI defendant memory puzzle
     --------------
@@ -127,6 +125,7 @@ public class AiDefendantController {
     }
   }
 
+  // get image based on which number was pressed
   private Image getObj(int i) {
     switch (i) {
       case 1:

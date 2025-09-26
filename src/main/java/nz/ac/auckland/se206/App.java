@@ -23,8 +23,12 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
+    // makes the window not resizable
     stage.setResizable(false);
+    // setup timer
     SharedTimer.initializeTimer(300);
+
+    // loads all FxML files at the start of the program
 
     SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
     SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
