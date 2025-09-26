@@ -35,12 +35,14 @@ public class App extends Application {
     SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
     SceneManager.addUi(AppUi.WIN, loadFxml("win"));
     SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-  
+    // ❌ BUG was here: you were loading rationale into the JUDGE slot.
+    // ✅ Correct: register rationale under AppUi.RATIONALE
+    SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
+
     scene = new Scene(SceneManager.getUiRoot(AppUi.OPENING), 800, 600);
 
     stage.setScene(scene);
     stage.show();
-
   }
 
   public static void setRootFresh(String fxml) {
@@ -60,10 +62,10 @@ public class App extends Application {
     try {
       // 1) Clear runtime state
       GameState.reset();
-      // If you track other state, clear it here (chat logs, timers, etc.)
+      // Clear other state as needed (chat logs, etc.)
+      SharedTimer.reset(300);
 
       // 2) Recreate all FXML roots so controllers start from scratch
-      SharedTimer.reset(300);
       SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
       SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
       SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));
@@ -72,13 +74,15 @@ public class App extends Application {
       SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
       SceneManager.addUi(AppUi.WIN, loadFxml("win"));
       SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-      // (Keep FLASHBACK as fresh-loaded if that’s how you fixed the earlier bug)
+      // ❌ BUG was here too: rationale was added to JUDGE
+      SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
+      // (Keep FLASHBACK fresh-loaded if needed)
 
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    // 3) Send the player to the starting screen (OPENING or MAINMENU—your choice)
+    // 3) Send the player to the starting screen
     setRoot(AppUi.OPENING);
   }
 

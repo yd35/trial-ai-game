@@ -14,7 +14,8 @@ public class SceneManager {
     AIWITNESSCHAT,
     HUMANWITNESSCHAT,
     DEFENDANTCHAT,
-    FLASHBACK
+    FLASHBACK,
+    RATIONALE
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<AppUi, Parent>();

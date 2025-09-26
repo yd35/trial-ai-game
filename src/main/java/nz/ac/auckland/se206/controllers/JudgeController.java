@@ -31,7 +31,7 @@ public class JudgeController {
     SharedTimer.getInstance().stop();
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
-    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.WIN));
+    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.RATIONALE));
   }
 
   @FXML
