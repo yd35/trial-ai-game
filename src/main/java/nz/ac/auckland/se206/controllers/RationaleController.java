@@ -44,6 +44,7 @@ public class RationaleController {
           }
         }
       } catch (NoSuchMethodException ignore) {
+        System.out.println("error");
       }
 
       // choice.getDelta().getContent()
@@ -58,6 +59,7 @@ public class RationaleController {
           }
         }
       } catch (NoSuchMethodException ignore) {
+        System.out.println("error");
       }
 
       // choice.getContent()
@@ -68,6 +70,7 @@ public class RationaleController {
           return content.toString();
         }
       } catch (NoSuchMethodException ignore) {
+        System.out.println("error");
       }
 
       // choice.getText()
@@ -78,9 +81,11 @@ public class RationaleController {
           return content.toString();
         }
       } catch (NoSuchMethodException ignore) {
+        System.out.println("error");
       }
 
     } catch (Exception ignore) {
+      System.out.println("error");
     }
     return "";
   }
@@ -100,6 +105,7 @@ public class RationaleController {
         }
       }
     } catch (Throwable ignore) {
+      System.out.println("error");
     }
     return null;
   }

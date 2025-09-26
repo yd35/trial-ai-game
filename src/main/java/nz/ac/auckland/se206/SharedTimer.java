@@ -43,7 +43,7 @@ public class SharedTimer {
                 }));
     instance.timeline.setCycleCount(Timeline.INDEFINITE);
   }
-
+  private Timeline timeline;
   private IntegerProperty seconds;
 
   private SharedTimer(int time) {
@@ -77,6 +77,4 @@ public class SharedTimer {
   public void stop() {
     timeline.stop();
   }
-
-  private Timeline timeline;
 }
