@@ -24,7 +24,7 @@
             </Text>
             <ImageView fx:id="image" fitHeight="275.0" fitWidth="700.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/red.jpg" />
+                  <Image url="@../images/opening_art.png" />
                </image>
                <VBox.margin>
                   <Insets top="10.0" />
