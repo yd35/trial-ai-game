@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-
+import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
@@ -34,9 +34,56 @@ public class AiDefendantController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
+
+  // memory elements
+  @FXML private Rectangle padOne;
+  @FXML private Rectangle padTwo;
+  @FXML private Rectangle padThree;
+  @FXML private Rectangle padFour;
+  @FXML private ImageView passLock;
+
+  private static ArrayList<Integer> password = new ArrayList();
+  private static ArrayList<Integer> answer = new ArrayList([1,4,3,2,3]); // the correct password 
+
   private GptClient client;
   List<ChatMessage> history = new ArrayList<>();
   ChatMessage systemPrompt;
+
+  /* AI defendant memory puzzle
+    --------------
+    goal: complete password to reveal secret behind
+          player asks AI for the password as a section of it is broken off
+          the password is = 1 4 3 2 3
+  */
+
+  @FXML
+  private void onPad(MouseEvent event) {
+    // get object 
+    Rectangle rectangle = (Rectangle) event.getSource();
+
+    // if array already has size of 5, reset the array
+    if(password.size() >= 5) {
+      password.clear();
+    }
+
+    // compare rectangle
+    if(rectangle.equals(padOne)) {
+      password.add(1);
+    } else if(rectangle.equals(padTwo)) {
+      password.add(2);
+    } else if(rectangle.equals(padThree)) {
+      password.add(3);
+    } else if(rectangle.equals(padFour)) {
+      password.add(4);
+    }
+
+    // if password has length 5, compare to answer
+    if(password.equals(answer)) {
+       
+    }
+  }
+
+
 
   @FXML
   private void onGoBack(ActionEvent event) {
