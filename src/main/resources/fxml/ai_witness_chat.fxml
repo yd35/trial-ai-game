@@ -33,14 +33,14 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="9.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
-      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="21.0" layoutY="20.0" pickOnBounds="true" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="20.0">
          <image>
             <Image url="@../images/portraits/small/oracle.png" />
          </image>
       </ImageView>
       <ImageView fx:id="movesLeftImage" fitHeight="60.0" fitWidth="60.0" layoutX="207.0" layoutY="497.0" pickOnBounds="true" AnchorPane.bottomAnchor="55.0">
          <image>
-            <Image url="@../images/memories/oracle_memory/num_4.png" />
+            <Image url="@../images/memories/numbers/num_4.png" />
          </image>
       </ImageView>
       <ImageView fx:id="blockOne" fitHeight="270.0" fitWidth="107.5" layoutX="53.0" layoutY="180.0" pickOnBounds="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="180.0">

@@ -44,11 +44,11 @@ public class AiWitnessController {
   @FXML private ImageView errorGraph;
   @FXML private ImageView movesLeftImage;
 
-  private static Image numZero = new Image("/images/memories/oracle_memory/num_0.png");
-  private static Image numOne = new Image("/images/memories/oracle_memory/num_1.png");
-  private static Image numTwo = new Image("/images/memories/oracle_memory/num_2.png");
-  private static Image numThree = new Image("/images/memories/oracle_memory/num_3.png");
-  private static Image numFour = new Image("/images/memories/oracle_memory/num_4.png");
+  private static Image numZero = new Image("/images/memories/numbers/num_0.png");
+  private static Image numOne = new Image("/images/memories/numbers/num_1.png");
+  private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
+  private static Image numThree = new Image("/images/memories/numbers/num_3.png");
+  private static Image numFour = new Image("/images/memories/numbers/num_4.png");
 
   private static int count = 0;
   private static int movesLeft = 4;

@@ -27,13 +27,13 @@ public class FlashbackController {
 
   // captions for each participant
   private static final String[] defendantCaptions = {
-    "Your Honour, the system went into complete overload, corrupting most of VIRIDIS's log " 
-    + "data. These fragments are all we could retrieve from the moment right before the " 
-    + "contamination.",
-    "Log Entry 0001: Bio-Filtration Unit 3. Maintenance scheduled for 72-hour delay." 
-    +" Directive: \"Maximise efficiency.\"",
-    "As you can see, Your Honour, the record is incomplete." 
-    + " We can only interpret what the machine was thinking at that moment."
+    "Your Honour, the system went into complete overload, corrupting most of VIRIDIS's log "
+        + "data. These fragments are all we could retrieve, which is few seconds before the "
+        + "contamination.",
+    "Log Entry 0489: Critical priority: Redirect flow. Prevent contaminant [XXX] from reaching city"
+        + " grid.",
+    "As you can see, Your Honour, the record is incomplete."
+        + " We can only interpret... WOAH! What's going on?"
   };
   private static final String[] aiWitnessCaptions = {
     "My analysis is based on data logs from a sub-aquatic sensor drone I had stationed at the"
@@ -67,7 +67,7 @@ public class FlashbackController {
         slides.add(load("/images/angry.jpg"));
         slides.add(load("/images/free.jpg"));
         slides.add(load("/images/hapy.jpg"));
-       
+
         // get participant title
         title.setText("AI DEFENDANT: VIRIDIS");
 
@@ -81,7 +81,7 @@ public class FlashbackController {
 
         // get participant title
         title.setText("AI WITNESS: ORACLE");
-        
+
         // add captions list
         participantCaptions = Arrays.asList(aiWitnessCaptions);
         break;
@@ -92,7 +92,7 @@ public class FlashbackController {
 
         // get participant title
         title.setText("HUMAN WITNESS: Seymour");
-        
+
         // add captions list
         participantCaptions = Arrays.asList(humanWitnessCaptions);
         break;
