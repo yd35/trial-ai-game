@@ -15,12 +15,12 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Button fx:id="guiltyButton" layoutX="150.0" layoutY="200.0" mnemonicParsing="false" onAction="#onGuilty" text="GUILTY" AnchorPane.topAnchor="200.0">
+      <Button fx:id="guiltyButton" layoutX="150.0" layoutY="200.0" mnemonicParsing="false" onAction="#onGuiltyAction" text="GUILTY" AnchorPane.topAnchor="200.0">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="notGuiltyButton" layoutX="109.0" layoutY="300.0" mnemonicParsing="false" onAction="#onNotGuilty" text="NOT GUILTY" AnchorPane.topAnchor="320.0">
+      <Button fx:id="notGuiltyButton" layoutX="109.0" layoutY="300.0" mnemonicParsing="false" onAction="#onNotGuiltyAction" text="NOT GUILTY" AnchorPane.topAnchor="320.0">
          <font>
             <Font size="36.0" />
          </font>
