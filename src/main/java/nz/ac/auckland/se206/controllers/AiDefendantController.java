@@ -47,10 +47,7 @@ public class AiDefendantController {
   }
   
   public void initialize() throws ApiProxyException {
-    // Set up the chat area
-    String aiFlashback =
-        "add whatever starting message the ai defendant should say here";
-    chatTextArea.appendText(aiFlashback + "\n\n");
+
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
 
     SharedTimer timer = SharedTimer.getInstance();
@@ -104,7 +101,7 @@ public class AiDefendantController {
     
     // remove the text from the text field and store it in a variable
     textField.clear();
-    ChatMessage msg = new ChatMessage("user", "user: " + message);
+    ChatMessage msg = new ChatMessage("user", "Judge: " + message);
     // add the message to the chat
     appendChatMessage(msg);
     ChatLog.addToLog(msg);
@@ -118,9 +115,13 @@ public class AiDefendantController {
               client = new GptClient();
               ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("assistant", "AiDefendantName: " +aiResponse);
-              ChatMessage logMsg = new ChatMessage("user", "AiDefendantName: " +aiResponse);
-              ChatLog.addToLog(logMsg);
+              String formattedResponse = aiResponse.trim();
+                if (!formattedResponse.startsWith("VIRIDIS:")) {
+                  formattedResponse = "VIRIDIS: " + formattedResponse;
+                }
+
+              ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
+              ChatLog.addToLog(responseMsg);
               javafx.application.Platform.runLater(
                   () -> {
                     appendChatMessage(responseMsg);

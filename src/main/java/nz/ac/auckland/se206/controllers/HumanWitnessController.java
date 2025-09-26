@@ -42,10 +42,6 @@ public class HumanWitnessController {
   }
   
   public void initialize() throws ApiProxyException {
-    // Set up the chat area
-    String aiFlashback =
-        "add whatever starting message the human witness should say here";
-    chatTextArea.appendText(aiFlashback + "\n\n");
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
 
     SharedTimer timer = SharedTimer.getInstance();
@@ -98,7 +94,7 @@ public class HumanWitnessController {
     
     // remove the text from the text field and store it in a variable
     textField.clear();
-    ChatMessage msg = new ChatMessage("user", "user: " + message);
+    ChatMessage msg = new ChatMessage("user", "Judge: " + message);
     // add the message to the chat
     appendChatMessage(msg);
     ChatLog.addToLog(msg);
@@ -112,9 +108,14 @@ public class HumanWitnessController {
               client = new GptClient();
               ChatCompletionResult result = client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
-              ChatMessage responseMsg = new ChatMessage("assistant", "HumanWitnessName: " +aiResponse);
-              ChatMessage logMsg = new ChatMessage("user", "HumanWitnessName: " +aiResponse);
-              ChatLog.addToLog(logMsg);
+              String formattedResponse = aiResponse.trim();
+                if (!formattedResponse.startsWith("Seymour:")) {
+                  formattedResponse = "Seymour: " + formattedResponse;
+                }
+
+              ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
+              ChatLog.addToLog(responseMsg);
+              
               javafx.application.Platform.runLater(
                   () -> {
                     appendChatMessage(responseMsg);
