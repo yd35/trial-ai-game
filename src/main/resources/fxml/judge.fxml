@@ -10,19 +10,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.JudgeController">
    <children>
-      <Text fx:id="titleText" layoutX="175.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DECIDE AI'S VERDICT" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="15.0">
+      <ImageView fx:id="image" fitHeight="600.0" fitWidth="800.0" layoutX="467.0" layoutY="-1.6" pickOnBounds="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+         <image>
+            <Image url="@../images/courtroomtemp.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="titleText" layoutX="54.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The hammer of justice waits to be served..." AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="48.5" AnchorPane.topAnchor="14.0">
          <font>
-            <Font size="48.0" />
+            <Font name="04b03" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="guiltyButton" layoutX="150.0" layoutY="200.0" mnemonicParsing="false" onAction="#onGuiltyAction" text="GUILTY" AnchorPane.topAnchor="200.0">
+      <Button fx:id="guiltyButton" layoutX="315.0" layoutY="284.0" mnemonicParsing="false" onAction="#onGuiltyAction" text="GUILTY" AnchorPane.topAnchor="284.0">
          <font>
-            <Font size="36.0" />
+            <Font name="04b03" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="notGuiltyButton" layoutX="109.0" layoutY="300.0" mnemonicParsing="false" onAction="#onNotGuiltyAction" text="NOT GUILTY" AnchorPane.topAnchor="320.0">
+      <Button fx:id="notGuiltyButton" layoutX="294.0" layoutY="359.0" mnemonicParsing="false" onAction="#onNotGuiltyAction" text="INNOCENT" AnchorPane.topAnchor="359.0">
          <font>
-            <Font size="36.0" />
+            <Font name="04b03" size="36.0" />
          </font>
       </Button>
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="707.0" layoutY="540.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -31,10 +36,5 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <ImageView fx:id="image" fitHeight="370.0" fitWidth="252.0" layoutX="467.0" layoutY="115.0" pickOnBounds="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="115.0">
-         <image>
-            <Image url="@../images/viridis_portrait.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
