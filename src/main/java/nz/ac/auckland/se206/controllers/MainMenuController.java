@@ -1,8 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
@@ -14,6 +15,9 @@ import nz.ac.auckland.se206.controllers.GameState.Participant;
 public class MainMenuController {
   @FXML private Text timerText;
   @FXML private Rectangle timerOutline;
+  @FXML private Button judgeButton;
+  @FXML private Text judgeWarning;
+  @FXML private AnchorPane root;
 
   @FXML
   private void onAiWitnessAction() {
@@ -41,11 +45,6 @@ public class MainMenuController {
 
     if (!GameState.allChatted()) {
       // Before time is up, just block and explain
-      Alert a = new Alert(AlertType.INFORMATION);
-      a.setHeaderText(null);
-      a.setContentText(
-          "You must ask at least one question to all three participants before judging.");
-      a.showAndWait();
       return;
     }
 
@@ -86,6 +85,13 @@ public class MainMenuController {
     }
   }
 
+  private void updateJudgeState() {
+    boolean ready = GameState.allChatted();
+    judgeButton.setDisable(!ready);
+    judgeWarning.setVisible(!ready);
+    judgeWarning.setManaged(!ready);
+  }
+
   public void initialize() {
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
@@ -99,6 +105,17 @@ public class MainMenuController {
                   String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
               if (newVal.intValue() <= 0) {
                 GameState.onRoundExpired();
+              }
+            });
+
+    updateJudgeState();
+
+    root
+        .sceneProperty()
+        .addListener(
+            (obs, oldScene, newScene) -> {
+              if (newScene != null) {
+                Platform.runLater(this::updateJudgeState);
               }
             });
   }
