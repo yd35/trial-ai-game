@@ -25,6 +25,8 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import javafx.animation.TranslateTransition;
+import javafx.animation.ParallelTransition;
 
 public class AiDefendantController {
   private static Image numOne = new Image("/images/memories/numbers/num_1.png");
@@ -43,6 +45,10 @@ public class AiDefendantController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
+  
+  // chat toggle
+  @FXML private Rectangle toggleChat;
+  @FXML private Rectangle chatCover;
 
   // memory elements
   @FXML private Rectangle padOne;
@@ -148,11 +154,39 @@ public class AiDefendantController {
     }
   }
 
+  // Button methods
+  
   @FXML
   private void onGoBack(ActionEvent event) {
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
+  }
+
+  @FXML
+  private void onToggle(MouseEvent event) {
+    // translate an
+    int move = -420;
+    TranslateTransition smallRectTrans = new TranslateTransition();
+    TranslateTransition largeRectTrans = new TranslateTransition();
+    TranslateTransition chatAreaTrans = new TranslateTransition();
+    TranslateTransition textFieldTrans = new TranslateTransition();
+    TranslateTransition sendButtonTrans = new TranslateTransition();
+    smallRectTrans.setNode(toggleChat);
+    smallRectTrans.setByX(move); // distance node is moved
+    largeRectTrans.setNode(chatCover);
+    largeRectTrans.setByX(move);
+    chatAreaTrans.setNode(chatTextArea);
+    chatAreaTrans.setByX(move);
+    textFieldTrans.setNode(textField);
+    textFieldTrans.setByX(move);
+    sendButtonTrans.setNode(sendButton);
+    sendButtonTrans.setByX(move);
+    
+    ParallelTransition parallel = new ParallelTransition(smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
+    parallel.play();
+    
+    // add all transitions to parallel transitions
   }
 
   public void initialize() throws ApiProxyException {

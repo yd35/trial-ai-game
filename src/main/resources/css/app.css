@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Bangalore';
+  src: '/fonts/Bangalore.tff';
+}
+
+@font-face {
+  font-family: '04b03';
+  src: '/fonts/04B_03__.tff';
+}
+
+.contextText {
+  -fx-font-family: '04b03';
+  -fx-font-size: 17px;
+}
