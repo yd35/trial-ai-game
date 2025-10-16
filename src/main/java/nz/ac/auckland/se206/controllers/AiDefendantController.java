@@ -49,6 +49,9 @@ public class AiDefendantController {
   // chat toggle
   @FXML private Rectangle toggleChat;
   @FXML private Rectangle chatCover;
+  // if pulled = true, that means chat cover is pulled out
+  // if pulled = false, that means chat cover is not pulled out
+  private static boolean pulled = false; 
 
   // memory elements
   @FXML private Rectangle padOne;
@@ -165,8 +168,12 @@ public class AiDefendantController {
 
   @FXML
   private void onToggle(MouseEvent event) {
-    // translate an
-    int move = -420;
+    // 
+    int move = 0;
+    if(pulled) {move = 420;}
+    else {move = -420;}
+    pulled = !pulled; // switch state for pulled
+    
     TranslateTransition smallRectTrans = new TranslateTransition();
     TranslateTransition largeRectTrans = new TranslateTransition();
     TranslateTransition chatAreaTrans = new TranslateTransition();
