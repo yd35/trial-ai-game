@@ -19,7 +19,7 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECIDE AI'S VERDICT">
                <font>
-                  <Font size="48.0" />
+                  <Font name="04b03" size="48.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -44,7 +44,7 @@
                         </Button>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="04b03" size="24.0" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
@@ -72,7 +72,7 @@
                         </Button>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="04b03" size="24.0" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
@@ -97,7 +97,7 @@
                         </Button>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="04b03" size="24.0" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
@@ -116,7 +116,7 @@
 
                <Button fx:id="judgeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onJudge" prefHeight="51.0" prefWidth="120.0" text="JUDGE!" StackPane.alignment="CENTER">
                   <font>
-                     <Font size="24.0" />
+                     <Font name="04b03" size="24.0" />
                   </font>
                </Button>
             </StackPane>
@@ -129,9 +129,9 @@
          </font>
       </Text>
 
-      <Text fx:id="judgeWarning" layoutX="167.0" layoutY="573.0" style="-fx-fill: #d32f2f;" text="*You must ask at least one question to all three participants before judging.">
+      <Text fx:id="judgeWarning" layoutX="108.0" layoutY="571.0" style="-fx-fill: #d32f2f;" text="*You must ask at least one question to all three participants before judging.">
          <font>
-            <Font size="14.0" />
+            <Font name="04b03" size="14.0" />
          </font>
       </Text>
    </children>
