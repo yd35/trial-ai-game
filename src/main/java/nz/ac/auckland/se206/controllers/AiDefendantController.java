@@ -68,6 +68,10 @@ public class AiDefendantController {
 
   private GptClient client;
   private ChatMessage systemPrompt;
+  private static final String startingText =
+      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
+          + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
+          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve this puzzle!";
 
   /* AI defendant memory puzzle
     --------------
@@ -209,7 +213,6 @@ public class AiDefendantController {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
 
-    String startingText = "VIRIDIS: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
