@@ -2,6 +2,8 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,8 +27,6 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-import javafx.animation.TranslateTransition;
-import javafx.animation.ParallelTransition;
 
 public class AiDefendantController {
   private static Image numOne = new Image("/images/memories/numbers/num_1.png");
@@ -45,13 +45,13 @@ public class AiDefendantController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
-  
+
   // chat toggle
   @FXML private Rectangle toggleChat;
   @FXML private Rectangle chatCover;
   // if pulled = true, that means chat cover is pulled out
   // if pulled = false, that means chat cover is not pulled out
-  private static boolean pulled = false; 
+  private static boolean pulled = false;
 
   // memory elements
   @FXML private Rectangle padOne;
@@ -158,22 +158,29 @@ public class AiDefendantController {
   }
 
   // Button methods
-  
+
   @FXML
   private void onGoBack(ActionEvent event) {
+    // make chat hidden again if user returns to courtroom with it still visible
+    if (pulled) {
+      onToggle();
+    }
+
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
   }
 
   @FXML
-  private void onToggle(MouseEvent event) {
-    // 
-    int move = 0;
-    if(pulled) {move = 420;}
-    else {move = -420;}
+  private void onToggle() {
+    int move = 0; // variable to store how far elements will be moved
+    if (pulled) {
+      move = 420;
+    } else {
+      move = -420;
+    }
     pulled = !pulled; // switch state for pulled
-    
+
     TranslateTransition smallRectTrans = new TranslateTransition();
     TranslateTransition largeRectTrans = new TranslateTransition();
     TranslateTransition chatAreaTrans = new TranslateTransition();
@@ -189,10 +196,12 @@ public class AiDefendantController {
     textFieldTrans.setByX(move);
     sendButtonTrans.setNode(sendButton);
     sendButtonTrans.setByX(move);
-    
-    ParallelTransition parallel = new ParallelTransition(smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
+
+    ParallelTransition parallel =
+        new ParallelTransition(
+            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
     parallel.play();
-    
+
     // add all transitions to parallel transitions
   }
 

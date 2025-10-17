@@ -17,7 +17,6 @@
             <Image url="@../images/memories/viridis_memory/revealed.png" />
          </image>
       </ImageView>
-      <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="9.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
       <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
          <image>
@@ -38,8 +37,8 @@
       <Rectangle fx:id="padTwo" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="160.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
       <Rectangle fx:id="padThree" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="268.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
       <Rectangle fx:id="padFour" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="380.0" layoutY="349.0" onMouseClicked="#onPad" opacity="0.001" stroke="BLACK" strokeType="INSIDE" width="92.0" />
-      <Rectangle fx:id="chatCover" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="600.0" layoutX="262.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="589.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-541.0" AnchorPane.topAnchor="0.0" />
-      <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="119.0" layoutX="230.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0" />
+      <Rectangle fx:id="chatCover" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="600.0" layoutX="262.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-541.0" AnchorPane.topAnchor="0.0" />
+      <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="120.0" layoutX="230.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0" />
       <TextArea fx:id="chatTextArea" editable="false" layoutX="800.0" layoutY="38.0" prefHeight="426.0" prefWidth="400.0" wrapText="true" AnchorPane.rightAnchor="-400.0" />
       <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1149.0" layoutY="486.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="30.0" prefWidth="50.0" text="Send" AnchorPane.rightAnchor="-399.4000000000001" />
       <TextField fx:id="textField" layoutX="800.0" layoutY="486.0" onKeyPressed="#checkEnter" prefHeight="30.0" prefWidth="330.0" AnchorPane.rightAnchor="-334.0" />
@@ -49,5 +48,6 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <Button fx:id="goBackButton" layoutX="23.0" layoutY="547.0" maxWidth="151.0" mnemonicParsing="false" onAction="#onGoBack" prefHeight="35.0" text="Go Back" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="25.0" />
    </children>
 </AnchorPane>
