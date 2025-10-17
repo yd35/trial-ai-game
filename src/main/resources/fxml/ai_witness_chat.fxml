@@ -10,24 +10,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.AiWitnessController">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.AiWitnessController">
    <children>
-      <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="535.0" pickOnBounds="true">
+      <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="750.0" pickOnBounds="true">
          <image>
             <Image url="@../images/memories/oracle_memory/oracle_memory_base.png" />
          </image>
       </ImageView>
-      <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
-      <TextField fx:id="textField" layoutX="543.0" layoutY="498.0" onKeyPressed="#checkEnter" prefHeight="25.0" prefWidth="176.0" />
-      <TextArea fx:id="chatTextArea" editable="false" layoutX="543.0" layoutY="24.0" prefHeight="454.0" prefWidth="241.0" wrapText="true" />
-      <Button fx:id="sendButton" layoutX="734.0" layoutY="498.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="52.0" text="Send" />
-      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="270.0" fitWidth="430.0" layoutX="53.0" layoutY="179.0" pickOnBounds="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="180.0">
+      <ImageView fitHeight="270.0" fitWidth="430.0" layoutX="177.0" layoutY="138.0" pickOnBounds="true" AnchorPane.leftAnchor="177.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/oracle_graph_whole.png" />
          </image>
@@ -38,38 +28,49 @@
             <Image url="@../images/portraits/small/oracle.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="movesLeftImage" fitHeight="60.0" fitWidth="60.0" layoutX="207.0" layoutY="497.0" pickOnBounds="true" AnchorPane.bottomAnchor="55.0">
+      <ImageView fx:id="movesLeftImage" fitHeight="70.0" fitWidth="50.0" layoutX="302.0" layoutY="474.0" pickOnBounds="true" AnchorPane.bottomAnchor="56.0">
          <image>
             <Image url="@../images/memories/numbers/num_4.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blockOne" fitHeight="270.0" fitWidth="107.5" layoutX="53.0" layoutY="180.0" pickOnBounds="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="180.0">
+      <ImageView fx:id="blockOne" fitHeight="270.0" fitWidth="107.5" layoutX="178.0" layoutY="138.0" pickOnBounds="true" AnchorPane.leftAnchor="178.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blockTwo" fitHeight="270.0" fitWidth="107.5" layoutX="160.0" layoutY="188.0" pickOnBounds="true" AnchorPane.leftAnchor="160.5" AnchorPane.topAnchor="180.0">
+      <ImageView fx:id="blockTwo" fitHeight="270.0" fitWidth="107.5" layoutX="285.0" layoutY="138.0" pickOnBounds="true" AnchorPane.leftAnchor="285.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blockThree" fitHeight="270.0" fitWidth="107.5" layoutX="255.0" layoutY="189.0" pickOnBounds="true" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="180.0">
+      <ImageView fx:id="blockThree" fitHeight="270.0" fitWidth="107.5" layoutX="392.0" layoutY="138.0" pickOnBounds="true" AnchorPane.leftAnchor="392.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blockFour" fitHeight="270.0" fitWidth="107.5" layoutX="376.0" layoutY="190.0" pickOnBounds="true" AnchorPane.leftAnchor="375.5" AnchorPane.topAnchor="180.0">
+      <ImageView fx:id="blockFour" fitHeight="270.0" fitWidth="107.5" layoutX="499.0" layoutY="138.0" pickOnBounds="true" AnchorPane.leftAnchor="499.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="resetPuzzleButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="366.0" layoutY="544.0" onMouseClicked="#resetPuzzle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" AnchorPane.bottomAnchor="10.0" />
-      <Rectangle fx:id="subtractOneButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="287.0" layoutY="501.0" onMouseClicked="#subtractOne" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="35.0" AnchorPane.bottomAnchor="65.0" />
-      <Rectangle fx:id="addThreeButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="35.0" layoutX="467.0" layoutY="501.0" onMouseClicked="#addThree" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="35.0" AnchorPane.bottomAnchor="65.0" />
-      <ImageView fx:id="errorGraph" fitHeight="270.0" fitWidth="430.0" layoutX="63.0" layoutY="189.0" pickOnBounds="true" visible="false">
+      <Rectangle fx:id="resetPuzzleButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="570.0" layoutY="494.0" onMouseClicked="#resetPuzzle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="50.0" AnchorPane.bottomAnchor="58.0" />
+      <Rectangle fx:id="subtractOneButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="395.0" layoutY="484.80000000000007" onMouseClicked="#subtractOne" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="45.0" AnchorPane.bottomAnchor="58.0" />
+      <Rectangle fx:id="addThreeButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="522.0" layoutY="481.4" onMouseClicked="#addThree" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="45.0" AnchorPane.bottomAnchor="58.0" />
+      <ImageView fx:id="errorGraph" fitHeight="270.0" fitWidth="430.0" layoutX="63.0" layoutY="189.0" pickOnBounds="true" visible="false" AnchorPane.leftAnchor="177.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_error.png" />
          </image>
       </ImageView>
+      <Rectangle fx:id="chatCover" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="600.0" layoutX="755.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="590.0" AnchorPane.rightAnchor="-541.0" />
+      <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="120.0" layoutX="723.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0" />
+      <TextArea fx:id="chatTextArea" editable="false" layoutX="1289.0" layoutY="26.0" prefHeight="426.0" prefWidth="400.0" wrapText="true" AnchorPane.rightAnchor="-400.0" />
+      <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1638.0" layoutY="474.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="30.0" prefWidth="50.0" text="Send" AnchorPane.rightAnchor="-399.4000000000001" />
+      <TextField fx:id="textField" layoutX="800.0" layoutY="474.0" onKeyPressed="#checkEnter" prefHeight="30.0" prefWidth="330.0" AnchorPane.rightAnchor="-332.0" />
+      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

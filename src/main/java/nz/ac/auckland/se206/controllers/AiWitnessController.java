@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,6 +43,13 @@ public class AiWitnessController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
+
+  // chat toggle
+  @FXML private Rectangle toggleChat;
+  @FXML private Rectangle chatCover;
+  // if pulled = true, that means chat cover is pulled out
+  // if pulled = false, that means chat cover is not pulled out
+  private static boolean pulled = false;
 
   // puzzle elements
   @FXML private Rectangle subtractOneButton;
@@ -193,6 +202,40 @@ public class AiWitnessController {
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
+  }
+
+  @FXML
+  private void onToggle() {
+    int move = 0; // variable to store how far elements will be moved
+    if (pulled) {
+      move = 420;
+    } else {
+      move = -420;
+    }
+    pulled = !pulled; // switch state for pulled
+
+    TranslateTransition smallRectTrans = new TranslateTransition();
+    TranslateTransition largeRectTrans = new TranslateTransition();
+    TranslateTransition chatAreaTrans = new TranslateTransition();
+    TranslateTransition textFieldTrans = new TranslateTransition();
+    TranslateTransition sendButtonTrans = new TranslateTransition();
+    smallRectTrans.setNode(toggleChat);
+    smallRectTrans.setByX(move); // distance node is moved
+    largeRectTrans.setNode(chatCover);
+    largeRectTrans.setByX(move);
+    chatAreaTrans.setNode(chatTextArea);
+    chatAreaTrans.setByX(move);
+    textFieldTrans.setNode(textField);
+    textFieldTrans.setByX(move);
+    sendButtonTrans.setNode(sendButton);
+    sendButtonTrans.setByX(move);
+
+    ParallelTransition parallel =
+        new ParallelTransition(
+            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
+    parallel.play();
+
+    // add all transitions to parallel transitions
   }
 
   public void initialize() throws ApiProxyException {
