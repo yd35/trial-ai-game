@@ -8,7 +8,7 @@ So then if the content was something like:
   Tom: I like cookies
     that means Tom previously said "I like cookies"
 
-If the content mentions your name like:
+If the content mentions your name like for example if your name was ORACLE:
   ORACLE: I like green
     that means YOU have said "I like green" previously
 

@@ -8,8 +8,8 @@ So then if the content was something like:
   Tom: I like cookies
     that means Tom previously said "I like cookies"
 
-If the content mentions your name like:
-  ORACLE: I like green
+If the content mentions your name like for example if your name was VIRIDIS:
+  VIRIDIS: I like green
     that means YOU have said "I like green" previously
 
 The scenario is that you are in a courtroom with 4 members, a human witness, an ai witness, an ai defendant and a judge.
