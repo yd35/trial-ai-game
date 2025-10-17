@@ -59,5 +59,6 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <Button fx:id="goBackButton" layoutX="33.0" layoutY="557.0" maxWidth="151.0" mnemonicParsing="false" onAction="#onGoBack" prefHeight="35.0" text="Go Back" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="25.0" />
    </children>
 </AnchorPane>

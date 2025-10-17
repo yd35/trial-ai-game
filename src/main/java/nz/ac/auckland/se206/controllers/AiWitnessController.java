@@ -199,6 +199,11 @@ public class AiWitnessController {
 
   @FXML
   private void onGoBack(ActionEvent event) {
+    // make chat hidden again if user returns to courtroom with it still visible
+    if (pulled) {
+      onToggle();
+    }
+
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
