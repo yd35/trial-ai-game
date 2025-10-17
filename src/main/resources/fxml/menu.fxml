@@ -38,11 +38,6 @@
                               <Image url="@../images/portraits/large/seymour_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitnessAction" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
                               <Font name="04b03" size="24.0" />
@@ -51,6 +46,11 @@
                               <Insets bottom="20.0" />
                            </StackPane.margin>
                         </Text>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitnessAction" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </StackPane>
                   <StackPane prefHeight="401.0" prefWidth="252.0">
@@ -63,14 +63,6 @@
                               <Image url="@../images/portraits/large/viridis_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendantAction" opacity="0.01">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </Button>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AI DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
                            <font>
                               <Font name="04b03" size="24.0" />
@@ -79,6 +71,14 @@
                               <Insets bottom="20.0" />
                            </StackPane.margin>
                         </Text>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendantAction" opacity="0.01">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Button>
                      </children>
                   </StackPane>
                   <StackPane prefHeight="400.0">
@@ -91,11 +91,6 @@
                               <Image url="@../images/portraits/large/oracle_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitnessAction" opacity="0.01">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AI WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
                               <Font name="04b03" size="24.0" />
@@ -104,6 +99,11 @@
                               <Insets bottom="20.0" />
                            </StackPane.margin>
                         </Text>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitnessAction" opacity="0.01">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </StackPane>
                </children>
