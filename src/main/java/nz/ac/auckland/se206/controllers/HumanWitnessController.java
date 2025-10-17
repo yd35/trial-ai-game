@@ -51,6 +51,12 @@ public class HumanWitnessController {
 
   private GptClient client;
   private ChatMessage systemPrompt;
+  private static final String startingText =
+      "Seymour: Once I got into that lab, the only thing standing between me and the proof of"
+          + " VIRIDIS's heinous acts was that hatch on its back. Removing it is simple, really, and"
+          + " it's the only way to get at the logs. We just have to take off the four bolts, and"
+          + " the whole thing comes right off. That's where we'll find the truth of what that"
+          + " machine did.";
 
   /* Human witness memory puzzle
     --------------
@@ -141,7 +147,6 @@ public class HumanWitnessController {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
 
-    String startingText = "Seymour: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
