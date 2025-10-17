@@ -10,53 +10,54 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.HumanWitnessController">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.HumanWitnessController">
    <children>
-      <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="535.0" pickOnBounds="true">
+      <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="754.0" pickOnBounds="true">
          <image>
             <Image url="@../images/memories/seymour_memory/viridis_back.png" />
          </image>
       </ImageView>
-      <Button fx:id="goBackButton" layoutX="543.0" layoutY="561.0" mnemonicParsing="false" onAction="#onGoBack" text="Go Back" />
-      <TextField fx:id="textField" layoutX="543.0" layoutY="498.0" onKeyPressed="#checkEnter" prefHeight="25.0" prefWidth="176.0" />
-      <TextArea fx:id="chatTextArea" editable="false" layoutX="543.0" layoutY="24.0" prefHeight="454.0" prefWidth="241.0" wrapText="true" />
-      <Button fx:id="sendButton" layoutX="734.0" layoutY="498.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="52.0" text="Send" />
-      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="19.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
       <ImageView fx:id="image" fitHeight="140.0" fitWidth="140.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
          <image>
             <Image url="@../images/portraits/small/seymour.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="backCover" fitHeight="175.0" fitWidth="230.0" layoutX="154.0" layoutY="335.0" onMouseClicked="#removeElement" pickOnBounds="true">
+      <ImageView fx:id="backCover" fitHeight="180.0" fitWidth="230.0" layoutX="243.0" layoutY="238.0" onMouseClicked="#removeElement" pickOnBounds="true">
          <image>
             <Image url="@../images/memories/seymour_memory/back_cover.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="boltOne" fitHeight="30.0" fitWidth="30.0" layoutX="165.0" layoutY="345.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="345.0">
+      <ImageView fx:id="boltOne" fitHeight="30.0" fitWidth="30.0" layoutX="268.0" layoutY="261.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="261.0">
          <image>
             <Image url="@../images/memories/seymour_memory/bolt.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="boltThree" fitHeight="30.0" fitWidth="30.0" layoutX="165.0" layoutY="468.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="470.0">
+      <ImageView fx:id="boltThree" fitHeight="30.0" fitWidth="30.0" layoutX="268.0" layoutY="368.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="368.0">
          <image>
             <Image url="@../images/memories/seymour_memory/bolt.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="boltTwo" fitHeight="30.0" fitWidth="30.0" layoutX="341.0" layoutY="468.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="344.8">
+      <ImageView fx:id="boltTwo" fitHeight="30.0" fitWidth="30.0" layoutX="417.0" layoutY="261.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="417.0" AnchorPane.topAnchor="261.0">
          <image>
             <Image url="@../images/memories/seymour_memory/bolt.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="boltFour" fitHeight="30.0" fitWidth="30.0" layoutX="341.0" layoutY="345.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="345.0" AnchorPane.topAnchor="470.0">
+      <ImageView fx:id="boltFour" fitHeight="30.0" fitWidth="30.0" layoutX="417.0" layoutY="368.0" onMouseClicked="#removeElement" pickOnBounds="true" AnchorPane.leftAnchor="417.0" AnchorPane.topAnchor="368.0">
          <image>
             <Image url="@../images/memories/seymour_memory/bolt.png" />
          </image>
       </ImageView>
+      <Rectangle fx:id="chatCover" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="600.0" layoutX="268.0" layoutY="14.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="590.0" AnchorPane.rightAnchor="-541.0" AnchorPane.topAnchor="0.0" />
+      <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="120.0" layoutX="723.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0" />
+      <TextArea fx:id="chatTextArea" editable="false" layoutX="810.0" layoutY="48.0" prefHeight="426.0" prefWidth="400.0" wrapText="true" AnchorPane.rightAnchor="-400.0" />
+      <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1159.0" layoutY="496.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="30.0" prefWidth="50.0" text="Send" AnchorPane.rightAnchor="-399.4000000000001" />
+      <TextField fx:id="textField" layoutX="812.0" layoutY="496.0" onKeyPressed="#checkEnter" prefHeight="30.0" prefWidth="330.0" AnchorPane.rightAnchor="-332.0" />
+      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
