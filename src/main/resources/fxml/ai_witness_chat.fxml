@@ -28,12 +28,12 @@
             <Image url="@../images/portraits/small/oracle.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="movesLeftImage" fitHeight="70.0" fitWidth="50.0" layoutX="302.0" layoutY="474.0" pickOnBounds="true" AnchorPane.bottomAnchor="56.0">
+      <ImageView fx:id="movesLeftImage" fitHeight="70.0" fitWidth="50.0" layoutX="307.0" layoutY="475.20000000000005" pickOnBounds="true" AnchorPane.bottomAnchor="54.799999999999955">
          <image>
             <Image url="@../images/memories/numbers/num_4.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blockOne" fitHeight="270.0" fitWidth="107.5" layoutX="178.0" layoutY="138.0" pickOnBounds="true" AnchorPane.leftAnchor="178.0" AnchorPane.topAnchor="138.0">
+      <ImageView fx:id="blockOne" fitHeight="270.0" fitWidth="110.5" layoutX="176.6" layoutY="138.4" pickOnBounds="true" AnchorPane.leftAnchor="176.6" AnchorPane.topAnchor="138.4">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
          </image>
