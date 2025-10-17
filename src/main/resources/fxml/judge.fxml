@@ -10,30 +10,42 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.JudgeController">
    <children>
-      <ImageView fx:id="image" fitHeight="600.0" fitWidth="800.0" layoutX="467.0" layoutY="-1.6" pickOnBounds="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="32.0" layoutY="412.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="736.0" />
+      <ImageView fx:id="image" fitHeight="297.0" fitWidth="222.0" layoutX="311.0" layoutY="92.0" pickOnBounds="true" AnchorPane.rightAnchor="296.0" AnchorPane.topAnchor="92.0">
          <image>
-            <Image url="@../images/courtroomtemp.png" />
+            <Image url="@../images/portraits/large/viridis_portrait.png" />
          </image>
       </ImageView>
-      <Text fx:id="titleText" layoutX="54.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The hammer of justice waits to be served..." AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="48.5" AnchorPane.topAnchor="14.0">
+      <Text fx:id="titleText" fill="WHITE" layoutX="218.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FINAL JUDGEMENT" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="219.75" AnchorPane.topAnchor="34.5">
          <font>
-            <Font name="04b03" size="30.0" />
+            <Font name="04b03" size="42.0" />
          </font>
       </Text>
-      <Button fx:id="guiltyButton" layoutX="315.0" layoutY="284.0" mnemonicParsing="false" onAction="#onGuiltyAction" text="GUILTY" AnchorPane.topAnchor="284.0">
+      <Button fx:id="guiltyButton" layoutX="64.0" layoutY="439.0" mnemonicParsing="false" onAction="#onGuiltyAction" styleClass="outline-btn" stylesheets="@../css/style.css" text="GUILTY" AnchorPane.topAnchor="439.0">
          <font>
-            <Font name="04b03" size="36.0" />
+            <Font name="04b03" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="notGuiltyButton" layoutX="294.0" layoutY="359.0" mnemonicParsing="false" onAction="#onNotGuiltyAction" text="INNOCENT" AnchorPane.topAnchor="359.0">
+      <Button fx:id="notGuiltyButton" layoutX="591.0" layoutY="439.0" mnemonicParsing="false" onAction="#onNotGuiltyAction" styleClass="outline-btn" stylesheets="@../css/style.css" text="INNOCENT" AnchorPane.topAnchor="439.0">
          <font>
-            <Font name="04b03" size="36.0" />
+            <Font name="04b03" size="23.0" />
          </font>
       </Button>
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="707.0" layoutY="540.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Text fx:id="timerText" layoutX="721.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="titleText1" fill="WHITE" layoutX="375.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⚖" textAlignment="CENTER" wrappingWidth="32.72705078125">
+         <font>
+            <Font name="04b03" size="35.0" />
+         </font>
+      </Text>
+      <Text fx:id="titleText2" fill="WHITE" layoutX="51.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The hammer of justice awaits to be served...">
+         <font>
+            <Font name="04b03" size="26.0" />
          </font>
       </Text>
    </children>
