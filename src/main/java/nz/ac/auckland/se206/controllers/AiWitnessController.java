@@ -67,11 +67,12 @@ public class AiWitnessController {
   // make into 2 lines
   private static final String startingText =
       "ORACLE: My analysis requires displaying the retrieved drone data. Due to chemical damage,"
-          + " the control interface is limited.\n\n" 
-          + "ORACLE: You must manipulate the data using the operational"
-          + " input buttons: [-1] and [3]. The system integrity will tolerate a maximum of four"
-          + " button presses to achieve the required sum of 4. Should an error occur, input the [R]"
-          + " command next to the [3] button to reset the sequence.";
+          + " the control interface is limited. Our goal is to display a graph that proves VIRIDIS'"
+          + " high activity spike during the contamination event.\n\n"
+          + "ORACLE: You must manipulate the data using the operational input buttons: [-1] and"
+          + " [3]. The system integrity will tolerate a maximum of four button presses to achieve"
+          + " the required sum of 4. Should an error occur, input the [R] command next to the [3]"
+          + " button to reset the sequence.";
 
   /* AI witness memory puzzle
     --------------
