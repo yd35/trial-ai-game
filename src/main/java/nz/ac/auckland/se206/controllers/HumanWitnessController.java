@@ -162,7 +162,7 @@ public class HumanWitnessController {
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
 
-              ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
+              ChatMessage responseMsg = new ChatMessage("user", formattedResponse);
               ChatLog.addToLog(responseMsg);
               javafx.application.Platform.runLater(
                   () -> {
