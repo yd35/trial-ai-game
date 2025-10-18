@@ -2,6 +2,8 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +46,13 @@ public class AiDefendantController {
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
 
+  // chat toggle
+  @FXML private Rectangle toggleChat;
+  @FXML private Rectangle chatCover;
+  // if pulled = true, that means chat cover is pulled out
+  // if pulled = false, that means chat cover is not pulled out
+  private static boolean pulled = false;
+
   // memory elements
   @FXML private Rectangle padOne;
   @FXML private Rectangle padTwo;
@@ -59,6 +68,10 @@ public class AiDefendantController {
 
   private GptClient client;
   private ChatMessage systemPrompt;
+  private static final String startingText =
+      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
+          + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
+          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve this puzzle!";
 
   /* AI defendant memory puzzle
     --------------
@@ -148,18 +161,58 @@ public class AiDefendantController {
     }
   }
 
+  // Button methods
+
   @FXML
   private void onGoBack(ActionEvent event) {
+    // make chat hidden again if user returns to courtroom with it still visible
+    if (pulled) {
+      onToggle();
+    }
+
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
+  }
+
+  @FXML
+  private void onToggle() {
+    int move = 0; // variable to store how far elements will be moved
+    if (pulled) {
+      move = 420;
+    } else {
+      move = -420;
+    }
+    pulled = !pulled; // switch state for pulled
+
+    TranslateTransition smallRectTrans = new TranslateTransition();
+    TranslateTransition largeRectTrans = new TranslateTransition();
+    TranslateTransition chatAreaTrans = new TranslateTransition();
+    TranslateTransition textFieldTrans = new TranslateTransition();
+    TranslateTransition sendButtonTrans = new TranslateTransition();
+    smallRectTrans.setNode(toggleChat);
+    smallRectTrans.setByX(move); // distance node is moved
+    largeRectTrans.setNode(chatCover);
+    largeRectTrans.setByX(move);
+    chatAreaTrans.setNode(chatTextArea);
+    chatAreaTrans.setByX(move);
+    textFieldTrans.setNode(textField);
+    textFieldTrans.setByX(move);
+    sendButtonTrans.setNode(sendButton);
+    sendButtonTrans.setByX(move);
+
+    ParallelTransition parallel =
+        new ParallelTransition(
+            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
+    parallel.play();
+
+    // add all transitions to parallel transitions
   }
 
   public void initialize() throws ApiProxyException {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
 
-    String startingText = "VIRIDIS: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();

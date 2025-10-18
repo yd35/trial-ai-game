@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Bangalore';
+  src: '/fonts/Bangalore.tff';
+}
+
+@font-face {
+  font-family: '04b03';
+  src: '/fonts/04B_03__.tff';
+}
+
+.label {
+  -fx-font-family: "04b03";
+  -fx-font-size: 12px;
+}
+
+#sendButton {
+  -fx-font-size: 12px;
+  -fx-font-family: "04b03";
+}

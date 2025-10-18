@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,6 +44,13 @@ public class AiWitnessController {
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
 
+  // chat toggle
+  @FXML private Rectangle toggleChat;
+  @FXML private Rectangle chatCover;
+  // if pulled = true, that means chat cover is pulled out
+  // if pulled = false, that means chat cover is not pulled out
+  private static boolean pulled = false;
+
   // puzzle elements
   @FXML private Rectangle subtractOneButton;
   @FXML private Rectangle addThreeButton;
@@ -55,6 +64,15 @@ public class AiWitnessController {
 
   private GptClient client;
   private ChatMessage systemPrompt;
+  // make into 2 lines
+  private static final String startingText =
+      "ORACLE: My analysis requires displaying the retrieved drone data. Due to chemical damage,"
+          + " the control interface is limited. Our goal is to display a graph that proves VIRIDIS'"
+          + " high activity spike during the contamination event.\n\n"
+          + "ORACLE: You must manipulate the data using the operational input buttons: [-1] and"
+          + " [3]. The system integrity will tolerate a maximum of four button presses to achieve"
+          + " the required sum of 4. Should an error occur, input the [R] command next to the [3]"
+          + " button to reset the sequence.";
 
   /* AI witness memory puzzle
     --------------
@@ -190,16 +208,54 @@ public class AiWitnessController {
 
   @FXML
   private void onGoBack(ActionEvent event) {
+    // make chat hidden again if user returns to courtroom with it still visible
+    if (pulled) {
+      onToggle();
+    }
+
     Button button = (Button) event.getSource();
     Scene sceneButtonIsIn = button.getScene();
     sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
+  }
+
+  @FXML
+  private void onToggle() {
+    int move = 0; // variable to store how far elements will be moved
+    if (pulled) {
+      move = 420;
+    } else {
+      move = -420;
+    }
+    pulled = !pulled; // switch state for pulled
+
+    TranslateTransition smallRectTrans = new TranslateTransition();
+    TranslateTransition largeRectTrans = new TranslateTransition();
+    TranslateTransition chatAreaTrans = new TranslateTransition();
+    TranslateTransition textFieldTrans = new TranslateTransition();
+    TranslateTransition sendButtonTrans = new TranslateTransition();
+    smallRectTrans.setNode(toggleChat);
+    smallRectTrans.setByX(move); // distance node is moved
+    largeRectTrans.setNode(chatCover);
+    largeRectTrans.setByX(move);
+    chatAreaTrans.setNode(chatTextArea);
+    chatAreaTrans.setByX(move);
+    textFieldTrans.setNode(textField);
+    textFieldTrans.setByX(move);
+    sendButtonTrans.setNode(sendButton);
+    sendButtonTrans.setByX(move);
+
+    ParallelTransition parallel =
+        new ParallelTransition(
+            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
+    parallel.play();
+
+    // add all transitions to parallel transitions
   }
 
   public void initialize() throws ApiProxyException {
 
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
 
-    String startingText = "ORACLE: initial message";
     chatTextArea.appendText(startingText + "\n\n");
 
     SharedTimer timer = SharedTimer.getInstance();
