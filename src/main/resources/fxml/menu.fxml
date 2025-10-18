@@ -18,9 +18,9 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <VBox alignment="TOP_CENTER" layoutX="200.0" layoutY="142.0" prefHeight="563.0" prefWidth="800.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="⚖ THE TRIAL ROOM ⚖" textAlignment="CENTER">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="} THE TRIAL ROOM {" textAlignment="CENTER">
                <font>
-                  <Font name="04b03" size="55.0" />
+                  <Font size="55.0" url="@../fonts/04B_03__.TTF" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -40,7 +40,7 @@
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font name="04b03" size="24.0" />
+                              <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
@@ -65,7 +65,7 @@
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AI DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font name="04b03" size="24.0" />
+                              <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
@@ -93,7 +93,7 @@
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AI WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font name="04b03" size="24.0" />
+                              <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
@@ -117,7 +117,7 @@
 
                <Button fx:id="judgeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onJudge" prefHeight="51.0" prefWidth="120.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="JUDGE!" StackPane.alignment="CENTER">
                   <font>
-                     <Font name="04b03" size="24.0" />
+                     <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                   </font>
                   <cursor>
                      <Cursor fx:constant="HAND" />
@@ -138,7 +138,7 @@
 
       <Text fx:id="judgeWarning" layoutX="100.0" layoutY="579.0" style="-fx-fill: #d32f2f;" text="*You must ask at least one question to all three participants before judging.">
          <font>
-            <Font name="04b03" size="14.0" />
+            <Font size="14.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
    </children>

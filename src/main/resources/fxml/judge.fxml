@@ -17,19 +17,19 @@
             <Image url="@../images/portraits/large/viridis_portrait.png" />
          </image>
       </ImageView>
-      <Text fx:id="titleText" fill="WHITE" layoutX="218.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FINAL JUDGEMENT" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="219.75" AnchorPane.topAnchor="34.5">
+      <Text fx:id="titleText" fill="WHITE" layoutX="108.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="} FINAL JUDGEMENT {" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="107.625" AnchorPane.topAnchor="27.75">
          <font>
-            <Font name="04b03" size="42.0" />
+            <Font url="@../fonts/04B_03__.TTF" size="55.0" />
          </font>
       </Text>
       <Button fx:id="guiltyButton" layoutX="64.0" layoutY="439.0" mnemonicParsing="false" onAction="#onGuiltyAction" styleClass="outline-btn" stylesheets="@../css/style.css" text="GUILTY" AnchorPane.topAnchor="439.0">
          <font>
-            <Font name="04b03" size="23.0" />
+            <Font size="23.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Button>
       <Button fx:id="notGuiltyButton" layoutX="591.0" layoutY="439.0" mnemonicParsing="false" onAction="#onNotGuiltyAction" styleClass="outline-btn" stylesheets="@../css/style.css" text="INNOCENT" AnchorPane.topAnchor="439.0">
          <font>
-            <Font name="04b03" size="23.0" />
+            <Font size="23.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Button>
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="707.0" layoutY="540.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -38,14 +38,14 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Text fx:id="titleText1" fill="WHITE" layoutX="375.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⚖" textAlignment="CENTER" wrappingWidth="32.72705078125">
+      <Text fx:id="titleText1" fill="WHITE" layoutX="320.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE" textAlignment="CENTER" wrappingWidth="144.0">
          <font>
-            <Font name="04b03" size="35.0" />
+            <Font url="@../fonts/04B_03__.TTF" size="30.0" />
          </font>
       </Text>
       <Text fx:id="titleText2" fill="WHITE" layoutX="51.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The hammer of justice awaits to be served...">
          <font>
-            <Font name="04b03" size="26.0" />
+            <Font size="26.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
    </children>
