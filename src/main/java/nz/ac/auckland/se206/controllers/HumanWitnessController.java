@@ -214,11 +214,8 @@ public class HumanWitnessController {
                   client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
-              if (!formattedResponse.startsWith("Seymour:")) {
-                formattedResponse = "Seymour: " + formattedResponse;
-              }
 
-              ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
+              ChatMessage responseMsg = new ChatMessage("user", formattedResponse);
               ChatLog.addToLog(responseMsg);
               javafx.application.Platform.runLater(
                   () -> {
