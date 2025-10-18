@@ -5,6 +5,7 @@ import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -80,6 +81,7 @@ public class HumanWitnessController {
         || clickedImage.equals(boltFour)) {
       clickedImage.setDisable(true);
       clickedImage.setVisible(false);
+      updateBackCoverState();
     }
 
     // if its the back cover
@@ -168,6 +170,19 @@ public class HumanWitnessController {
                 GameState.onRoundExpired();
               }
             });
+
+    updateBackCoverState();
+  }
+
+  
+  private void updateBackCoverState() {
+    boolean allRemoved =
+        boltOne.isDisabled() && boltTwo.isDisabled() && boltThree.isDisabled() && boltFour.isDisabled();
+
+    // only show hand + accept hover/clicks after all bolts are gone
+    backCover.setCursor(allRemoved ? Cursor.HAND : Cursor.DEFAULT);
+    backCover.setMouseTransparent(!allRemoved); // ignores mouse before ready (cleanest UX)
+    // Alternatively: backCover.setDisable(!allRemoved);
   }
 
   private void appendChatMessage(ChatMessage msg) {
