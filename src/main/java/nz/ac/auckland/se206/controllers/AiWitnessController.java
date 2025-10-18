@@ -289,13 +289,13 @@ public class AiWitnessController {
   @FXML
   private void checkEnter(KeyEvent event) {
     if (event.getCode() == KeyCode.ENTER && !textField.getText().trim().isEmpty()) {
-      sendMessage(new ActionEvent());
+      onSendMessage(new ActionEvent());
       event.consume(); // prevent adding a new line to the text field
     }
   }
 
   @FXML
-  private void sendMessage(ActionEvent event) {
+  private void onSendMessage(ActionEvent event) {
     // check for text in the text field
     String message = textField.getText().trim();
     if (message.isEmpty()) {

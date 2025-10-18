@@ -71,7 +71,8 @@ public class AiDefendantController {
   private static final String startingText =
       "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
           + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
-          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve this puzzle!";
+          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve"
+          + " this puzzle!";
 
   /* AI defendant memory puzzle
     --------------
@@ -246,13 +247,13 @@ public class AiDefendantController {
   @FXML
   private void checkEnter(KeyEvent event) {
     if (event.getCode() == KeyCode.ENTER && !textField.getText().trim().isEmpty()) {
-      sendMessage(new ActionEvent());
+      onSendMessage(new ActionEvent());
       event.consume(); // prevent adding a new line to the text field
     }
   }
 
   @FXML
-  private void sendMessage(ActionEvent event) {
+  private void onSendMessage(ActionEvent event) {
     // check for text in the text field
     String message = textField.getText().trim();
     if (message.isEmpty()) {
