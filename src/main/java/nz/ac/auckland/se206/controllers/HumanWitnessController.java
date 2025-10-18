@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -34,6 +35,7 @@ public class HumanWitnessController {
   @FXML private TextField textField;
   @FXML private ImageView memoryscape;
   @FXML private Rectangle timerOutline;
+  @FXML private Label chatHelpLabel;
 
   // chat toggle
   @FXML private Rectangle toggleChat;
@@ -124,6 +126,7 @@ public class HumanWitnessController {
     TranslateTransition chatAreaTrans = new TranslateTransition();
     TranslateTransition textFieldTrans = new TranslateTransition();
     TranslateTransition sendButtonTrans = new TranslateTransition();
+    TranslateTransition labelTrans = new TranslateTransition();
     smallRectTrans.setNode(toggleChat);
     smallRectTrans.setByX(move); // distance node is moved
     largeRectTrans.setNode(chatCover);
@@ -134,10 +137,12 @@ public class HumanWitnessController {
     textFieldTrans.setByX(move);
     sendButtonTrans.setNode(sendButton);
     sendButtonTrans.setByX(move);
+    labelTrans.setNode(chatHelpLabel);
+    labelTrans.setByX(move);
 
     ParallelTransition parallel =
         new ParallelTransition(
-            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
+            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans, labelTrans);
     parallel.play();
 
     // add all transitions to parallel transitions
