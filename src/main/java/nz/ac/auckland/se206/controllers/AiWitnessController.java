@@ -26,15 +26,19 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-public class AiWitnessController {
-
+public class AiWitnessController extends ChatController{
+  // memory puzzle assets
   private static Image numZero = new Image("/images/memories/numbers/num_0.png");
   private static Image numOne = new Image("/images/memories/numbers/num_1.png");
   private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
   private static Image numThree = new Image("/images/memories/numbers/num_3.png");
   private static Image numFour = new Image("/images/memories/numbers/num_4.png");
+  
+  // memory puzzle data storage
   private static int count = 0;
   private static int movesLeft = 4;
+  
+  // nodes
   @FXML private Text timerText;
   @FXML private Button goBackButton;
   @FXML private TextArea chatTextArea;
