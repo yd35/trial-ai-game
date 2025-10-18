@@ -22,3 +22,11 @@
     -fx-scale-x: 1.02;
     -fx-scale-y: 1.02;
 }
+
+/* Hover on the whole tile (the StackPane) zooms the image */
+.zoom-parent:hover .zoom-image {
+  -fx-scale-x: 1.02;    /* tweak 1.04–1.10 to taste */
+  -fx-scale-y: 1.02;
+  -fx-cursor: hand;     /* pointer */
+  cursor: pointer;      /* linter-friendly */
+}

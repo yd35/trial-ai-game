@@ -26,14 +26,14 @@
                   <Insets />
                </VBox.margin>
             </Text>
-            <HBox prefHeight="455.0" prefWidth="800.0">
+            <HBox prefHeight="455.0" prefWidth="800.0" stylesheets="@../css/zoom.css">
                <children>
-                  <StackPane prefHeight="400.0">
+                  <StackPane prefHeight="400.0" styleClass="zoom-parent">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
                      <children>
-                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" styleClass="zoom-image" StackPane.alignment="TOP_CENTER">
                            <image>
                               <Image url="@../images/portraits/large/seymour_portrait.png" />
                            </image>
@@ -53,12 +53,12 @@
                         </Button>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="401.0" prefWidth="252.0">
+                  <StackPane prefHeight="401.0" prefWidth="252.0" styleClass="zoom-parent">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
                      <children>
-                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" styleClass="zoom-image" StackPane.alignment="TOP_CENTER">
                            <image>
                               <Image url="@../images/portraits/large/viridis_portrait.png" />
                            </image>
@@ -81,12 +81,12 @@
                         </Button>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="400.0">
+                  <StackPane prefHeight="400.0" styleClass="zoom-parent">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
                      <children>
-                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+                        <ImageView fitHeight="370.0" fitWidth="252.0" pickOnBounds="true" styleClass="zoom-image" StackPane.alignment="TOP_CENTER">
                            <image>
                               <Image url="@../images/portraits/large/oracle_portrait.png" />
                            </image>
