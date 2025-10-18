@@ -30,8 +30,8 @@ public class OpeningController {
 
   @FXML
   private void initialize() {
-    TextToSpeech.speak(
-        "The Democracy of Levin has unearthed the ruins of the Concordia civilisation.");
+    /*TextToSpeech.speak(
+        "The Democracy of Levin has unearthed the ruins of the Concordia civilisation.");*/
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
         // display the timer in minutes and seconds format

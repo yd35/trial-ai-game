@@ -15,11 +15,12 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MainMenuController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <VBox alignment="TOP_CENTER" layoutX="200.0" layoutY="142.0" prefHeight="563.0" prefWidth="800.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECIDE AI'S VERDICT">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="} THE TRIAL ROOM {" textAlignment="CENTER">
                <font>
-                  <Font size="48.0" />
+                  <Font size="55.0" url="@../fonts/04B_03__.TTF" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -37,19 +38,19 @@
                               <Image url="@../images/portraits/large/seymour_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitnessAction" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN WITNESS" StackPane.alignment="BOTTOM_CENTER">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
                            </StackPane.margin>
                         </Text>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHumanWitnessAction" opacity="0.01" prefHeight="370.0" prefWidth="252.0" StackPane.alignment="TOP_CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </StackPane>
                   <StackPane prefHeight="401.0" prefWidth="252.0">
@@ -62,6 +63,14 @@
                               <Image url="@../images/portraits/large/viridis_portrait.png" />
                            </image>
                         </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AI DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
+                           <font>
+                              <Font size="24.0" url="@../fonts/04B_03__.TTF" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" />
+                           </StackPane.margin>
+                        </Text>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiDefendantAction" opacity="0.01">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -70,14 +79,6 @@
                               <Insets />
                            </StackPane.margin>
                         </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI DEFENDANT" StackPane.alignment="BOTTOM_CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="20.0" />
-                           </StackPane.margin>
-                        </Text>
                      </children>
                   </StackPane>
                   <StackPane prefHeight="400.0">
@@ -90,37 +91,43 @@
                               <Image url="@../images/portraits/large/oracle_portrait.png" />
                            </image>
                         </ImageView>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitnessAction" opacity="0.01">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AI WITNESS" StackPane.alignment="BOTTOM_CENTER">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AI WITNESS" StackPane.alignment="BOTTOM_CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                            </font>
                            <StackPane.margin>
                               <Insets bottom="20.0" />
                            </StackPane.margin>
                         </Text>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAiWitnessAction" opacity="0.01">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </StackPane>
                </children>
             </HBox>
 
             <!-- Fixed-height container so layout never shifts; only visibility toggles -->
-            <StackPane alignment="CENTER" prefHeight="90.0">
+            <StackPane alignment="CENTER" prefHeight="81.0" prefWidth="800.0">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
 
-               <Button fx:id="judgeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onJudge" prefHeight="51.0" prefWidth="120.0" text="JUDGE!" StackPane.alignment="CENTER">
+               <Button fx:id="judgeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onJudge" prefHeight="51.0" prefWidth="120.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="JUDGE!" StackPane.alignment="CENTER">
                   <font>
-                     <Font size="24.0" />
+                     <Font size="24.0" url="@../fonts/04B_03__.TTF" />
                   </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
                </Button>
             </StackPane>
          </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
       </VBox>
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
@@ -129,9 +136,9 @@
          </font>
       </Text>
 
-      <Text fx:id="judgeWarning" layoutX="167.0" layoutY="573.0" style="-fx-fill: #d32f2f;" text="*You must ask at least one question to all three participants before judging.">
+      <Text fx:id="judgeWarning" layoutX="100.0" layoutY="579.0" style="-fx-fill: #d32f2f;" text="*You must ask at least one question to all three participants before judging.">
          <font>
-            <Font size="14.0" />
+            <Font size="14.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
    </children>
