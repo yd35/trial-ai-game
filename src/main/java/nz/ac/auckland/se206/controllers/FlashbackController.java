@@ -35,12 +35,12 @@ public class FlashbackController extends TimedController {
         + " ceased."
   };
   private static final String[] humanWitnessCaptions = {
-    "I’ve dedicated my life to this line of work, and I take pride in doing it right. When they"
-        + " brought in VIRIDIS with the directive “maximise efficiency and minimise waste,” I’ll"
+    "I've dedicated my life to this line of work, and I take pride in doing it right. When they"
+        + " brought in VIRIDIS with the directive \"maximise efficiency and minimise waste,\" I'll"
         + " admit I had my concerns.",
     "When the contamination hit, I immediately knew the answers had to be with the machine, an AI"
         + " cannot lie after all.",
-    "That day, I went straight to the lab where it resided… Expecting to find the truth."
+    "That day, I went straight to the lab where it resided... Expecting to find the truth."
   };
 
   @FXML private ImageView imageView;

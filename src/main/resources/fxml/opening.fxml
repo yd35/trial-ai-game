@@ -33,9 +33,9 @@
                   <Insets top="2.0" />
                </VBox.margin>
             </ImageView>
-            <Text fx:id="contextText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="The Democracy of Levin has unearthed the ruins of the Concordia civilisation. A technologically advanced society who lived long ago. Their technology includes highly intelligent AI, able to perform any tasks given to them without fail, or so it would seem. One of these AIs, Viridis, is put in charge of Levin's water system, until a contamination causes an illness. Viridis is swiftly prosecuted. Your role as the adjudicator is to decide whether Viridis is guilty or not, with knowledge gained from two witnesses and Viridis itself. " textAlignment="CENTER" wrappingWidth="700.0">
+            <Text fx:id="contextText" fill="WHITE" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are the adjudicator in the Democracy of Levin. After unearthing the ruins of the technologically advanced Concordia civilisation, one of their highly intelligent AIs, VIRIDIS, was put in charge of Levin's water system. A contamination that caused widespread illness led to VIRIDIS's swift prosecution. Your role is to decide whether VIRIDIS is guilty or not, based on the knowledge gained from two witnesses and Viridis itself." textAlignment="CENTER" wrappingWidth="700.0">
                <font>
-                  <Font size="17.0" url="@../fonts/04B_03__.TTF" />
+                  <Font name="04b03" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets top="12.0" />
