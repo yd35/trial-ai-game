@@ -1,19 +1,31 @@
-@font-face {
-  font-family: 'Bangalore';
-  src: '/fonts/Bangalore.tff';
+/* apply to TextField + TextArea that have Style Class = chat-box */
+.text-input.chat-box {
+    /* text color */
+    -fx-text-fill: white;              color: white;
+
+    /* backgrounds */
+    -fx-background-color: black;       background-color: black;
+    -fx-control-inner-background: black;
+
+    /* 5px white border, square corners */
+    -fx-border-color: white;           border-color: white;
+    -fx-border-width: 5;               border-width: 5px;
+    -fx-background-radius: 0;          -fx-border-radius: 0;  border-radius: 0;
+    -fx-background-insets: 0;          -fx-border-insets: 0;
+
+    /* caret / selection / prompt */
+    -fx-caret-color: white;            caret-color: white;
+    -fx-highlight-fill: white;         -fx-highlight-text-fill: black;
+    -fx-prompt-text-fill: rgba(255,255,255,0.55);
+
+    /* remove blue focus glow */
+    -fx-focus-color: white;
+    -fx-faint-focus-color: transparent;
 }
 
-@font-face {
-  font-family: '04b03';
-  src: '/fonts/04B_03__.tff';
-}
-
-.label {
-  -fx-font-family: "04b03";
-  -fx-font-size: 12px;
-}
-
-#sendButton {
-  -fx-font-size: 12px;
-  -fx-font-family: "04b03";
+/* make TextArea's inner region black too */
+.text-area.chat-box .scroll-pane,
+.text-area.chat-box .scroll-pane .viewport,
+.text-area.chat-box .content {
+    -fx-background-color: black;       background-color: black;
 }

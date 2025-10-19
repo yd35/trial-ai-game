@@ -8,6 +8,7 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import javafx.scene.Cursor; 
 
 public class HumanWitnessController extends ChatController {
   // memory elements
@@ -44,6 +45,7 @@ public class HumanWitnessController extends ChatController {
         || clickedImage.equals(boltFour)) {
       clickedImage.setDisable(true);
       clickedImage.setVisible(false);
+      updateBackCoverState();
     }
 
     // if its the back cover
@@ -83,5 +85,18 @@ public class HumanWitnessController extends ChatController {
                 GameState.onRoundExpired();
               }
             });
+
+    updateBackCoverState();
+  }
+
+  
+  private void updateBackCoverState() {
+    boolean allRemoved =
+        boltOne.isDisabled() && boltTwo.isDisabled() && boltThree.isDisabled() && boltFour.isDisabled();
+
+    // only show hand + accept hover/clicks after all bolts are gone
+    backCover.setCursor(allRemoved ? Cursor.HAND : Cursor.DEFAULT);
+    backCover.setMouseTransparent(!allRemoved); // ignores mouse before ready (cleanest UX)
+    // Alternatively: backCover.setDisable(!allRemoved);
   }
 }
