@@ -71,7 +71,7 @@
          <font>
             <Font size="16.0" url="@../fonts/04B_03__.TTF" />
          </font></TextArea>
-      <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1126.0" layoutY="478.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="46.0" prefWidth="73.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send" AnchorPane.rightAnchor="-399.5999999999999">
+      <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1126.0" layoutY="478.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="46.0" prefWidth="73.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send" AnchorPane.rightAnchor="-399.5999999999999">
          <font>
             <Font size="16.0" url="@../fonts/04B_03__.TTF" />
          </font></Button>
