@@ -43,7 +43,7 @@ public class FlashbackController {
         + " cannot lie after all.",
     "That day, I went straight to the lab where it resided… Expecting to find the truth."
   };
-  
+
   @FXML private ImageView imageView;
   @FXML private Text counterLabel; // note: menu.fxml uses Text, not Label (not a problem)
   @FXML private Label captions;
@@ -57,10 +57,8 @@ public class FlashbackController {
   private List<String> participantCaptions = new ArrayList<>();
   private Participant who;
 
-
   @FXML
   private void initialize() {
-
     SharedTimer timer = SharedTimer.getInstance();
     timerText.setText(
         // display the timer in minutes and seconds format
@@ -76,7 +74,7 @@ public class FlashbackController {
               }
             });
 
-    who = GameState.get().currentFlashback;
+    who = GameState.getCurrentFlashback();
     if (who == null) {
       who = Participant.AI_DEFENDANT; // fallback
     }

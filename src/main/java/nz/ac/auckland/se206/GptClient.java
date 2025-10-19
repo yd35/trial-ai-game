@@ -25,9 +25,15 @@ public class GptClient {
       int maxTokens)
       throws ApiProxyException {
     ChatCompletionRequest req = new ChatCompletionRequest(config);
+    int totalMessages = 1;
     req.addMessage(system.getRole(), system.getContent());
     for (ChatMessage m : messages) {
+      if(totalMessages%5 ==0){
+        //feed in system prompt every 5 messages to avoid context loss
+        req.addMessage(system.getRole(), system.getContent());
+      }
       req.addMessage(m.getRole(), m.getContent());
+      totalMessages++;
     }
     // LLM configuration
     req.setModel(ChatCompletionRequest.Model.GPT_4_1_NANO);
