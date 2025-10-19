@@ -64,7 +64,7 @@ public class HumanWitnessController extends ChatController {
   }
 
   public void initialize() throws ApiProxyException {
-
+    participantName = "Seymour";
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));
 
     chatTextArea.appendText(startingText + "\n\n");
