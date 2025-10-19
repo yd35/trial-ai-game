@@ -88,12 +88,24 @@ abstract class ChatController extends TimedController {
     labelTrans.setByX(move);
 
     ParallelTransition parallel = new ParallelTransition();
-    if (toggleChat != null) { parallel.getChildren().add(smallRectTrans); }
-    if (chatCover != null) { parallel.getChildren().add(largeRectTrans); }
-    if (chatTextArea != null) { parallel.getChildren().add(chatAreaTrans); }
-    if (textField != null) { parallel.getChildren().add(textFieldTrans); }
-    if (sendButton != null) { parallel.getChildren().add(sendButtonTrans); }
-    if (chatHelpLabel != null) { parallel.getChildren().add(labelTrans); }
+    if (toggleChat != null) {
+      parallel.getChildren().add(smallRectTrans);
+    }
+    if (chatCover != null) {
+      parallel.getChildren().add(largeRectTrans);
+    }
+    if (chatTextArea != null) {
+      parallel.getChildren().add(chatAreaTrans);
+    }
+    if (textField != null) {
+      parallel.getChildren().add(textFieldTrans);
+    }
+    if (sendButton != null) {
+      parallel.getChildren().add(sendButtonTrans);
+    }
+    if (chatHelpLabel != null) {
+      parallel.getChildren().add(labelTrans);
+    }
     parallel.play();
 
     // add all transitions to parallel transitions

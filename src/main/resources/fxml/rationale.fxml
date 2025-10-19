@@ -29,17 +29,17 @@
     <!-- Chat display -->
     <TextArea fx:id="chatTextArea" editable="false" styleClass="chat-box" stylesheets="@../css/chat.css" wrapText="true" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="80.0">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="16.0" />
+            <Font size="16.0" url="@../fonts/04B_03__.TTF" />
          </font></TextArea>
 
     <!-- Input row -->
     <HBox spacing="10" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
       <children>
-        <TextField fx:id="textField" onAction="#sendMessage" prefHeight="52.0" prefWidth="561.0" promptText="Type your rationale..." styleClass="chat-box" stylesheets="@../css/chat.css" HBox.hgrow="ALWAYS">
+        <TextField fx:id="textField" onAction="#onSendMessage" prefHeight="52.0" prefWidth="561.0" promptText="Type your rationale..." styleClass="chat-box" stylesheets="@../css/chat.css" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="16.0" url="@../fonts/04B_03__.TTF" />
                </font></TextField> <!-- Enter will fire send -->
-        <Button fx:id="sendButton" onAction="#sendMessage" prefHeight="52.0" prefWidth="83.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send">
+        <Button fx:id="sendButton" onAction="#onSendMessage" prefHeight="52.0" prefWidth="83.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send">
                <font>
                   <Font size="16.0" url="@../fonts/04B_03__.TTF" />
                </font></Button>

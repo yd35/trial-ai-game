@@ -92,9 +92,10 @@ public class MainMenuController extends TimedController {
   }
 
   public void initialize() {
+    // start timer and update judge button state
     startTimer();
     updateJudgeState();
-
+    // check for scene changes to update judge button state when returning to main menu
     root.sceneProperty()
         .addListener(
             (obs, oldScene, newScene) -> {
