@@ -22,7 +22,7 @@ import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
-abstract class ChatController extends TimedController{
+abstract class ChatController extends TimedController {
   // if pulled = true, that means chat cover is pulled out
   // if pulled = false, that means chat cover is not pulled out
   private static boolean pulled = false;

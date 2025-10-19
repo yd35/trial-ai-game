@@ -10,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
-import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class AiDefendantController extends ChatController {
@@ -131,6 +130,7 @@ public class AiDefendantController extends ChatController {
     }
   }
 
+  @Override
   public void initialize() throws ApiProxyException {
     participantName = "VIRIDIS";
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));

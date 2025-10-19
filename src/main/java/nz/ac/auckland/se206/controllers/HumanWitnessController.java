@@ -7,7 +7,6 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
-import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class HumanWitnessController extends ChatController {
@@ -65,6 +64,7 @@ public class HumanWitnessController extends ChatController {
     }
   }
 
+  @Override
   public void initialize() throws ApiProxyException {
     participantName = "Seymour";
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("humanWitness"));

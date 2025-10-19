@@ -21,7 +21,7 @@ import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 
-public class RationaleController extends TimedController{
+public class RationaleController extends TimedController {
 
   /** Fallback: reflectively try common shapes if the direct call isn’t present. */
   private static String extractFirstContentFallback(ChatCompletionResult res) {
