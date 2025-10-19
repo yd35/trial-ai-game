@@ -2,33 +2,18 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
-import nz.ac.auckland.se206.GptClient;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-public class AiDefendantController extends ChatController{
+public class AiDefendantController extends ChatController {
   // memory puzzle assets
   private static Image numOne = new Image("/images/memories/numbers/num_1.png");
   private static Image numTwo = new Image("/images/memories/numbers/num_2.png");
