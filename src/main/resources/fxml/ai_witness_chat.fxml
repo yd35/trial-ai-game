@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.AiWitnessController">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/zoombtn.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.AiWitnessController">
    <children>
       <ImageView fx:id="memoryscape" fitHeight="600.0" fitWidth="750.0" pickOnBounds="true">
          <image>
@@ -54,30 +55,102 @@
             <Image url="@../images/memories/oracle_memory/graph_blocker.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="resetPuzzleButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="570.0" layoutY="494.0" onMouseClicked="#resetPuzzle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="50.0" AnchorPane.bottomAnchor="58.0" />
-      <Rectangle fx:id="subtractOneButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="395.0" layoutY="484.80000000000007" onMouseClicked="#subtractOne" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="45.0" AnchorPane.bottomAnchor="58.0" />
-      <Rectangle fx:id="addThreeButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" layoutX="522.0" layoutY="481.4" onMouseClicked="#addThree" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="45.0" AnchorPane.bottomAnchor="58.0" />
+      <AnchorPane layoutX="403.0" layoutY="483.20001220703125" prefHeight="64.0" prefWidth="38.0" styleClass="zoom-parent" AnchorPane.bottomAnchor="52.0">
+         <children>
+            <ImageView fx:id="minusOneImg" fitHeight="64.0" fitWidth="39.0" pickOnBounds="true" styleClass="zoom-button">
+               <image>
+                  <Image url="@../images/memories/oracle_memory/minusOneImage.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="subtractOneButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="58.0" onMouseClicked="#subtractOne" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="39.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="523.0" layoutY="483.20001220703125" prefHeight="48.0" prefWidth="45.0" styleClass="zoom-parent" AnchorPane.bottomAnchor="52.0">
+         <children>
+            <ImageView fx:id="threeImg" fitHeight="64.0" fitWidth="45.0" pickOnBounds="true" styleClass="zoom-button">
+               <image>
+                  <Image url="@../images/memories/oracle_memory/threeImage.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="addThreeButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" onMouseClicked="#addThree" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="570.0" layoutY="493.6000061035156" prefHeight="48.0" prefWidth="50.0" styleClass="zoom-parent" AnchorPane.bottomAnchor="52.0">
+         <children>
+            <ImageView fx:id="resetImg" fitHeight="64.0" fitWidth="50.0" pickOnBounds="true" styleClass="zoom-button">
+               <image>
+                  <Image url="@../images/memories/oracle_memory/resetImage.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="resetPuzzleButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" onMouseClicked="#resetPuzzle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
       <ImageView fx:id="errorGraph" fitHeight="270.0" fitWidth="430.0" layoutX="63.0" layoutY="189.0" pickOnBounds="true" visible="false" AnchorPane.leftAnchor="177.0" AnchorPane.topAnchor="138.0">
          <image>
             <Image url="@../images/memories/oracle_memory/graph_error.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="chatCover" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="600.0" layoutX="755.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="590.0" AnchorPane.rightAnchor="-541.0" />
-      <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="120.0" layoutX="723.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0" />
-      <TextArea fx:id="chatTextArea" editable="false" layoutX="1289.0" layoutY="26.0" prefHeight="426.0" prefWidth="400.0" wrapText="true" AnchorPane.rightAnchor="-400.0" />
-      <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1638.0" layoutY="474.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="30.0" prefWidth="50.0" text="Send" AnchorPane.rightAnchor="-399.4000000000001" />
-      <TextField fx:id="textField" layoutX="800.0" layoutY="474.0" onKeyPressed="#checkEnter" prefHeight="30.0" prefWidth="330.0" AnchorPane.rightAnchor="-332.0" />
-      <Label fx:id="chatHelpLabel" layoutX="801.0" layoutY="535.0" prefHeight="48.0" prefWidth="331.0" text="*Click the input box to type and press enter or click send to converse" textAlignment="CENTER" textFill="LIME" wrapText="true">
+
+      <!-- MINIMAL CHANGES START: make chat match Human Witness -->
+
+      <!-- Chat panel background to black (same look as Human Witness) -->
+      <Rectangle fx:id="chatCover" arcHeight="5.0" arcWidth="5.0" fill="black" height="600.0" layoutX="755.0" stroke="#e1e1e1" strokeType="INSIDE" strokeWidth="0.0" width="590.0" AnchorPane.rightAnchor="-541.0" />
+
+      <!-- Pull tab (add hand cursor like Human Witness) -->
+      <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="120.0" layoutX="723.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0">
+         <cursor><Cursor fx:constant="HAND" /></cursor>
+      </Rectangle>
+
+      <!-- Chat log area with chat.css + 04B_03 font -->
+      <TextArea fx:id="chatTextArea" editable="false" layoutX="810.0" layoutY="21.0" prefHeight="449.0" prefWidth="411.0" styleClass="chat-box" stylesheets="@../css/chat.css" wrapText="true" AnchorPane.rightAnchor="-400.0">
+         <font>
+            <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </TextArea>
+
+      <!-- Input field styled like Human Witness -->
+      <TextField fx:id="textField" layoutX="789.0" layoutY="478.0" onKeyPressed="#checkEnter" prefHeight="46.0" prefWidth="331.0" styleClass="chat-box" stylesheets="@../css/chat.css" AnchorPane.rightAnchor="-320.20000000000005">
+         <font>
+            <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </TextField>
+
+      <!-- Send button styled like Human Witness (green outline) -->
+      <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1126.0" layoutY="478.0" onAction="#onSendMessage" prefHeight="46.0" prefWidth="73.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send" AnchorPane.rightAnchor="-399.4000000000001">
+         <font>
+            <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </Button>
+
+      <!-- Help label (unchanged except font already matches) -->
+      <Label fx:id="chatHelpLabel" layoutX="788.0" layoutY="528.0" prefHeight="70.0" prefWidth="331.0" text="*Click the input box to type and press enter or click send to converse with ORACLE" textAlignment="CENTER" textFill="LIME" wrapText="true">
          <font>
             <Font size="16.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Label>
+
+      <!-- MINIMAL CHANGES END -->
+
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Button fx:id="goBackButton" layoutX="33.0" layoutY="557.0" maxWidth="151.0" mnemonicParsing="false" onAction="#onGoBack" prefHeight="35.0" text="Go Back" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="25.0" />
+      <!-- Make Go Back match Human Witness (green outline) -->
+      <Button fx:id="goBackButton" layoutX="33.0" layoutY="557.0" maxWidth="151.0" mnemonicParsing="false" onAction="#onGoBack" prefHeight="35.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Go Back" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="25.0">
+         <font>
+            <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
