@@ -11,19 +11,19 @@ import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class HumanWitnessController extends ChatController {
-  // memory elements
-  @FXML private ImageView boltOne;
-  @FXML private ImageView boltTwo;
-  @FXML private ImageView boltThree;
-  @FXML private ImageView boltFour;
-  @FXML private ImageView backCover;
-
   private static final String startingText =
       "Seymour: Once I got into that lab, the only thing standing between me and the proof of"
           + " VIRIDIS's heinous acts was that hatch on its back. Removing it is simple, really, and"
           + " it's the only way to get at the logs. We just have to take off the four bolts, and"
           + " the whole thing comes right off. That's where we'll find the truth of what that"
           + " machine did.";
+
+  // memory elements
+  @FXML private ImageView boltOne;
+  @FXML private ImageView boltTwo;
+  @FXML private ImageView boltThree;
+  @FXML private ImageView boltFour;
+  @FXML private ImageView backCover;
 
   /* Human witness memory puzzle
     --------------
@@ -99,6 +99,5 @@ public class HumanWitnessController extends ChatController {
     // only show hand + accept hover/clicks after all bolts are gone
     backCover.setCursor(allRemoved ? Cursor.HAND : Cursor.DEFAULT);
     backCover.setMouseTransparent(!allRemoved); // ignores mouse before ready (cleanest UX)
-    // Alternatively: backCover.setDisable(!allRemoved);
   }
 }

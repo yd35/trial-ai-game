@@ -25,6 +25,12 @@ public class AiDefendantController extends ChatController {
   private static ArrayList<Integer> answer =
       new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
 
+  private static final String startingText =
+      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
+          + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
+          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve"
+          + " this puzzle!";
+
   // memory puzle nodes
   @FXML private Rectangle padOne;
   @FXML private Rectangle padTwo;
@@ -36,12 +42,6 @@ public class AiDefendantController extends ChatController {
   @FXML private ImageView passThree;
   @FXML private ImageView passFour;
   @FXML private ImageView passFive;
-
-  private static final String startingText =
-      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
-          + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
-          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve"
-          + " this puzzle!";
 
   /* AI defendant memory puzzle
     --------------
