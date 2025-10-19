@@ -87,4 +87,9 @@ public class HumanWitnessController extends ChatController {
     backCover.setCursor(allRemoved ? Cursor.HAND : Cursor.DEFAULT);
     backCover.setMouseTransparent(!allRemoved); // ignores mouse before ready (cleanest UX)
   }
+
+  @Override
+  protected GameState.Participant getParticipant() {
+    return GameState.Participant.HUMAN_WITNESS;
+  }
 }

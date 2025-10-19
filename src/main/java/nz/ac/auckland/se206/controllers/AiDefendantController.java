@@ -41,6 +41,11 @@ public class AiDefendantController extends ChatController {
   @FXML private ImageView passThree;
   @FXML private ImageView passFour;
   @FXML private ImageView passFive;
+  @FXML private ImageView oneBtn;
+  @FXML private ImageView twoBtn;
+  @FXML private ImageView threeBtn;
+  @FXML private ImageView fourBtn;
+
 
   /* AI defendant memory puzzle
     --------------
@@ -97,6 +102,13 @@ public class AiDefendantController extends ChatController {
         img.setVisible(false);
       }
 
+      // hide the four overlay number images
+      if (oneBtn != null)  oneBtn.setVisible(false);
+      if (twoBtn != null)  twoBtn.setVisible(false);
+      if (threeBtn != null) threeBtn.setVisible(false);
+      if (fourBtn != null) fourBtn.setVisible(false);
+
+
       // PUZZLE COMPLETE, add message to chat log
       ChatMessage complete =
           new ChatMessage("assistant", "!<DEFENDANT VIRIDIS COMPLETED INTERACTION>!");
@@ -138,5 +150,10 @@ public class AiDefendantController extends ChatController {
     chatTextArea.appendText(startingText + "\n\n");
 
     startTimer();
+  }
+
+  @Override
+  protected GameState.Participant getParticipant() {
+    return GameState.Participant.AI_DEFENDANT;
   }
 }

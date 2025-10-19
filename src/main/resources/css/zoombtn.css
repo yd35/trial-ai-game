@@ -1,0 +1,22 @@
+/* Apply to ImageView via Style Class = zoom-button
+   Wrap each image + click target in a parent with Style Class = zoom-parent */
+
+/* base */
+.zoom-button {
+    -fx-scale-x: 1.00;
+    -fx-scale-y: 1.00;
+    -fx-cursor: hand;   /* pointer */
+    cursor: pointer;    /* linter-friendly duplicate */
+}
+
+/* hover the whole tile (parent) -> enlarge the image */
+.zoom-parent:hover .zoom-button {
+    -fx-scale-x: 1.07;
+    -fx-scale-y: 1.07;
+}
+
+/* while mouse is held down inside the parent -> reset to 1.00 */
+.zoom-parent:pressed .zoom-button {
+    -fx-scale-x: 1.00;
+    -fx-scale-y: 1.00;
+}

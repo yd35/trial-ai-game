@@ -184,4 +184,9 @@ public class AiWitnessController extends ChatController {
 
     startTimer();
   }
+
+  @Override
+  protected GameState.Participant getParticipant() {
+    return GameState.Participant.AI_WITNESS;
+  }
 }
