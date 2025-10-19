@@ -28,8 +28,8 @@ public class GptClient {
     int totalMessages = 1;
     req.addMessage(system.getRole(), system.getContent());
     for (ChatMessage m : messages) {
-      if(totalMessages%5 ==0){
-        //feed in system prompt every 5 messages to avoid context loss
+      if (totalMessages % 5 == 0) {
+        // feed in system prompt every 5 messages to avoid context loss
         req.addMessage(system.getRole(), system.getContent());
       }
       req.addMessage(m.getRole(), m.getContent());

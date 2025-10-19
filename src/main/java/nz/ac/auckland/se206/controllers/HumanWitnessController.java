@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
@@ -8,7 +9,6 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-import javafx.scene.Cursor; 
 
 public class HumanWitnessController extends ChatController {
   // memory elements
@@ -89,10 +89,12 @@ public class HumanWitnessController extends ChatController {
     updateBackCoverState();
   }
 
-  
   private void updateBackCoverState() {
     boolean allRemoved =
-        boltOne.isDisabled() && boltTwo.isDisabled() && boltThree.isDisabled() && boltFour.isDisabled();
+        boltOne.isDisabled()
+            && boltTwo.isDisabled()
+            && boltThree.isDisabled()
+            && boltFour.isDisabled();
 
     // only show hand + accept hover/clicks after all bolts are gone
     backCover.setCursor(allRemoved ? Cursor.HAND : Cursor.DEFAULT);

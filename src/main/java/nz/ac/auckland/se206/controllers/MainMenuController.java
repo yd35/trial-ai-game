@@ -60,7 +60,7 @@ public class MainMenuController {
     if (!seen) {
       // mark as seen and go to flashback
       gs.flashbackShown.put(p, true);
-      GameState.setCurrentFlashback(p);// gs.currentFlashback = p;
+      GameState.setCurrentFlashback(p); // gs.currentFlashback = p;
       App.setRootFresh("flashback");
     } else {
       // go directly to chat
