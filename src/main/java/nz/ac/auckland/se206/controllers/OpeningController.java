@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 
-public class OpeningController {
+public class OpeningController extends TimedController{
   @FXML private Text titleText;
   @FXML private Text contextText;
   @FXML private Text timeLimitText;
@@ -31,19 +31,6 @@ public class OpeningController {
   private void initialize() {
     /*TextToSpeech.speak(
     "The Democracy of Levin has unearthed the ruins of the Concordia civilisation.");*/
-    SharedTimer timer = SharedTimer.getInstance();
-    timerText.setText(
-        // display the timer in minutes and seconds format
-        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
-    timer
-        .secondsProperty()
-        .addListener(
-            (obs, oldVal, newVal) -> {
-              timerText.setText(
-                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
-              if (newVal.intValue() <= 0) {
-                GameState.onRoundExpired();
-              }
-            });
+    startTimer();
   }
 }
