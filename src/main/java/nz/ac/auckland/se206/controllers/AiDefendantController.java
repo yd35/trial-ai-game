@@ -41,6 +41,11 @@ public class AiDefendantController extends ChatController {
   @FXML private ImageView passThree;
   @FXML private ImageView passFour;
   @FXML private ImageView passFive;
+  @FXML private ImageView oneBtn;
+  @FXML private ImageView twoBtn;
+  @FXML private ImageView threeBtn;
+  @FXML private ImageView fourBtn;
+
 
   /* AI defendant memory puzzle
     --------------
@@ -96,6 +101,13 @@ public class AiDefendantController extends ChatController {
       for (ImageView img : passView) {
         img.setVisible(false);
       }
+
+      // hide the four overlay number images
+      if (oneBtn != null)  oneBtn.setVisible(false);
+      if (twoBtn != null)  twoBtn.setVisible(false);
+      if (threeBtn != null) threeBtn.setVisible(false);
+      if (fourBtn != null) fourBtn.setVisible(false);
+
 
       // PUZZLE COMPLETE, add message to chat log
       ChatMessage complete =
