@@ -11,12 +11,12 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <Text fx:id="titleText" fill="WHITE" layoutX="209.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU WIN! :D" textAlignment="CENTER" wrappingWidth="382.53668212890625">
          <font>
-            <Font name="04b03" size="65.0" />
+            <Font url="@../fonts/04B_03__.TTF" size="65.0" />
          </font>
       </Text>
       <Button fx:id="playAgainButton" layoutX="323.0" layoutY="514.0" mnemonicParsing="false" onAction="#onPlayAgain" styleClass="outline-btn" text="PLAY AGAIN">
          <font>
-            <Font name="04b03" size="20.0" />
+            <Font url="@../fonts/04B_03__.TTF" size="20.0" />
          </font></Button>
    </children>
 </AnchorPane>
