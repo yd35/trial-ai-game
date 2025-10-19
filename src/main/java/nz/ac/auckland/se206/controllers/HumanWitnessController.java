@@ -71,20 +71,7 @@ public class HumanWitnessController extends ChatController {
 
     chatTextArea.appendText(startingText + "\n\n");
 
-    SharedTimer timer = SharedTimer.getInstance();
-    timerText.setText(
-        // display the timer in minutes and seconds format
-        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
-    timer
-        .secondsProperty()
-        .addListener(
-            (obs, oldVal, newVal) -> {
-              timerText.setText(
-                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
-              if (newVal.intValue() <= 0) {
-                GameState.onRoundExpired();
-              }
-            });
+    startTimer();
 
     updateBackCoverState();
   }

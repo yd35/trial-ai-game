@@ -9,9 +9,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.SharedTimer;
 
-public class OpeningController extends TimedController{
+public class OpeningController extends TimedController {
   @FXML private Text titleText;
   @FXML private Text contextText;
   @FXML private Text timeLimitText;
