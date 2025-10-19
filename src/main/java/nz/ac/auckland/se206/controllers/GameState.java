@@ -13,10 +13,29 @@ public final class GameState {
     HUMAN_WITNESS
   }
 
+  // Has the first-time flashback already been shown for each participant?
+  public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
+  // Has the user chatted with each participant?
+  public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
+
+  // Who’s flashback should the single FlashbackController display right now?
+  private static Participant currentFlashback = null;
+
+  /** Set true when the 5-minute round expires. */
+  private static boolean roundExpired = false;
+
   private static final GameState I = new GameState();
 
   public static GameState get() {
     return I;
+  }
+
+  public static void setCurrentFlashback(Participant participant) {
+    currentFlashback = participant;
+  }
+
+  public static Participant getCurrentFlashback() {
+    return currentFlashback;
   }
 
   public static void markChatted(Participant p) {
@@ -35,15 +54,14 @@ public final class GameState {
   // called when the 5-minute timer hits zero
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
-    // GameState gs = GameState.get();
 
-    if (GameState.roundExpired == true) {
+    if (roundExpired == true) {
       App.setRoot(AppUi.LOSE);
       return;
     }
-    GameState.roundExpired = true;
+    roundExpired = true;
 
-    if (!GameState.allChatted()) {
+    if (allChatted()) {
       // Player did not chat all three → immediate game over
       App.setRoot(AppUi.LOSE);
     } else {
@@ -61,27 +79,8 @@ public final class GameState {
       gs.flashbackShown.put(p, false);
       gs.chatted.put(p, false);
     }
-    GameState.currentFlashback = null;
-    GameState.roundExpired = false;
-  }
-
-  // Has the first-time flashback already been shown for each participant?
-  public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
-  // Has the user chatted with each participant?
-  public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
-
-  // Who’s flashback should the single FlashbackController display right now?
-  private static Participant currentFlashback = null;
-
-  /** Set true when the 5-minute round expires. */
-  private static boolean roundExpired = false;
-
-  public static void setCurrentFlashback(Participant participant) {
-    currentFlashback = participant;
-  }
-
-  public static Participant getCurrentFlashback() {
-    return currentFlashback;
+    currentFlashback = null;
+    roundExpired = false;
   }
 
   private GameState() {
