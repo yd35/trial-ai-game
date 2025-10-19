@@ -35,7 +35,7 @@
             </ImageView>
             <Text fx:id="contextText" fill="WHITE" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are the adjudicator in the Democracy of Levin. After unearthing the ruins of the technologically advanced Concordia civilisation, one of their highly intelligent AIs, VIRIDIS, was put in charge of Levin's water system. A contamination that caused widespread illness led to VIRIDIS's swift prosecution. Your role is to decide whether VIRIDIS is guilty or not, based on the knowledge gained from two witnesses and Viridis itself." textAlignment="CENTER" wrappingWidth="700.0">
                <font>
-                  <Font name="04b03" size="18.0" />
+                  <Font url="@../fonts/04B_03__.TTF" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets top="12.0" />
