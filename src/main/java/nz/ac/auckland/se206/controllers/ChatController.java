@@ -44,6 +44,7 @@ abstract class ChatController {
 
   protected GptClient client;
   protected ChatMessage systemPrompt;
+  protected String participantName; // store participant's name and is set during initialization
 
   @FXML
   private void onGoBack(ActionEvent event) {
@@ -139,8 +140,8 @@ abstract class ChatController {
                   client.runOnce(systemPrompt, ChatLog.getLog(), 1, 0.5, 1.0, 50);
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
-              if (!formattedResponse.startsWith("ORACLE:")) {
-                formattedResponse = "ORACLE: " + formattedResponse;
+              if (!formattedResponse.startsWith(participantName + ": ")) {
+                formattedResponse =  participantName + ": " + formattedResponse;
               }
 
               ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);

@@ -177,7 +177,7 @@ public class AiWitnessController extends ChatController {
   }
 
   public void initialize() throws ApiProxyException {
-
+    participantName = "ORACLE";
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiWitness"));
 
     chatTextArea.appendText(startingText + "\n\n");

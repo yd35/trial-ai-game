@@ -132,7 +132,7 @@ public class AiDefendantController extends ChatController {
   }
 
   public void initialize() throws ApiProxyException {
-
+    participantName = "VIRIDIS";
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
 
     chatTextArea.appendText(startingText + "\n\n");
