@@ -10,7 +10,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 
-public class JudgeController {
+public class JudgeController extends TimedController {
   @FXML private Text timerText;
   @FXML private Rectangle timerOutline;
   @FXML private Text titleText;
@@ -33,21 +33,6 @@ public class JudgeController {
 
   @FXML
   private void initialize() {
-
-    SharedTimer timer = SharedTimer.getInstance();
-    timerText.setText(
-        // display the timer in minutes and seconds format
-        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
-    timer
-        .secondsProperty()
-        .addListener(
-            (obs, oldVal, newVal) -> {
-              timerText.setText(
-                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
-              if (newVal.intValue() <= 0) {
-                SharedTimer.getInstance().stop();
-                GameState.onRoundExpired();
-              }
-            });
+    startTimer();
   }
 }

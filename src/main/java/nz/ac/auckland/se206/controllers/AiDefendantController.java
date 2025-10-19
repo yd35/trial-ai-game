@@ -10,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
-import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class AiDefendantController extends ChatController {
@@ -25,6 +24,12 @@ public class AiDefendantController extends ChatController {
   private static ArrayList<Integer> answer =
       new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
 
+  private static final String startingText =
+      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
+          + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
+          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve"
+          + " this puzzle!";
+
   // memory puzle nodes
   @FXML private Rectangle padOne;
   @FXML private Rectangle padTwo;
@@ -36,12 +41,6 @@ public class AiDefendantController extends ChatController {
   @FXML private ImageView passThree;
   @FXML private ImageView passFour;
   @FXML private ImageView passFive;
-
-  private static final String startingText =
-      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
-          + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
-          + " VIRIDIS to recite the missing password fragments? That's the only way we can solve"
-          + " this puzzle!";
 
   /* AI defendant memory puzzle
     --------------
@@ -131,25 +130,13 @@ public class AiDefendantController extends ChatController {
     }
   }
 
+  @Override
   public void initialize() throws ApiProxyException {
     participantName = "VIRIDIS";
     systemPrompt = new ChatMessage("system", PromptEngineering.getPrompt("aiDefendant"));
 
     chatTextArea.appendText(startingText + "\n\n");
 
-    SharedTimer timer = SharedTimer.getInstance();
-    timerText.setText(
-        // display the timer in minutes and seconds format
-        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
-    timer
-        .secondsProperty()
-        .addListener(
-            (obs, oldVal, newVal) -> {
-              timerText.setText(
-                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
-              if (newVal.intValue() <= 0) {
-                GameState.onRoundExpired();
-              }
-            });
+    startTimer();
   }
 }

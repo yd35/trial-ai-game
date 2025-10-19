@@ -9,10 +9,9 @@ import javafx.scene.text.Text;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.controllers.GameState.Participant;
 
-public class MainMenuController {
+public class MainMenuController extends TimedController {
   @FXML private Text timerText;
   @FXML private Rectangle timerOutline;
   @FXML private Button judgeButton;
@@ -60,7 +59,7 @@ public class MainMenuController {
     if (!seen) {
       // mark as seen and go to flashback
       gs.flashbackShown.put(p, true);
-      GameState.setCurrentFlashback(p);// gs.currentFlashback = p;
+      GameState.setCurrentFlashback(p); // gs.currentFlashback = p;
       App.setRootFresh("flashback");
     } else {
       // go directly to chat
@@ -93,21 +92,7 @@ public class MainMenuController {
   }
 
   public void initialize() {
-    SharedTimer timer = SharedTimer.getInstance();
-    timerText.setText(
-        // display the timer in minutes and seconds format
-        String.format("%d:%02d", timer.getSeconds() / 60, timer.getSeconds() % 60));
-    timer
-        .secondsProperty()
-        .addListener(
-            (obs, oldVal, newVal) -> {
-              timerText.setText(
-                  String.format("%d:%02d", newVal.intValue() / 60, newVal.intValue() % 60));
-              if (newVal.intValue() <= 0) {
-                GameState.onRoundExpired();
-              }
-            });
-
+    startTimer();
     updateJudgeState();
 
     root.sceneProperty()
