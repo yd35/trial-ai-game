@@ -20,7 +20,7 @@ public class FlashbackController extends TimedController {
   private static final String[] defendantCaptions = {
     "Your Honour, I am a water care machinist assisting with VIRIDIS. I must report that the"
         + " system went into complete overload, corrupting most of VIRIDIS's log data. The"
-        + " fragments retrieved—just a few seconds before the contamination—are all we have.",
+        + " fragments retrieved just a few seconds before the contamination are all we have.",
     "Log Entry 0489: Critical priority: Redirect flow. Prevent contaminant [XXX] from reaching city"
         + " grid.",
     "As you can see, Your Honour, the record is incomplete."

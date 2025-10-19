@@ -25,10 +25,14 @@ public class AiDefendantController extends ChatController {
       new ArrayList<>(Arrays.asList(1, 4, 3, 2, 3)); // the correct password
 
   private static final String startingText =
-      "WaterCare Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
+      "Machinist: Your Honour, it looks like VIRIDIS is trying to show us something, a"
           + " password perhaps? It looks like a part of the key is blurred. Maybe we should ask"
           + " VIRIDIS to recite the missing password fragments? That's the only way we can solve"
           + " this puzzle!";
+
+  private static final String puzzleCompleteText =
+      "Machinist: Looks like you solved the puzzle! But what is this message... CRUX? Maybe VIRIDIS or the"
+          + " others knows something about it.\n\n";
 
   // memory puzle nodes
   @FXML private Rectangle padOne;
@@ -116,6 +120,7 @@ public class AiDefendantController extends ChatController {
       }
 
       // PUZZLE COMPLETE, add message to chat log
+      chatTextArea.appendText(puzzleCompleteText);
       ChatMessage complete =
           new ChatMessage("assistant", "!<DEFENDANT VIRIDIS COMPLETED INTERACTION>!");
       ChatLog.addToLog(complete);
