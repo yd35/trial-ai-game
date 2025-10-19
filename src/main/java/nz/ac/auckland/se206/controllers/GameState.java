@@ -35,13 +35,13 @@ public final class GameState {
   // called when the 5-minute timer hits zero
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
-    GameState gs = GameState.get();
+    // GameState gs = GameState.get();
 
-    if (gs.roundExpired == true) {
+    if (GameState.roundExpired == true) {
       App.setRoot(AppUi.LOSE);
       return;
     }
-    gs.roundExpired = true;
+    GameState.roundExpired = true;
 
     if (!GameState.allChatted()) {
       // Player did not chat all three → immediate game over
@@ -61,8 +61,8 @@ public final class GameState {
       gs.flashbackShown.put(p, false);
       gs.chatted.put(p, false);
     }
-    gs.currentFlashback = null;
-    gs.roundExpired = false;
+    GameState.currentFlashback = null;
+    GameState.roundExpired = false;
   }
 
   // Has the first-time flashback already been shown for each participant?
@@ -71,10 +71,18 @@ public final class GameState {
   public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
 
   // Who’s flashback should the single FlashbackController display right now?
-  public Participant currentFlashback = null;
+  private static Participant currentFlashback = null;
 
   /** Set true when the 5-minute round expires. */
-  public boolean roundExpired = false;
+  private static boolean roundExpired = false;
+
+  public static void setCurrentFlashback(Participant participant) {
+    currentFlashback = participant;
+  }
+
+  public static Participant getCurrentFlashback() {
+    return currentFlashback;
+  }
 
   private GameState() {
     for (Participant p : Participant.values()) {

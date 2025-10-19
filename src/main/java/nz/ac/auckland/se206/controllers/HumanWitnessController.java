@@ -1,47 +1,15 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.ChatLog;
-import nz.ac.auckland.se206.GptClient;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.SharedTimer;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-public class HumanWitnessController {
-  @FXML private Text timerText;
-  @FXML private Button goBackButton;
-  @FXML private TextArea chatTextArea;
-  @FXML private Button sendButton;
-  @FXML private ImageView image;
-  @FXML private TextField textField;
-  @FXML private ImageView memoryscape;
-  @FXML private Rectangle timerOutline;
-
-  // chat toggle
-  @FXML private Rectangle toggleChat;
-  @FXML private Rectangle chatCover;
-  // if pulled = true, that means chat cover is pulled out
-  // if pulled = false, that means chat cover is not pulled out
-  private static boolean pulled = false;
-
+public class HumanWitnessController extends ChatController {
   // memory elements
   @FXML private ImageView boltOne;
   @FXML private ImageView boltTwo;
@@ -49,8 +17,6 @@ public class HumanWitnessController {
   @FXML private ImageView boltFour;
   @FXML private ImageView backCover;
 
-  private GptClient client;
-  private ChatMessage systemPrompt;
   private static final String startingText =
       "Seymour: Once I got into that lab, the only thing standing between me and the proof of"
           + " VIRIDIS's heinous acts was that hatch on its back. Removing it is simple, really, and"
@@ -95,52 +61,6 @@ public class HumanWitnessController {
           new ChatMessage("assistant", "!<HUMAN WITNESS SEYMOUR COMPLETED INTERACTION>!");
       ChatLog.addToLog(complete);
     }
-  }
-
-  @FXML
-  private void onGoBack(ActionEvent event) {
-    // make chat hidden again if user returns to courtroom with it still visible
-    if (pulled) {
-      onToggle();
-    }
-
-    Button button = (Button) event.getSource();
-    Scene sceneButtonIsIn = button.getScene();
-    sceneButtonIsIn.setRoot(SceneManager.getUiRoot(AppUi.MAINMENU));
-  }
-
-  @FXML
-  private void onToggle() {
-    int move = 0; // variable to store how far elements will be moved
-    if (pulled) {
-      move = 420;
-    } else {
-      move = -420;
-    }
-    pulled = !pulled; // switch state for pulled
-
-    TranslateTransition smallRectTrans = new TranslateTransition();
-    TranslateTransition largeRectTrans = new TranslateTransition();
-    TranslateTransition chatAreaTrans = new TranslateTransition();
-    TranslateTransition textFieldTrans = new TranslateTransition();
-    TranslateTransition sendButtonTrans = new TranslateTransition();
-    smallRectTrans.setNode(toggleChat);
-    smallRectTrans.setByX(move); // distance node is moved
-    largeRectTrans.setNode(chatCover);
-    largeRectTrans.setByX(move);
-    chatAreaTrans.setNode(chatTextArea);
-    chatAreaTrans.setByX(move);
-    textFieldTrans.setNode(textField);
-    textFieldTrans.setByX(move);
-    sendButtonTrans.setNode(sendButton);
-    sendButtonTrans.setByX(move);
-
-    ParallelTransition parallel =
-        new ParallelTransition(
-            smallRectTrans, largeRectTrans, chatAreaTrans, textFieldTrans, sendButtonTrans);
-    parallel.play();
-
-    // add all transitions to parallel transitions
   }
 
   public void initialize() throws ApiProxyException {
