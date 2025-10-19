@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
@@ -11,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -20,11 +21,15 @@ import nz.ac.auckland.se206.ChatLog;
 import nz.ac.auckland.se206.GptClient;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-
 
 abstract class ChatController {
+  // if pulled = true, that means chat cover is pulled out
+  // if pulled = false, that means chat cover is not pulled out
+  private static boolean pulled = false;
+  // chat toggle function
+  @FXML private Rectangle toggleChat;
+  @FXML private Rectangle chatCover;
+
   // nodes
   @FXML protected Text timerText;
   @FXML protected Button goBackButton;
@@ -34,13 +39,6 @@ abstract class ChatController {
   @FXML protected TextField textField;
   @FXML protected ImageView memoryscape;
   @FXML protected Rectangle timerOutline;
-
-  // chat toggle function
-  @FXML private Rectangle toggleChat;
-  @FXML private Rectangle chatCover;
-  // if pulled = true, that means chat cover is pulled out
-  // if pulled = false, that means chat cover is not pulled out
-  private static boolean pulled = false;
 
   protected GptClient client;
   protected ChatMessage systemPrompt;
@@ -60,7 +58,7 @@ abstract class ChatController {
 
   @FXML
   private void onToggle() {
-    int move = 0; // variable to store how far elements will be moved
+    int move;
     if (pulled) {
       move = 420;
     } else {
@@ -141,7 +139,7 @@ abstract class ChatController {
               String aiResponse = result.getFirstChoice().getChatMessage().getContent();
               String formattedResponse = aiResponse.trim();
               if (!formattedResponse.startsWith(participantName + ": ")) {
-                formattedResponse =  participantName + ": " + formattedResponse;
+                formattedResponse = participantName + ": " + formattedResponse;
               }
 
               ChatMessage responseMsg = new ChatMessage("assistant", formattedResponse);
