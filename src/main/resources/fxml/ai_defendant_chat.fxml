@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -42,6 +43,11 @@
       <TextArea fx:id="chatTextArea" editable="false" layoutX="800.0" layoutY="38.0" prefHeight="426.0" prefWidth="400.0" wrapText="true" AnchorPane.rightAnchor="-400.0" />
       <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1149.0" layoutY="486.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="30.0" prefWidth="50.0" text="Send" AnchorPane.rightAnchor="-399.4000000000001" />
       <TextField fx:id="textField" layoutX="800.0" layoutY="486.0" onKeyPressed="#checkEnter" prefHeight="30.0" prefWidth="330.0" AnchorPane.rightAnchor="-334.0" />
+      <Label fx:id="chatHelpLabel" layoutX="786.0" layoutY="535.0" prefHeight="48.0" prefWidth="331.0" text="*Click the input box to type and press enter or click send to converse" textAlignment="CENTER" textFill="LIME" wrapText="true" AnchorPane.bottomAnchor="17.800000000000068" AnchorPane.leftAnchor="786.0" AnchorPane.rightAnchor="-317.20000000000005" AnchorPane.topAnchor="535.0">
+         <font>
+            <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </Label>
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
