@@ -30,15 +30,7 @@ public class App extends Application {
 
     // loads all FxML files at the start of the program
 
-    SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
-    SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
-    SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));
-    SceneManager.addUi(AppUi.DEFENDANTCHAT, loadFxml("ai_defendant_chat"));
-    SceneManager.addUi(AppUi.HUMANWITNESSCHAT, loadFxml("human_witness_chat"));
-    SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
-    SceneManager.addUi(AppUi.WIN, loadFxml("win"));
-    SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-    SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
+    loadAllUis();
     scene = new Scene(SceneManager.getUiRoot(AppUi.OPENING), 800, 600);
 
     stage.setScene(scene);
@@ -69,15 +61,7 @@ public class App extends Application {
       ChatLog.clearLog();
 
       // 2) Recreate all FXML roots so controllers start from scratch
-      SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
-      SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
-      SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));
-      SceneManager.addUi(AppUi.DEFENDANTCHAT, loadFxml("ai_defendant_chat"));
-      SceneManager.addUi(AppUi.HUMANWITNESSCHAT, loadFxml("human_witness_chat"));
-      SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
-      SceneManager.addUi(AppUi.WIN, loadFxml("win"));
-      SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
-      SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
+      loadAllUis();
       // (Keep FLASHBACK fresh-loaded if needed)
 
     } catch (IOException e) {
@@ -87,5 +71,17 @@ public class App extends Application {
     // 3) Send the player to the starting screen (OPENING or MAINMENU—your choice)
     SharedTimer.getInstance().start();
     setRoot(AppUi.OPENING);
+  }
+
+  private static void loadAllUis() throws IOException {
+    SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
+    SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
+    SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));
+    SceneManager.addUi(AppUi.DEFENDANTCHAT, loadFxml("ai_defendant_chat"));
+    SceneManager.addUi(AppUi.HUMANWITNESSCHAT, loadFxml("human_witness_chat"));
+    SceneManager.addUi(AppUi.LOSE, loadFxml("lose"));
+    SceneManager.addUi(AppUi.WIN, loadFxml("win"));
+    SceneManager.addUi(AppUi.JUDGE, loadFxml("judge"));
+    SceneManager.addUi(AppUi.RATIONALE, loadFxml("rationale"));
   }
 }

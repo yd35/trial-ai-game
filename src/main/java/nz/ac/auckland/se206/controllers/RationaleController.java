@@ -149,7 +149,7 @@ public class RationaleController extends TimedController {
 
   // Send on button click or Enter (TextField has onAction="#sendMessage" in FXML)
   @FXML
-  private void sendMessage() {
+  private void onSendMessage() {
     SharedTimer.getInstance().stop();
     String user = textField.getText() == null ? "" : textField.getText().trim();
     if (user.isEmpty()) {

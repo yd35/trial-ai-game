@@ -13,11 +13,6 @@ public final class GameState {
     HUMAN_WITNESS
   }
 
-  // Has the first-time flashback already been shown for each participant?
-  public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
-  // Has the user chatted with each participant?
-  public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
-
   // Who’s flashback should the single FlashbackController display right now?
   private static Participant currentFlashback = null;
 
@@ -82,6 +77,11 @@ public final class GameState {
     currentFlashback = null;
     roundExpired = false;
   }
+
+  // Has the first-time flashback already been shown for each participant?
+  public final Map<Participant, Boolean> flashbackShown = new EnumMap<>(Participant.class);
+  // Has the user chatted with each participant?
+  public final Map<Participant, Boolean> chatted = new EnumMap<>(Participant.class);
 
   private GameState() {
     for (Participant p : Participant.values()) {
