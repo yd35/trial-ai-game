@@ -19,7 +19,7 @@
 
     <!-- Title -->
     <Text fx:id="titleText" fill="WHITE" layoutX="194.0" layoutY="55.0" text="Provide Your Rationale" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="175.60000000000002" AnchorPane.topAnchor="28.0">
-      <font><Font size="36.0" url="@../fonts/04B_03__.TTF" /></font>
+      <font><Font size="36.0" url="@../fonts/PixAntiqua.ttf" /></font>
     </Text>
 
     <!-- Chat display -->
@@ -35,15 +35,15 @@
                <font>
                   <Font size="16.0" url="@../fonts/04B_03__.TTF" />
                </font></TextField> <!-- Enter will fire send -->
-        <Button fx:id="sendButton" onAction="#onSendMessage" prefHeight="52.0" prefWidth="83.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send">
+        <Button fx:id="sendButton" contentDisplay="CENTER" graphicTextGap="1.0" onAction="#onSendMessage" prefHeight="52.0" prefWidth="83.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Send">
                <font>
-                  <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+                  <Font size="14.0" url="@../fonts/Bangalor.ttf" />
                </font></Button>
         <Region HBox.hgrow="ALWAYS" />
         <!-- Continue is disabled until a response is graded -->
-        <Button fx:id="continueButton" disable="true" onAction="#onContinue" prefHeight="51.0" prefWidth="118.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Continue">
+        <Button fx:id="continueButton" contentDisplay="CENTER" disable="true" graphicTextGap="1.0" onAction="#onContinue" prefHeight="51.0" prefWidth="118.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Continue">
                <font>
-                  <Font size="16.0" url="@../fonts/04B_03__.TTF" />
+                  <Font size="12.0" url="@../fonts/Bangalor.ttf" />
                </font></Button>
       </children>
     </HBox>

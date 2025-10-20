@@ -49,7 +49,7 @@
       </VBox>
       <Button fx:id="startGameButton" alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="536.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="47.0" prefWidth="154.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="START GAME" textAlignment="CENTER" AnchorPane.topAnchor="512.0">
          <font>
-            <Font size="20.0" url="@../fonts/04B_03__.TTF" />
+            <Font size="16.0" url="@../fonts/Bangalor.ttf" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
