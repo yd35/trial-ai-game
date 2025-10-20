@@ -129,16 +129,20 @@
             <Insets top="20.0" />
          </padding>
       </VBox>
-      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-         <font>
-            <Font size="36.0" url="@../fonts/alagard.ttf" />
-         </font>
-      </Text>
 
       <Text fx:id="judgeWarning" layoutX="100.0" layoutY="579.0" style="-fx-fill: #d32f2f;" text="*You must ask at least one question to all three participants before judging.">
          <font>
             <Font size="14.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </Text>
+      <ImageView fitHeight="64.0" fitWidth="92.0" layoutX="708.0" layoutY="536.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/timer_background.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="timerText" layoutX="718.8" layoutY="590.2" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" textAlignment="CENTER" wrappingWidth="92.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="32.0" url="@../fonts/alagard.ttf" />
          </font>
       </Text>
    </children>
