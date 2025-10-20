@@ -19,8 +19,8 @@ public class HumanWitnessController extends ChatController {
 
   private static final String puzzleCompleteText =
       "LOGS: Bio-Filtration Unit 1, maintenanced delayed by 72 hours.\n\n"
-          + "Seymour: Do you see this your Honour? this is the cause! VIRIDIS purposefully delayed maintenance,"
-          + " which contaminated the water!\n\n";
+          + "Seymour: Do you see this your Honour? this is the cause! VIRIDIS purposefully delayed"
+          + " maintenance, which contaminated the water!\n\n";
 
   // memory elements
   @FXML private ImageView boltOne;

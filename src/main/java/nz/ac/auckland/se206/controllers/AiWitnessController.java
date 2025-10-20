@@ -34,7 +34,8 @@ public class AiWitnessController extends ChatController {
 
   private static final String puzzleCompleteText =
       "ORACLE: Your Honour, the data clearly shows a significant spike in VIRIDIS's activity during"
-          + " the contamination event, indicating it tried its best to divert the chemical spill.\n\n";
+          + " the contamination event, indicating it tried its best to divert the chemical"
+          + " spill.\n\n";
 
   // puzzle elements
   @FXML private Rectangle subtractOneButton;

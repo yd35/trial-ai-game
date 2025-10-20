@@ -31,8 +31,8 @@ public class AiDefendantController extends ChatController {
           + " this puzzle!";
 
   private static final String puzzleCompleteText =
-      "Machinist: Looks like you solved the puzzle! But what is this message... CRUX? Maybe VIRIDIS or the"
-          + " others knows something about it.\n\n";
+      "Machinist: Looks like you solved the puzzle! But what is this message... CRUX? Maybe VIRIDIS"
+          + " or the others knows something about it.\n\n";
 
   // memory puzle nodes
   @FXML private Rectangle padOne;
