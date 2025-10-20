@@ -74,6 +74,7 @@ public class App extends Application {
   }
 
   private static void loadAllUis() throws IOException {
+    // Load all UIs at once (fresh copies so no stale state lingers)
     SceneManager.addUi(AppUi.OPENING, loadFxml("opening"));
     SceneManager.addUi(AppUi.MAINMENU, loadFxml("menu"));
     SceneManager.addUi(AppUi.AIWITNESSCHAT, loadFxml("ai_witness_chat"));

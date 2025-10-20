@@ -77,27 +77,31 @@ public final class GameState {
     if (!allChatted()) {
       // Player did not chat all three → immediate game over
       App.setRoot(AppUi.LOSE);
-      return;
     } else {
       // They chatted all three → go to Judge (start your 60s verdict timer there)
       SharedTimer.reset(60);
       SharedTimer.getInstance().start();
       App.setRoot(AppUi.JUDGE);
-      return;
     }
   }
 
   /** Clear all run-time flags so a new playthrough starts clean. */
   public static void reset() {
+    // Reset all per-participant flags
     GameState gs = get();
     for (Participant p : Participant.values()) {
       gs.flashbackShown.put(p, false);
       gs.chatted.put(p, false);
     }
+    // Reset other global flags
     currentFlashback = null;
     roundExpired = false;
     verdictSelected = false;
     timeOutComplete = false;
+  }
+
+  public static void verdictSelected() {
+    verdictSelected = true;
   }
 
   // Has the first-time flashback already been shown for each participant?
@@ -110,9 +114,5 @@ public final class GameState {
       flashbackShown.put(p, false);
       chatted.put(p, false);
     }
-  }
-
-  public static void verdictSelected() {
-    verdictSelected = true;
   }
 }

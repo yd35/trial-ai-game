@@ -25,10 +25,6 @@ public class RationaleController extends TimedController {
 
   private static RationaleController instance;
 
-  public RationaleController() {
-    instance = this;
-  }
-
   public static RationaleController getInstance() {
     return instance;
   }
@@ -136,6 +132,10 @@ public class RationaleController extends TimedController {
 
   @FXML private Button continueButton;
   private String outcomeTag = "";
+
+  public RationaleController() {
+    instance = this;
+  }
 
   @FXML
   private void initialize() throws ApiProxyException {
