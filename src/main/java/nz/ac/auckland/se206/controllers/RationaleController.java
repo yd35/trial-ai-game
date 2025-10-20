@@ -23,6 +23,16 @@ import nz.ac.auckland.se206.SharedTimer;
 
 public class RationaleController extends TimedController {
 
+  private static RationaleController instance;
+
+  public RationaleController() {
+    instance = this;
+  }
+
+  public static RationaleController getInstance() {
+    return instance;
+  }
+  
   /** Fallback: reflectively try common shapes if the direct call isn’t present. */
   private static String extractFirstContentFallback(ChatCompletionResult res) {
     try {
@@ -245,6 +255,17 @@ public class RationaleController extends TimedController {
       App.setRoot(AppUi.LOSE);
     }
   }
+
+  public void onTimeout() {
+    String rationale = textField.getText();
+    if (rationale.trim().isEmpty()) {
+        // No rationale provided on timeout, lose game
+        App.setRoot(AppUi.LOSE);
+    } else {
+        // Save rationale and proceed
+        textField.appendText(rationale);
+    }
+}
 
   // ---------- helpers ----------
 

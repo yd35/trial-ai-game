@@ -16,6 +16,8 @@ public final class GameState {
   // Who’s flashback should the single FlashbackController display right now?
   private static Participant currentFlashback = null;
 
+  private static boolean verdictSelected = false;
+
   /** Set true when the 5-minute round expires. */
   private static boolean roundExpired = false;
 
@@ -52,8 +54,11 @@ public final class GameState {
 
     // accounts for when game is already over and we are on judge screen timeout instead of game screen timeout
     if (roundExpired == true) {
-      App.setRoot(AppUi.LOSE);
-      return;
+      if(verdictSelected == true){
+        RationaleController.getInstance().onTimeout();
+      }else{
+        App.setRoot(AppUi.LOSE);
+      }
     }
     roundExpired = true;
 
@@ -77,6 +82,7 @@ public final class GameState {
     }
     currentFlashback = null;
     roundExpired = false;
+    verdictSelected = false;
   }
 
   // Has the first-time flashback already been shown for each participant?
@@ -89,5 +95,9 @@ public final class GameState {
       flashbackShown.put(p, false);
       chatted.put(p, false);
     }
+  }
+
+  public static void verdictSelected() {
+    verdictSelected = true;
   }
 }
