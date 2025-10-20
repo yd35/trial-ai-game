@@ -19,7 +19,7 @@
             <Font size="20.0" url="@../fonts/Bangalor.ttf" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="47.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIRIDIS' advanced conciousness is deemed too volatile and unpredictable for public service. It is sent to asecure, undisclosed government facility. " textAlignment="CENTER" wrappingWidth="726.7820434570312" AnchorPane.topAnchor="260.0">
+      <Text fill="WHITE" layoutX="47.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIRIDIS' advanced conciousness is deemed too volatile and unpredictable for public service. It is sent to a secure, undisclosed government facility. " textAlignment="CENTER" wrappingWidth="726.7820434570312" AnchorPane.topAnchor="260.0">
          <font>
             <Font size="24.0" url="@../fonts/ModernDOS8x16.ttf" />
          </font>
