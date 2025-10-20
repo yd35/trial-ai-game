@@ -166,7 +166,7 @@ public class RationaleController extends TimedController {
       return;
     }
 
-    appendChat("You: " + user);
+    appendChat("Rationale: " + user);
     textField.clear();
 
     sendButton.setDisable(true);
