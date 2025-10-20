@@ -26,7 +26,7 @@ public class App extends Application {
     // makes the window not resizable
     stage.setResizable(false);
     // setup timer
-    SharedTimer.initializeTimer(10);
+    SharedTimer.initializeTimer(300);
 
     // loads all FxML files at the start of the program
 
@@ -56,7 +56,7 @@ public class App extends Application {
       // 1) Clear runtime state
       GameState.reset();
       // Clear other state as needed (chat logs, etc.)
-      SharedTimer.reset(15);
+      SharedTimer.reset(300);
       // If you track other state, clear it here (chat logs, timers, etc.)
       ChatLog.clearLog();
 
