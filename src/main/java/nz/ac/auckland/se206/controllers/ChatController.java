@@ -41,6 +41,7 @@ abstract class ChatController extends TimedController {
   @FXML protected ImageView memoryscape;
   @FXML protected Rectangle timerOutline;
   @FXML private Label chatHelpLabel;
+  @FXML private Label pullLabel;
 
   protected GptClient client;
   protected ChatMessage systemPrompt;
@@ -74,6 +75,7 @@ abstract class ChatController extends TimedController {
     TranslateTransition textFieldTrans = new TranslateTransition();
     TranslateTransition sendButtonTrans = new TranslateTransition();
     TranslateTransition labelTrans = new TranslateTransition();
+    TranslateTransition pullTrans = new TranslateTransition();
     smallRectTrans.setNode(toggleChat);
     smallRectTrans.setByX(move); // distance node is moved
     largeRectTrans.setNode(chatCover);
@@ -86,6 +88,8 @@ abstract class ChatController extends TimedController {
     sendButtonTrans.setByX(move);
     labelTrans.setNode(chatHelpLabel);
     labelTrans.setByX(move);
+    pullTrans.setNode(pullLabel);
+    pullTrans.setByX(move);
 
     ParallelTransition parallel = new ParallelTransition();
     if (toggleChat != null) {
@@ -105,6 +109,9 @@ abstract class ChatController extends TimedController {
     }
     if (chatHelpLabel != null) {
       parallel.getChildren().add(labelTrans);
+    }
+    if (pullLabel != null) {
+      parallel.getChildren().add(pullTrans);
     }
     parallel.play();
 
