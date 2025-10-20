@@ -50,13 +50,14 @@ public final class GameState {
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
 
+    // accounts for when game is already over and we are on judge screen timeout instead of game screen timeout
     if (roundExpired == true) {
       App.setRoot(AppUi.LOSE);
       return;
     }
     roundExpired = true;
 
-    if (allChatted()) {
+    if (!allChatted()) {
       // Player did not chat all three → immediate game over
       App.setRoot(AppUi.LOSE);
     } else {
