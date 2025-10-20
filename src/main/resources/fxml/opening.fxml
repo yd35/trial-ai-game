@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.OpeningController">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.OpeningController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <VBox alignment="TOP_CENTER" layoutX="350.0" layoutY="200.0" prefHeight="546.0" prefWidth="800.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -35,7 +35,7 @@
             </ImageView>
             <Text fx:id="contextText" fill="WHITE" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are the adjudicator in the Democracy of Levin. After unearthing the ruins of the technologically advanced Concordia civilisation, one of their highly intelligent AIs, VIRIDIS, was put in charge of Levin's water system. A contamination that caused widespread illness led to VIRIDIS's swift prosecution. Your role is to decide whether VIRIDIS is guilty or not, based on the knowledge gained from two witnesses and Viridis itself." textAlignment="CENTER" wrappingWidth="700.0">
                <font>
-                  <Font url="@../fonts/04B_03__.TTF" size="18.0" />
+                  <Font size="18.0" url="@../fonts/04B_03__.TTF" />
                </font>
                <VBox.margin>
                   <Insets top="12.0" />
@@ -60,10 +60,14 @@
             <Font size="14.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
-      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="600.0" layoutY="509.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Text fx:id="timerText" layoutX="733.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <ImageView fitHeight="64.0" fitWidth="92.0" layoutX="476.0" layoutY="546.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../images/timer_background.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="timerText" layoutX="708.8" layoutY="580.2" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" textAlignment="CENTER" wrappingWidth="92.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="0.0">
          <font>
-            <Font size="36.0" url="@../fonts/alagard.ttf" />
+            <Font size="32.0" url="@../fonts/alagard.ttf"/>
          </font>
       </Text>
    </children>
