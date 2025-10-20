@@ -32,7 +32,7 @@ public class RationaleController extends TimedController {
   public static RationaleController getInstance() {
     return instance;
   }
-  
+
   /** Fallback: reflectively try common shapes if the direct call isn’t present. */
   private static String extractFirstContentFallback(ChatCompletionResult res) {
     try {
@@ -260,15 +260,15 @@ public class RationaleController extends TimedController {
     String rationale = textField.getText().trim();
     textField.clear();
     if (rationale.isEmpty()) {
-        // No rationale provided on timeout, lose game
-        App.setRoot(AppUi.LOSE);
+      // No rationale provided on timeout, lose game
+      App.setRoot(AppUi.LOSE);
     } else {
-        // Save rationale and proceed
-        chatTextArea.appendText("Rationale: " + rationale + "\n\n");
-        textField.setDisable(true);
-        sendButton.setDisable(true);
+      // Save rationale and proceed
+      chatTextArea.appendText("Rationale: " + rationale + "\n\n");
+      textField.setDisable(true);
+      sendButton.setDisable(true);
     }
-}
+  }
 
   // ---------- helpers ----------
 

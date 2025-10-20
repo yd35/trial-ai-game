@@ -54,16 +54,17 @@ public final class GameState {
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
 
-    // accounts for when game is already over and we are on judge screen timeout instead of game screen timeout
+    // accounts for when game is already over and we are on judge screen timeout instead of game
+    // screen timeout
     if (roundExpired == true) {
-      if(verdictSelected == true){
-        if(timeOutComplete == true){
+      if (verdictSelected == true) {
+        if (timeOutComplete == true) {
           return;
         }
         RationaleController.getInstance().onTimeout();
         timeOutComplete = true;
         return;
-      }else{
+      } else {
         App.setRoot(AppUi.LOSE);
         return;
       }
