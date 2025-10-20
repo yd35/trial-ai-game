@@ -17,6 +17,11 @@ public class HumanWitnessController extends ChatController {
           + " the whole thing comes right off. That's where we'll find the truth of what that"
           + " machine did.";
 
+  private static final String puzzleCompleteText =
+      "LOGS: Bio-Filtration Unit 1, maintenanced delayed by 72 hours.\n\n"
+          + "Seymour: Do you see this your Honour? this is the cause! VIRIDIS purposefully delayed maintenance,"
+          + " which contaminated the water!\n\n";
+
   // memory elements
   @FXML private ImageView boltOne;
   @FXML private ImageView boltTwo;
@@ -58,6 +63,7 @@ public class HumanWitnessController extends ChatController {
       clickedImage.setVisible(false);
 
       // PUZZLE COMPLETE, add message to chat log
+      chatTextArea.appendText(puzzleCompleteText);
       ChatMessage complete =
           new ChatMessage("assistant", "!<HUMAN WITNESS SEYMOUR COMPLETED INTERACTION>!");
       ChatLog.addToLog(complete);

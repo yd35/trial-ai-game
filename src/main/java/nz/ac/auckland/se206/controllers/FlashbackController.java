@@ -18,9 +18,9 @@ public class FlashbackController extends TimedController {
 
   // captions for each participant
   private static final String[] defendantCaptions = {
-    "Your Honour, the system went into complete overload, corrupting most of VIRIDIS's log "
-        + "data. These fragments are all we could retrieve, which is few seconds before the "
-        + "contamination.",
+    "Your Honour, I am a water care machinist assisting with VIRIDIS. I must report that the"
+        + " system went into complete overload, corrupting most of VIRIDIS's log data. The"
+        + " fragments retrieved just a few seconds before the contamination are all we have.",
     "Log Entry 0489: Critical priority: Redirect flow. Prevent contaminant [XXX] from reaching city"
         + " grid.",
     "As you can see, Your Honour, the record is incomplete."
