@@ -56,7 +56,7 @@ public class App extends Application {
       // 1) Clear runtime state
       GameState.reset();
       // Clear other state as needed (chat logs, etc.)
-      SharedTimer.reset(15);
+      SharedTimer.reset(300);
       // If you track other state, clear it here (chat logs, timers, etc.)
       ChatLog.clearLog();
 

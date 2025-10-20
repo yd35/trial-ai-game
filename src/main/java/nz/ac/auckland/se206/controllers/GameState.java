@@ -80,7 +80,7 @@ public final class GameState {
       return;
     } else {
       // They chatted all three → go to Judge (start your 60s verdict timer there)
-      SharedTimer.reset(10);
+      SharedTimer.reset(60);
       SharedTimer.getInstance().start();
       App.setRoot(AppUi.JUDGE);
       return;
