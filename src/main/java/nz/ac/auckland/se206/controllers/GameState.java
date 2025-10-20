@@ -61,8 +61,11 @@ public final class GameState {
         if (timeOutComplete == true) {
           return;
         }
-        RationaleController.getInstance().onTimeout();
-        timeOutComplete = true;
+        RationaleController rc = RationaleController.getInstance();
+        if (rc != null) {
+          rc.onTimeout();
+          timeOutComplete = true;
+        }
         return;
       } else {
         App.setRoot(AppUi.LOSE);
