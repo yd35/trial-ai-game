@@ -20,33 +20,37 @@
       </ImageView>
       <Text fx:id="counterLabel" fill="WHITE" layoutX="582.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1/3" AnchorPane.bottomAnchor="22.75" AnchorPane.rightAnchor="174.25">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="25.0" />
+            <Font size="25.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
       <Button layoutX="603.0" layoutY="453.0" mnemonicParsing="false" onAction="#onAdvance" prefHeight="76.0" prefWidth="198.0" styleClass="outline-btn" stylesheets="@../css/style.css" text="Advance" textAlignment="CENTER" textFill="GREEN" AnchorPane.bottomAnchor="83.0" AnchorPane.rightAnchor="20.0">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="25.0" />
+            <Font size="25.0" url="@../fonts/04B_03__.TTF" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="717.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.rightAnchor="0.0" />
-      <Text fx:id="timerText" layoutX="731.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-         <font>
-            <Font size="36.0" url="@../fonts/alagard.ttf" />
-         </font>
-      </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="135.0" layoutX="20.0" layoutY="442.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="540.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="20.0" />
       <Label fx:id="title" layoutX="16.0" layoutY="14.0" prefHeight="52.0" prefWidth="747.0" text="PARTICIPANT TITLE: NAME" textFill="WHITE">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="36.0" />
+            <Font size="36.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Label>
       <Label fx:id="captions" alignment="TOP_LEFT" layoutX="35.0" layoutY="453.0" prefHeight="115.0" prefWidth="510.0" text="Placeholder text" textFill="WHITE" wrapText="true">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="18.0" />
+            <Font size="18.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Label>
+      <ImageView fitHeight="64.0" fitWidth="92.0" layoutX="718.0" layoutY="546.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../images/timer_background.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="timerText" layoutX="728.8" layoutY="600.2" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" textAlignment="CENTER" wrappingWidth="92.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="32.0" url="@../fonts/alagard.ttf" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

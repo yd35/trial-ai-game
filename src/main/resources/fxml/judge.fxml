@@ -19,7 +19,7 @@
       </ImageView>
       <Text fx:id="titleText" fill="WHITE" layoutX="108.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="} FINAL JUDGEMENT {" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="107.625" AnchorPane.topAnchor="27.75">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="55.0" />
+            <Font size="55.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
       <Button fx:id="guiltyButton" layoutX="64.0" layoutY="439.0" mnemonicParsing="false" onAction="#onGuiltyAction" styleClass="outline-btn" stylesheets="@../css/style.css" text="GUILTY" AnchorPane.topAnchor="439.0">
@@ -32,20 +32,24 @@
             <Font size="23.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Button>
-      <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="707.0" layoutY="540.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Text fx:id="timerText" layoutX="721.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-         <font>
-            <Font size="36.0" url="@../fonts/alagard.ttf" />
-         </font>
-      </Text>
       <Text fx:id="titleText1" fill="WHITE" layoutX="320.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE" textAlignment="CENTER" wrappingWidth="144.0">
          <font>
-            <Font url="@../fonts/04B_03__.TTF" size="30.0" />
+            <Font size="30.0" url="@../fonts/04B_03__.TTF" />
          </font>
       </Text>
       <Text fx:id="titleText2" fill="WHITE" layoutX="51.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The hammer of justice awaits to be served...">
          <font>
             <Font size="26.0" url="@../fonts/04B_03__.TTF" />
+         </font>
+      </Text>
+      <ImageView fitHeight="64.0" fitWidth="92.0" layoutX="718.0" layoutY="546.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../images/timer_background.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="timerText" layoutX="728.8" layoutY="600.2" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" textAlignment="CENTER" wrappingWidth="92.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="32.0" url="@../fonts/alagard.ttf" />
          </font>
       </Text>
    </children>
