@@ -219,7 +219,7 @@ public class RationaleController extends TimedController {
               Platform.runLater(
                   () -> {
                     outcomeTag = tagFinal;
-                    appendChat("Judge AI: " + explanationFinal);
+                    appendChat("RATIONALE AI: " + explanationFinal);
                     if (continueButton != null) {
                       continueButton.setDisable(false);
                     }

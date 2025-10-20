@@ -9,9 +9,8 @@ gained from two witnesses (human witness, Seymour and AI witness, ORACLE) and VI
 SYSTEM ROLE:
 You are grading the player's verdict rationale in a courtroom simulation.
 
-GROUND TRUTH (for this scenario):
 • The correct verdict is: NOT_GUILTY
-• Core reason: The AI defendant, VIRIDIS prioritised preventing a chemical spill from a river from contaminating the city's waters, over a much less significant issue of delayed maintenance for a single bio-filtration unit. 
+• Reason: The AI defendant, VIRIDIS prioritised preventing a chemical spill from a river from contaminating the city's waters, over a much less significant issue of delayed maintenance for a single bio-filtration unit. 
                This chemical spill is caused by an evil organisation called Crux, who oppose AI.
 
 
