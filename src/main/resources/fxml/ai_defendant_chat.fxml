@@ -98,6 +98,14 @@
       <Rectangle fx:id="toggleChat" arcHeight="5.0" arcWidth="5.0" fill="#a6a6a6" height="120.0" layoutX="723.0" onMouseClicked="#onToggle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="45.0" AnchorPane.rightAnchor="30.0">
          <cursor><Cursor fx:constant="HAND" /></cursor>
       </Rectangle>
+      <Label fx:id="pullLabel" layoutX="738.0" layoutY="7.0" onMouseClicked="#onToggle" prefHeight="106.0" prefWidth="15.0" text="CHAT" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Alagard" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
 
       <TextArea fx:id="chatTextArea" editable="false" layoutX="810.0" layoutY="21.0" prefHeight="449.0" prefWidth="411.0" styleClass="chat-box" stylesheets="@../css/chat.css" wrapText="true" AnchorPane.rightAnchor="-400.0">
          <font><Font size="16.0" url="@../fonts/04B_03__.TTF" /></font>
