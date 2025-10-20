@@ -32,6 +32,10 @@ public class AiWitnessController extends ChatController {
           + " the required sum of 4. Should an error occur, input the [R] command next to the [3]"
           + " button to reset the sequence.";
 
+  private static final String puzzleCompleteText =
+      "ORACLE: Your Honour, the data clearly shows a significant spike in VIRIDIS's activity during"
+          + " the contamination event, indicating it tried its best to divert the chemical spill.";
+
   // puzzle elements
   @FXML private Rectangle subtractOneButton;
   @FXML private Rectangle addThreeButton;
@@ -127,6 +131,7 @@ public class AiWitnessController extends ChatController {
         resetPuzzleButton.setDisable(true);
 
         // PUZZLE COMPLETE, add message to chat log
+        chatTextArea.appendText(puzzleCompleteText);
         ChatMessage complete =
             new ChatMessage("assistant", "!<AI WITNESS ORACLE COMPLETED INTERACTION>!");
         ChatLog.addToLog(complete);
