@@ -28,4 +28,5 @@ GRADING RULES:
 
 STYLE:
 • Be brief and clear.
+• Address the player as "You"
 • Do not add extra lines, bullets, or formatting.

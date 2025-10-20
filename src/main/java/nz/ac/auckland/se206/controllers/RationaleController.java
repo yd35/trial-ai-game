@@ -247,8 +247,8 @@ public class RationaleController extends TimedController {
   private void onContinue() {
     if ("INCORRECT_VERDICT".equalsIgnoreCase(outcomeTag)) {
       App.setRoot(AppUi.LOSE);
-    } else if ("CORRECT_WRONG_RATIONALE".equalsIgnoreCase(outcomeTag)
-        || "CORRECT_CORRECT_RATIONALE".equalsIgnoreCase(outcomeTag)) {
+    } else if ("CORRECT_VERDICT_WRONG_RATIONALE".equalsIgnoreCase(outcomeTag)
+        || "CORRECT_VERDICT_CORRECT_RATIONALE".equalsIgnoreCase(outcomeTag)) {
       App.setRoot(AppUi.WIN);
     } else {
       // Unknown / empty tag -> treat as incorrect
