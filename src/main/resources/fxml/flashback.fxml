@@ -34,7 +34,7 @@
       <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" layoutX="717.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="92.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.rightAnchor="0.0" />
       <Text fx:id="timerText" layoutX="731.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
-            <Font size="36.0" />
+            <Font size="36.0" url="@../fonts/alagard.ttf" />
          </font>
       </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="135.0" layoutX="20.0" layoutY="442.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="540.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="20.0" />

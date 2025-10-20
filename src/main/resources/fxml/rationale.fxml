@@ -23,7 +23,7 @@
     <!-- Timer visuals (top-right, no logic here) -->
     <Rectangle fx:id="timerOutline" arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="64.0" stroke="BLACK" strokeWidth="0.0" width="92.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <Text fx:id="timerText" text="1:00" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-      <font><Font size="36.0" /></font>
+      <font><Font size="36.0" url="@../fonts/alagard.ttf" /></font>
     </Text>
 
     <!-- Chat display -->
