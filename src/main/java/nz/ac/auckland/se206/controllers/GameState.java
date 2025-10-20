@@ -16,9 +16,6 @@ public final class GameState {
   // Who’s flashback should the single FlashbackController display right now?
   private static Participant currentFlashback = null;
 
-  /** Set true when the 5-minute round expires. */
-  private static boolean roundExpired = false;
-
   private static final GameState I = new GameState();
 
   public static GameState get() {
@@ -50,13 +47,8 @@ public final class GameState {
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
 
-    if (roundExpired == true) {
-      App.setRoot(AppUi.LOSE);
-      return;
-    }
-    roundExpired = true;
 
-    if (allChatted()) {
+    if (!allChatted()) {
       // Player did not chat all three → immediate game over
       App.setRoot(AppUi.LOSE);
     } else {
@@ -75,7 +67,6 @@ public final class GameState {
       gs.chatted.put(p, false);
     }
     currentFlashback = null;
-    roundExpired = false;
   }
 
   // Has the first-time flashback already been shown for each participant?
