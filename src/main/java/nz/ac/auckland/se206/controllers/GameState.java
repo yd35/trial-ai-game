@@ -16,6 +16,10 @@ public final class GameState {
   // Who’s flashback should the single FlashbackController display right now?
   private static Participant currentFlashback = null;
 
+  private static boolean verdictSelected = false;
+
+  private static boolean timeOutComplete = false;
+
   /** Set true when the 5-minute round expires. */
   private static boolean roundExpired = false;
 
@@ -50,21 +54,36 @@ public final class GameState {
   public static void onRoundExpired() {
     SharedTimer.getInstance().stop();
 
-    // accounts for when game is already over and we are on judge screen timeout instead of game screen timeout
+    // accounts for when game is already over and we are on judge screen timeout instead of game
+    // screen timeout
     if (roundExpired == true) {
-      App.setRoot(AppUi.LOSE);
-      return;
+      if (verdictSelected == true) {
+        if (timeOutComplete == true) {
+          return;
+        }
+        RationaleController rc = RationaleController.getInstance();
+        if (rc != null) {
+          rc.onTimeout();
+          timeOutComplete = true;
+        }
+        return;
+      } else {
+        App.setRoot(AppUi.LOSE);
+        return;
+      }
     }
     roundExpired = true;
 
     if (!allChatted()) {
       // Player did not chat all three → immediate game over
       App.setRoot(AppUi.LOSE);
+      return;
     } else {
       // They chatted all three → go to Judge (start your 60s verdict timer there)
       SharedTimer.reset(60);
       SharedTimer.getInstance().start();
       App.setRoot(AppUi.JUDGE);
+      return;
     }
   }
 
@@ -77,6 +96,8 @@ public final class GameState {
     }
     currentFlashback = null;
     roundExpired = false;
+    verdictSelected = false;
+    timeOutComplete = false;
   }
 
   // Has the first-time flashback already been shown for each participant?
@@ -89,5 +110,9 @@ public final class GameState {
       flashbackShown.put(p, false);
       chatted.put(p, false);
     }
+  }
+
+  public static void verdictSelected() {
+    verdictSelected = true;
   }
 }

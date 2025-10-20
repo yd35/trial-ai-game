@@ -29,6 +29,7 @@ public class JudgeController extends TimedController {
   private void onNotGuiltyAction(ActionEvent event) {
     // go to the rationale screen because verdict was correct
     App.setRoot(AppUi.RATIONALE);
+    GameState.verdictSelected();
   }
 
   @FXML

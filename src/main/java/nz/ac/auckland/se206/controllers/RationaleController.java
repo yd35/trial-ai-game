@@ -23,6 +23,16 @@ import nz.ac.auckland.se206.SharedTimer;
 
 public class RationaleController extends TimedController {
 
+  private static RationaleController instance;
+
+  public RationaleController() {
+    instance = this;
+  }
+
+  public static RationaleController getInstance() {
+    return instance;
+  }
+
   /** Fallback: reflectively try common shapes if the direct call isn’t present. */
   private static String extractFirstContentFallback(ChatCompletionResult res) {
     try {
@@ -140,7 +150,7 @@ public class RationaleController extends TimedController {
     String prompt = loadResourceText("/prompts/rationale.txt");
     systemPrompt = new ChatMessage("system", prompt);
 
-    chatTextArea.appendText("Judge AI: Please state why you believe the AI is NOT GUILTY.\n\n");
+    chatTextArea.appendText("RATIONALE AI: Please state why you believe the AI is NOT GUILTY.\n\n");
 
     if (continueButton != null) {
       continueButton.setDisable(true);
@@ -156,7 +166,7 @@ public class RationaleController extends TimedController {
       return;
     }
 
-    appendChat("You: " + user);
+    appendChat("Rationale: " + user);
     textField.clear();
 
     sendButton.setDisable(true);
@@ -220,7 +230,7 @@ public class RationaleController extends TimedController {
               e.printStackTrace();
               Platform.runLater(
                   () -> {
-                    appendChat("Judge AI: (error while grading—try again)");
+                    appendChat("RATIONALE AI: (error while grading—try again)");
                     sendButton.setDisable(false);
                   });
             }
@@ -243,6 +253,21 @@ public class RationaleController extends TimedController {
     } else {
       // Unknown / empty tag -> treat as incorrect
       App.setRoot(AppUi.LOSE);
+    }
+  }
+
+  public void onTimeout() {
+    // If there's nothing typed, we still end the game.
+    String rationale = textField.getText() == null ? "" : textField.getText().trim();
+    if (rationale.isEmpty()) {
+      App.setRoot(AppUi.LOSE);
+      return;
+    }
+
+    // If the user typed something, submit exactly as if they clicked Send.
+    // (onSendMessage() stops the timer, disables the button, and runs the LLM.)
+    if (!sendButton.isDisable()) { // avoid double-submission if they clicked at the same instant
+      onSendMessage();
     }
   }
 
