@@ -150,7 +150,7 @@ public class RationaleController extends TimedController {
     String prompt = loadResourceText("/prompts/rationale.txt");
     systemPrompt = new ChatMessage("system", prompt);
 
-    chatTextArea.appendText("Judge AI: Please state why you believe the AI is NOT GUILTY.\n\n");
+    chatTextArea.appendText("RATIONALE AI: Please state why you believe the AI is NOT GUILTY.\n\n");
 
     if (continueButton != null) {
       continueButton.setDisable(true);
@@ -230,7 +230,7 @@ public class RationaleController extends TimedController {
               e.printStackTrace();
               Platform.runLater(
                   () -> {
-                    appendChat("Judge AI: (error while grading—try again)");
+                    appendChat("RATIONALE AI: (error while grading—try again)");
                     sendButton.setDisable(false);
                   });
             }
@@ -257,13 +257,16 @@ public class RationaleController extends TimedController {
   }
 
   public void onTimeout() {
-    String rationale = textField.getText();
-    if (rationale.trim().isEmpty()) {
+    String rationale = textField.getText().trim();
+    textField.clear();
+    if (rationale.isEmpty()) {
         // No rationale provided on timeout, lose game
         App.setRoot(AppUi.LOSE);
     } else {
         // Save rationale and proceed
-        textField.appendText(rationale);
+        chatTextArea.appendText("Rationale: " + rationale + "\n\n");
+        textField.setDisable(true);
+        sendButton.setDisable(true);
     }
 }
 

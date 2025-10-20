@@ -18,6 +18,8 @@ public final class GameState {
 
   private static boolean verdictSelected = false;
 
+  private static boolean timeOutComplete = false;
+
   /** Set true when the 5-minute round expires. */
   private static boolean roundExpired = false;
 
@@ -55,9 +57,15 @@ public final class GameState {
     // accounts for when game is already over and we are on judge screen timeout instead of game screen timeout
     if (roundExpired == true) {
       if(verdictSelected == true){
+        if(timeOutComplete == true){
+          return;
+        }
         RationaleController.getInstance().onTimeout();
+        timeOutComplete = true;
+        return;
       }else{
         App.setRoot(AppUi.LOSE);
+        return;
       }
     }
     roundExpired = true;
@@ -65,11 +73,13 @@ public final class GameState {
     if (!allChatted()) {
       // Player did not chat all three → immediate game over
       App.setRoot(AppUi.LOSE);
+      return;
     } else {
       // They chatted all three → go to Judge (start your 60s verdict timer there)
-      SharedTimer.reset(60);
+      SharedTimer.reset(10);
       SharedTimer.getInstance().start();
       App.setRoot(AppUi.JUDGE);
+      return;
     }
   }
 
@@ -83,6 +93,7 @@ public final class GameState {
     currentFlashback = null;
     roundExpired = false;
     verdictSelected = false;
+    timeOutComplete = false;
   }
 
   // Has the first-time flashback already been shown for each participant?
