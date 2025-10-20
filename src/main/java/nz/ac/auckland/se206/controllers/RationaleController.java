@@ -257,16 +257,17 @@ public class RationaleController extends TimedController {
   }
 
   public void onTimeout() {
-    String rationale = textField.getText().trim();
-    textField.clear();
+    // If there's nothing typed, we still end the game.
+    String rationale = textField.getText() == null ? "" : textField.getText().trim();
     if (rationale.isEmpty()) {
-      // No rationale provided on timeout, lose game
       App.setRoot(AppUi.LOSE);
-    } else {
-      // Save rationale and proceed
-      chatTextArea.appendText("Rationale: " + rationale + "\n\n");
-      textField.setDisable(true);
-      sendButton.setDisable(true);
+      return;
+    }
+
+    // If the user typed something, submit exactly as if they clicked Send.
+    // (onSendMessage() stops the timer, disables the button, and runs the LLM.)
+    if (!sendButton.isDisable()) { // avoid double-submission if they clicked at the same instant
+      onSendMessage();
     }
   }
 
