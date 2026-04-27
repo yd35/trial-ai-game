@@ -1,3 +1,20 @@
+# Trial AI Game
+
+This repository is a migrated copy of our SOFTENG 206 group project, preserved with full Git commit and author history.
+
+## Running the project
+
+The original course-provided API tokens have been disabled. To run the project, users must provide their own OpenAI API token in the config file.
+
+Google TTS voices from the original setup may no longer work unless replaced with OpenAI TTS or built-in TTS.
+
+## Contributors
+
+This project was developed as a team project by:
+- @yd35
+- @miketomotimo
+- @LouisCao1029
+
 # Sample JavaFX application using Proxy API
 
 ## To setup the API to access Chat Completions and TTS
